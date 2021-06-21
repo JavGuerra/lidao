@@ -23,9 +23,9 @@
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Role')}}
                   </th>
-                  <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         {{__('Language')}}
-                      </th> -->
+                      </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Accessed')}}
                   </th>
@@ -63,9 +63,9 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {{ __($roles[$user->role]) }}
                   </td>
-                  <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {{ $languages[$user->locale] }}
-                      </td> -->
+                      </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {{ \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() }}
                   </td>
