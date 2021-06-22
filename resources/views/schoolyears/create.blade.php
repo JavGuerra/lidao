@@ -33,19 +33,19 @@
                 <div class="col-span-6 sm:col-span-4">
                     <div class="flex justify-between">
                         <div>
-                            <x-jet-label for="startDate" value="{{ __('Start date') }}" />
-                            <x-jet-input id="startDate" name="startDate" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
+                            <x-jet-label for="start_at" value="{{ __('Start date') }}" />
+                            <x-jet-input id="start_at" name="start_at" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
                         </div>
 
                         <div class="ml-3">
-                            <x-jet-label for="endDate" value="{{ __('End date') }}" />
-                            <x-jet-input id="endDate" name="endDate" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
+                            <x-jet-label for="end_at" value="{{ __('End date') }}" />
+                            <x-jet-input id="end_at" name="end_at" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
                         </div>
 
                         <div class="sm:w-1/3"></div>
                     </div>
-                    <x-jet-input-error for="startDate" class="mt-2" />
-                    <x-jet-input-error for="endDate" class="mt-2" />
+                    <x-jet-input-error for="start_at" class="mt-2" />
+                    <x-jet-input-error for="end_at" class="mt-2" />
                 </div>
             </x-slot>
 
