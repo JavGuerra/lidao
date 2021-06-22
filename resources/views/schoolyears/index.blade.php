@@ -48,10 +48,18 @@
                     </dfn>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    @if($schoolyear->start_at != null)
                     {{ \Carbon\Carbon::parse($schoolyear->start_at)->format('d M Y') }}
+                    @else
+                    --
+                    @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    @if($schoolyear->end_at != null)
                     {{ \Carbon\Carbon::parse($schoolyear->end_at)->format('d M Y') }}
+                    @else
+                    --
+                    @endif
                   </td>
                   <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {{-- $created_by --}}
@@ -60,7 +68,11 @@
                     {{ \Carbon\Carbon::parse($schoolyear->created_at)->format('d M Y') }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    @if($schoolyear->updated_at != null && $schoolyear->updated_at != $schoolyear->created_at)
                     {{ \Carbon\Carbon::parse($schoolyear->updated_at)->format('d M Y') }}
+                    @else
+                    --
+                    @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <!-- <a href="#" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a> -->
