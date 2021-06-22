@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Schoolyear;
 use Illuminate\Http\Request;
+use App\Models\Schoolyear;
+use App\Models\User;
 
 class SchoolyearController extends Controller
 {
@@ -14,7 +15,9 @@ class SchoolyearController extends Controller
      */
     public function index()
     {
-        return view('schoolyears.index');
+        return view('schoolyears.index', [
+            'schoolyears' => Schoolyear::orderBy('name', 'ASC')->paginate(5),
+        ]);
     }
 
     /**
@@ -35,7 +38,20 @@ class SchoolyearController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:schoolyears|max:255',
+            'startDate' => 'nullable|date',
+            'endDate' => 'nullable|date'
+        ]);
+
+        $Schoolyear = Schoolyear::create( $request->toArray() );
+        $Schoolyear->id_creator = auth()->user()->id;
+        $Schoolyear->save();
+
+        $request->session()->flash('flash.banner', __('The information was saved successfully.'));
+        $request->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('schoolyears.index');
     }
 
     /**

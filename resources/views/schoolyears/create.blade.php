@@ -4,7 +4,7 @@
     </x-slot>
     <x-main>
 
-        <x-form-section submit="">
+        <x-form-section submit="schoolyears.store">
             <x-slot name="title">
                 {{ __('Create school year') }}
             </x-slot>
@@ -18,14 +18,14 @@
                 <!-- Nombre -->
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="name" value="{{ __('Name') }}" />
-                    <x-jet-input id="name" type="text" class="mt-1 block w-full" require="require" />
+                    <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full"  />
                     <x-jet-input-error for="name" class="mt-2" />
                 </div>
 
                 <!-- Descripción -->
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="description" value="{{ __('Description') }}" />
-                    <x-textarea id="description" type="text" class="mt-1 block w-full" rows="3" />
+                    <x-textarea id="description" name="description" type="text" class="mt-1 block w-full" rows="3" />
                     <x-jet-input-error for="description" class="mt-2" />
                 </div>
 
@@ -34,18 +34,18 @@
                     <div class="flex justify-between">
                         <div>
                             <x-jet-label for="startDate" value="{{ __('Start date') }}" />
-                            <x-jet-input id="startDate" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
-                            <x-jet-input-error for="startDate" class="mt-2" />
+                            <x-jet-input id="startDate" name="startDate" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
                         </div>
 
                         <div class="ml-3">
                             <x-jet-label for="endDate" value="{{ __('End date') }}" />
-                            <x-jet-input id="endDate" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
-                            <x-jet-input-error for="endDate" class="mt-2" />
+                            <x-jet-input id="endDate" name="endDate" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
                         </div>
 
                         <div class="sm:w-1/3"></div>
                     </div>
+                    <x-jet-input-error for="startDate" class="mt-2" />
+                    <x-jet-input-error for="endDate" class="mt-2" />
                 </div>
             </x-slot>
 

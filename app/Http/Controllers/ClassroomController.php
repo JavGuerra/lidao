@@ -36,6 +36,8 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
         //
+
+        return redirect()->route('classrooms.index');
     }
 
     /**

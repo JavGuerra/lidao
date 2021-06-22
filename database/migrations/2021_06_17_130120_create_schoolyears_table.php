@@ -19,8 +19,8 @@ class CreateSchoolyearsTable extends Migration
             $table->string('description')->nullable();
             $table->date('start_at')->nullable();
             $table->date('end_at')->nullable();
-            $table->foreignId('id_creator');
-            $table->boolean('selected');
+            $table->foreignId('id_creator')->nullable();
+            $table->boolean('selected')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
             $table->timestamp('closed_at')->nullable();

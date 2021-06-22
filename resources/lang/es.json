@@ -718,6 +718,7 @@
     "Select the language in which the application will be displayed.": "Seleccione el idioma con el que se mostrará la aplicación.",
     "Select another language": "Seleccionar otro idioma",
     "Form": "Formulario",
+    "The information was saved successfully.": "La información se guardó correctamente.",
     "Status": "Estado",
     "Active": "Activo",
     "Inactive": "Inactivo",
@@ -747,5 +748,8 @@
     "There are no registered books": "No hay libros registrados",
     "Start date": "Fecha inicial",
     "End date": "Fecha final",
-    "Description": "Descripción"
+    "Description": "Descripción",
+    "Created by": "Creado por",
+    "Created": "Creado",
+    "Updated": "Actualizado"
 }
