@@ -40,8 +40,8 @@ class SchoolyearController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:schoolyears|max:255',
-            'startDate' => 'nullable|date',
-            'endDate' => 'nullable|date'
+            'start_at' => 'required|digits:4|integer|min:1901',
+            'end_at' => 'required|digits:4|integer|min:1901',
         ]);
 
         $Schoolyear = Schoolyear::create( $request->toArray() );

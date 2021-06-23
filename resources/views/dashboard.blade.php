@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="mt-5 md:mt-0 md:col-span-2 bg-white text-gray-500">
-                            <p class="my-4">{{ __('This project develops an educational Web platform to promote and improve knowledge of the spelling rules of Spanish and their reading and writing skills, through the use of interactive digital books adapted by age. The platform will be offered as a didactic tool for the teacher, who will be able to define the different virtual classes, the students who will participate in them and the books that each class must complete, being able to monitor the status of their students readings.') }}</p>
+                            <p class="my-4">{{ __("This project develops an educational Web platform to promote and improve knowledge of the spelling rules of Spanish and their reading and writing skills, through the use of interactive digital books adapted by age. The platform will be offered as a didactic tool for the teacher, who will be able to define the different virtual classes, the students who will participate in them and the books that each class must complete, being able to monitor the status of their students' readings.") }}</p>
                         </div>
                     </div>
                 </div>

@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'date_of_birth' => $this->faker->dateTimeInInterval($startDate = '-6 years', $interval = '+ 1 years', $timezone = null),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'nia' => Str::random(12),
+            'nia' => mt_rand(1000000, 9999999),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             'last_login_ip' => $this->faker->ipv4(),

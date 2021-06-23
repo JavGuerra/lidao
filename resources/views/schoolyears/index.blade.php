@@ -14,17 +14,20 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('Name')}} / {{__('Description')}}
+                    {{__('Name')}} &nbsp;/&nbsp; {{__('Selected')}}
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    {{__('Start')}}
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    {{__('End')}}
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    {{__('Status')}}
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('Start date')}}
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('End date')}}
-                  </th>
-                  <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Created by')}}
-                  </th> -->
+                  </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Created')}}
                   </th>
@@ -39,31 +42,42 @@
               <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($schoolyears as $schoolyear)
                 <tr>
-                  <td class="inline-flex px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {{ $schoolyear->name }}&nbsp;&nbsp;
+                  <td class="flex px-6 py-4 whitespace-nowrap font-medium text-gray-900">
+                    {{ $schoolyear->name }}
+                    @if($schoolyear->description != null)
+                    &nbsp;&nbsp;
                     <dfn title="{{ $schoolyear->description }}">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                       </svg>
                     </dfn>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    @if($schoolyear->start_at != null)
-                    {{ \Carbon\Carbon::parse($schoolyear->start_at)->format('d M Y') }}
-                    @else
-                    --
+                    @endif
+                    @if($schoolyear->selected)
+                    &nbsp;&nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">{{__('Selected')}}</span>
                     @endif
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    @if($schoolyear->end_at != null)
-                    {{ \Carbon\Carbon::parse($schoolyear->end_at)->format('d M Y') }}
-                    @else
-                    --
-                    @endif
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                    {{ $schoolyear->start_at }}
                   </td>
-                  <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{-- $created_by --}}
-                  </td> -->
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                    {{ $schoolyear->end_at }}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                    @if( $schoolyear->status)
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      @else
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        @endif
+                        {{ __($status[$schoolyear->status]) }}
+                      </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {{-- $created_by --}}
+                  </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {{ \Carbon\Carbon::parse($schoolyear->created_at)->format('d M Y') }}
                   </td>

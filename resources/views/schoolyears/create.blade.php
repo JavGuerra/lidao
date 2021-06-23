@@ -10,7 +10,7 @@
             </x-slot>
 
             <x-slot name="description">
-                {{ __('Enter the name, a brief description and the start and end dates of the school year.') }}
+                {{ __('Enter the name, a brief description, and the start and end years of the school year.') }}
                 @include('schoolyears.background-image', ['attributes' => 'hidden md:flex w-11/12'])
             </x-slot>
 
@@ -18,14 +18,16 @@
                 <!-- Nombre -->
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="name" value="{{ __('Name') }}" />
-                    <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full"  />
+                    <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full" value="{{ old('name') }}"  required="required" />
                     <x-jet-input-error for="name" class="mt-2" />
                 </div>
 
                 <!-- Descripción -->
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="description" value="{{ __('Description') }}" />
-                    <x-textarea id="description" name="description" type="text" class="mt-1 block w-full" rows="3" />
+                    <x-textarea id="description" name="description" type="text" class="mt-1 block w-full" rows="3">
+                        {{ old('description') }}
+                    </x-textarea>
                     <x-jet-input-error for="description" class="mt-2" />
                 </div>
 
@@ -33,13 +35,13 @@
                 <div class="col-span-6 sm:col-span-4">
                     <div class="flex justify-between">
                         <div>
-                            <x-jet-label for="start_at" value="{{ __('Start date') }}" />
-                            <x-jet-input id="start_at" name="start_at" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
+                            <x-jet-label for="start_at" value="{{ __('Start year') }}" />
+                            <x-jet-input id="start_at" name="start_at" class="mt-1 block w-full" type="number" step="1" min="1901" value="{{ old('start_at') }}" required="required" placeholder="yyyy" pattern="\d{4}" />
                         </div>
 
                         <div class="ml-3">
-                            <x-jet-label for="end_at" value="{{ __('End date') }}" />
-                            <x-jet-input id="end_at" name="end_at" type="date" class="mt-1 block w-full" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{2}" />
+                            <x-jet-label for="end_at" value="{{ __('Ending year') }}" />
+                            <x-jet-input id="end_at" name="end_at" class="mt-1 block w-full" type="number" step="1" min="1901" value="{{ old('end_at') }}" required="required" placeholder="yyyy" pattern="\d{4}" />
                         </div>
 
                         <div class="sm:w-1/3"></div>
