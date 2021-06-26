@@ -1,20 +1,14 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title-add title="{{ __('Classrooms') }}" link="{{ route('classrooms.create') }}"></x-title-add>
+    <x-title-add title="{{ __('Classrooms') }}" :link="route('classrooms.create')"></x-title-add>
   </x-slot>
-  <x-main-container>
-
-    <div class="min-w-full bg-gray-50 border-b border-gray-200">
-      <div class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        {{ __('Whoops!') }}
-      </div>
-    </div>
+  <x-main>
 
     <div class="mt-3 py-10 flex justify-center">
       @include('classrooms.background-image')
     </div>
 
-    <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no registered classrooms') }}</div>
+    <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no classrooms to show') }}</div>
 
-  </x-main-container>
+  </x-main>
 </x-app-layout>

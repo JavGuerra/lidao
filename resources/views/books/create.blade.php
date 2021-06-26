@@ -4,7 +4,7 @@
     </x-slot>
     <x-main>
 
-        <x-form-section submit="books.store">
+        <x-form-section :submit="route ('books.store')">
             <x-slot name="title">
                 {{ __('Create book') }}
             </x-slot>

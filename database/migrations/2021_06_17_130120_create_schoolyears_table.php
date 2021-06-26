@@ -16,15 +16,16 @@ class CreateSchoolyearsTable extends Migration
         Schema::create('schoolyears', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('description')->nullable();
+            $table->string('annotation')->nullable();
             $table->year('start_at');
             $table->year('end_at');
             $table->foreignId('id_creator')->nullable();
             $table->boolean('selected')->nullable();
-            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->timestamp('closed_at')->nullable();
         });
+
+        // TODO on delete cascade
     }
 
     /**

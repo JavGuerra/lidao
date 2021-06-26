@@ -34,5 +34,8 @@ class LogSuccessfulLogin
         // Pone el idioma del usuario en 'locale'
         $locale = $event->user->locale;
         session()->put('locale', $locale);
+
+        // Pone el numero de registros por defecto para la paginación
+        session()->put('paginate', 5);
     }
 }

@@ -1,13 +1,15 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title-add title="{{ __('Users') }}" link="{{ route('users.create') }}"></x-title-add>
+    <x-title-add title="{{ __('Users') }}" :link="route('users.create')"></x-title-add>
   </x-slot>
-  <x-main-container>
+  <x-main>
 
-    <div class="flex flex-col">
-      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+    @if ($users->count())
+
+    <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
+      <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
@@ -24,8 +26,8 @@
                     {{__('Role')}}
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{__('Language')}}
-                      </th>
+                    {{__('Language')}}
+                  </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Accessed')}}
                   </th>
@@ -36,7 +38,7 @@
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($users as $user)
-                <tr>
+                <tr class="hover:bg-gray-50">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
                       <div class="flex-shrink-0 h-10 w-10">
@@ -56,7 +58,7 @@
                     <div class="text-sm text-gray-900">{{ $user->email }}</div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-center">
-                  @if( $user->status)
+                    @if( $user->status)
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                       @else
                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
@@ -68,8 +70,8 @@
                     {{ __($roles[$user->role]) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {{ $languages[$user->locale] }}
-                      </td>
+                    {{ $languages[$user->locale] }}
+                  </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {{ \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() }}
                   </td>
@@ -95,5 +97,15 @@
       </div>
     </div>
 
-  </x-main-container>
+    @else
+
+    <div class="mt-3 py-10 flex justify-center">
+      @include('users.background-image')
+    </div>
+
+    <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no users to show') }}</div>
+
+    @endif
+
+  </x-main>
 </x-app-layout>

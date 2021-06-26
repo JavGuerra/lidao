@@ -77,8 +77,7 @@
                 </div>
             </div>
 
-            <div class="border-b border-gray-200 bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
+            <div class="mt-6 border-b border-gray-200 bg-white overflow-hidden shadow-lg sm:rounded-lg">
                 <div class="min-w-full bg-gray-50 border-b border-gray-200">
                     <div class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         {{ __('About') }}
@@ -86,7 +85,6 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg> -->
                     </div>
-
                 </div>
 
                 <div class="p-6 sm:px-20">

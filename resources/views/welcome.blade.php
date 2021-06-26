@@ -46,6 +46,9 @@
                     <span class="w-5 h-px mb-1 bg-red-500"></span>
                     <span class="w-5 h-px mb-1 bg-red-500"></span>
                 </button>
+
+                <!-- TODO opciones en menú desplegable -->
+                
             </header>
 
             <main class="flex flex-col-reverse sm:flex-row jusitfy-between items-center py-8">

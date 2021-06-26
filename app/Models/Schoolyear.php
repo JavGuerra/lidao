@@ -16,12 +16,11 @@ class Schoolyear extends Model
      */
     protected $fillable = [
         'name',
-        'description',
+        'annotation',
         'start_at',
         'end_at',
         'id_creator',
         'selected',
-        'status',
         'closed_at',
     ];
 }

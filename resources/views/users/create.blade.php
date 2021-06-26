@@ -4,7 +4,7 @@
     </x-slot>
     <x-main>
 
-        <x-form-section submit="users.store">
+        <x-form-section :submit="route ('users.store')">
             <x-slot name="title">
                 {{ __('Create user') }}
             </x-slot>

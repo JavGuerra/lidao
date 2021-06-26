@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Schoolyear;
-use App\Models\User;
 
 class SchoolyearController extends Controller
 {
@@ -15,8 +14,17 @@ class SchoolyearController extends Controller
      */
     public function index()
     {
+        $schoolyears = Schoolyear::orderBy('end_at', 'DESC')->paginate(session()->get('paginate'));
+        $selected = null;
+        if (Schoolyear::count()) {
+            $selected = Schoolyear::where('selected', true)->first();
+            // $schoolyears->forget($selected->id);
+            // $schoolyears->all();
+        }
+
         return view('schoolyears.index', [
-            'schoolyears' => Schoolyear::orderBy('name', 'ASC')->paginate(5),
+            'schoolyears' => $schoolyears,
+            'selected' => $selected,
         ]);
     }
 
@@ -39,19 +47,27 @@ class SchoolyearController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:schoolyears|max:255',
-            'start_at' => 'required|digits:4|integer|min:1901',
-            'end_at' => 'required|digits:4|integer|min:1901',
+            'name' => 'required|max:255|unique:schoolyears',
+            'start_at' => 'required|digits:4|integer|min:1901|max:2155',
+            'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
         ]);
 
-        $Schoolyear = Schoolyear::create( $request->toArray() );
-        $Schoolyear->id_creator = auth()->user()->id;
-        $Schoolyear->save();
+        $schoolyear = Schoolyear::create($request->all());
+        $schoolyear->id_creator = auth()->user()->id;
+        // Si es el primer registro
+        if (Schoolyear::count() == 1) {
+            $schoolyear->selected = true;
+        } else {
+
+            // TODO si hay otros cursos, preguntar si activar este curso al crearlo
+
+        }
+        $schoolyear->save();
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('schoolyears.index');
+        return redirect()->route('schoolyears.show', $schoolyear);
     }
 
     /**
@@ -60,9 +76,11 @@ class SchoolyearController extends Controller
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
      */
-    public function show(SchoolYear $schoolyear)
+    public function show(Schoolyear $schoolyear)
     {
-        //
+        return view('schoolyears.show', [
+            'schoolyear' => $schoolyear,
+        ]);
     }
 
     /**
@@ -71,9 +89,11 @@ class SchoolyearController extends Controller
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
      */
-    public function edit(SchoolYear $schoolyear)
+    public function edit(Schoolyear $schoolyear)
     {
-        //
+        return view('schoolyears.edit', [
+            'schoolyear' => $schoolyear,
+        ]);
     }
 
     /**
@@ -83,9 +103,24 @@ class SchoolyearController extends Controller
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SchoolYear $schoolyear)
+    public function update(Request $request, Schoolyear $schoolyear)
     {
-        //
+        // Como 'name' es un campo de valores únicos, necesitamos indicar
+        // la excepción en el tercer parámetro de 'unique' para el registro
+        // que vamos a actualizar mediante el id, de otra forma devuelve
+        // el error de campo duplicado.
+        $request->validate([
+            'name' => 'required|max:255|unique:schoolyears,name,' . $schoolyear->id,
+            'start_at' => 'required|digits:4|integer|min:1901|max:2155',
+            'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
+        ]);
+
+        $schoolyear->update($request->all());
+
+        $request->session()->flash('flash.banner', __('The information was saved successfully.'));
+        $request->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('schoolyears.show', $schoolyear);
     }
 
     /**
@@ -94,8 +129,10 @@ class SchoolyearController extends Controller
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SchoolYear $schoolyear)
+    public function destroy(Schoolyear $schoolyear)
     {
-        //
+        // Confirmación de borrado en el componente LiveWire DeleteSchoolyearForm
+
+        return redirect()->route('schoolyears.index');
     }
 }

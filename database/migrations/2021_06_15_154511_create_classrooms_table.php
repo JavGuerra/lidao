@@ -16,7 +16,7 @@ class CreateClassroomsTable extends Migration
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('annotation')->nullable();
             $table->foreignId('id_schoolyear');
             $table->foreignId('id_section');
             $table->foreignId('id_teacher');

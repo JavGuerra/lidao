@@ -41,3 +41,9 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('classrooms', Classroo
 Route::middleware(['auth:sanctum', 'verified'])->resource('users', UserController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('books', BookController::class);
+
+
+// Pruebas durante el desarrollo. TODO BORRAR
+Route::get('pruebas', function () {
+    return view('pruebas');
+});
