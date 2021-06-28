@@ -4,7 +4,7 @@
   </x-slot>
   <x-main-container>
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
+    <!-- Ficha -->
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
 
       <div class="flex justify-between border-b border-gray-200">
@@ -30,6 +30,7 @@
 
       <div class="sm:grid sm:grid-cols-6">
 
+        <!-- Columna izquierda -->
         <div class="sm:col-span-4 sm:border-r border-gray-200">
           <dl>
             <div class="bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
@@ -58,20 +59,30 @@
                 </dd>
               </div>
             </div>
-            <div class="bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+            <div class="bg-gray-50 px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
+              <div class="sm:grid sm:grid-cols-2 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">
+                  {{ __('Number of classrooms') }}
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                  {{ num_classrooms($schoolyear->id) }}
+                </dd>
+              </div>
+              <div class="sm:grid sm:grid-cols-2 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">
+                  {{__('Number of students')}}
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+                  0
+                </dd>
+              </div>
+            </div>
+            <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">
                 {{__('Created by')}}
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
                 {{ user_name($schoolyear->id_creator) }}
-              </dd>
-            </div>
-            <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                {{ __('Number of classrooms') }}
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
-                {{ num_classrooms($schoolyear->id) }}
               </dd>
             </div>
             <div class="bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
@@ -85,6 +96,7 @@
           </dl>
         </div>
 
+        <!-- Columna derecha -->
         <div class="sm:col-span-2">
           <dl>
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
@@ -121,7 +133,7 @@
               </dd>
             </div>
             @endif
-            @if($schoolyear->closed_at != null)
+            @if($schoolyear->closed_at != null && ! $schoolyear->selected)
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
                 {{__('Closed')}}
@@ -136,7 +148,9 @@
 
       </div>
 
+      <div class="py-2 sm:border-t sm:border-gray-200"></div>
+
     </div>
-    
+
   </x-main-container>
 </x-app-layout>

@@ -62,7 +62,7 @@
                         {{ __( $status[true] ) }}
                     </span>
 
-                    <dfn title="{{ __('Active school years cannot be eliminated. Create a new school year or activate another school year, and then go back to this school year to delete it.') }}">
+                    <dfn title="{{ __('Active school years cannot be eliminated.') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 inline h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                         </svg>
@@ -93,11 +93,45 @@
 
         </x-form-section>
 
-        @if(! $schoolyear->selected)
-        <x-jet-section-border />
-
+        @if($schoolyear->selected)
         <div class="mt-10 sm:mt-0">
-            @livewire('delete-schoolyear-form', ['schoolyear_id' => $schoolyear->id])
+            <x-jet-section-border />
+        </div>
+        <livewire:edit-schoolyear-form 
+            action="deactive"
+            :schoolyearId="$schoolyear->id"
+            :title="__('Deactivate school year')"
+            :desc="__('Close the school year to conclude its operations.')"
+            :text="__('Once the school year is deactivated, you will not be able to add classes or other resources, but you can reactivate it if you wish.')"
+            :confirmTxt="__('Are you sure you want to activate the school year? Once the school year is deactivated, you will not be able to add classes or other resources, but you can reactivate it if you wish.')"
+             />
+        </div>
+        @else
+        <div class="mt-10 sm:mt-0">
+            <x-jet-section-border />
+        </div>
+        <div class="mt-10 sm:mt-0">
+            <livewire:edit-schoolyear-form 
+            action="active"
+            :schoolyearId="$schoolyear->id"
+            :title="__('Activate school year')"
+            :desc="__('Activate the school year to add resources.')"
+            :text="__('Once the school year is activated, you will be able to add classrooms and other resources, but the activation of this course implies the closure of the active course if there is one.')"
+            :confirmTxt="__('Are you sure you want to activate the school year? Once the school year is activated, you will be able to add classrooms and other resources, but the activation of this course implies the closure of the active course if there is one.')"
+             />
+        </div>
+        <div class="mt-10 sm:mt-0">
+            <x-jet-section-border />
+        </div>
+        <div class="mt-10 sm:mt-0">
+            <livewire:edit-schoolyear-form 
+            action="delete"
+            :schoolyearId="$schoolyear->id"
+            :title="__('Delete school year')"
+            :desc="__('Permanently delete the school year.')"
+            :text="__('Once the school year is deleted, all of its classrooms and relationated data will be permanently deleted. Before deleting the school year, please download any data or information that you wish to retain.')"
+            :confirmTxt="__('Are you sure you want to delete the school year? Once the school year is deleted, all of its classrooms and relationated data will be permanently deleted. Before deleting the school year, please download any data or information that you wish to retain.')"
+             />
         </div>
         @endif
 
