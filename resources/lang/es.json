@@ -270,6 +270,7 @@
     "If you did not request a password reset, no further action is required.": "Si no ha solicitado el restablecimiento de contraseña, omita este mensaje de correo electrónico.",
     "If you do not have an account, you may create one by clicking the button below. After creating an account, you may click the invitation acceptance button in this email to accept the team invitation:": "Si no tiene una cuenta, puede crear una haciendo clic en el botón de abajo. Después de crear una cuenta, puede hacer clic en el botón de aceptación de la invitación en este correo electrónico para aceptar la invitación del equipo:",
     "If you need to add specific contact or tax information to your receipts, like your full business name, VAT identification number, or address of record, you may add it here.": "Si necesita agregar información de contacto específica o de impuestos a sus recibos, como su nombre comercial completo, número de identificación VAT o dirección de registro, puede agregarlo aquí.",
+    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:": "Si tiene problemas para hacer clic en el botón \":actionText\", copie y pegue la siguiente URL \nen su navegador web:",
     "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:": "Si tiene problemas para hacer clic en el botón \":actionText\", copie y pegue la siguiente URL \nen su navegador web:",
     "Increase": "Incrementar",
     "India": "India",
@@ -665,7 +666,7 @@
     "Venezuela, Bolivarian Republic of": "Venezuela, República Bolivariana de",
     "Verify Email Address": "Confirme su correo electrónico",
     "Viet Nam": "Vietnam",
-    "View": "Ver",
+    "View": "Vista",
     "View Receipt": "Ver recibo",
     "Virgin Islands, British": "Islas Vírgenes Británicas",
     "Virgin Islands, U.S.": "Islas Vírgenes Estadounidenses",
@@ -708,9 +709,8 @@
     "Zimbabwe": "Zimbabwe",
     "Zip \/ Postal Code": "Zip \/ Código postal",
     "Åland Islands": "Islas Åland",
-
-
-
+    
+    
     "This project develops an educational Web platform to promote and improve knowledge of the spelling rules of Spanish and their reading and writing skills, through the use of interactive digital books adapted by age. The platform will be offered as a didactic tool for the teacher, who will be able to define the different virtual classes, the students who will participate in them and the books that each class must complete, being able to monitor the status of their students' readings.": "Este proyecto desarrolla una plataforma Web educativa para fomentar y mejorar el conocimiento de las reglas ortográficas del español y sus competencias de lectura y escritura, a través del uso de libros digitales interactivos adaptados por edad. La plataforma se ofrecerá a modo de herramienta didáctica para el profesor, que podrá definir las distintas clases virtuales, los alumnos que participarán en ellas y los libros que cada clase deberá completar, pudiendo hacer un seguimiento del estado de las lecturas de sus alumnos.",
     "Wellcome": "Bienvenido",
     "About": "Acerca de",

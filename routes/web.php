@@ -12,7 +12,7 @@ use App\Models\Book;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Rutas web
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -22,12 +22,13 @@ use App\Models\Book;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // Devuelve vista con los datos del panel
-    return view('dashboard')
+    // Devuelve vista con los datos del panel.
+    // TODO ajustar a curso activo y tal vez crear un controlador o helper.
+    return view('/dashboard')
         ->with('teachers', User::where('role', 2)->count())
         ->with('students', User::where('role', 0)->count())
         ->with('books', Book::count())

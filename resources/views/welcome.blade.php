@@ -16,7 +16,7 @@
         <div class="container mx-auto px-8">
 
             <header class="flex flex-col sm:flex-row items-center justify-between py-5 relative">
-                <x-jet-application-mark x-jet-authentication-card-logo class="block h-16 w-auto" />
+                @include('logos.application-mark', ['attributes' => 'block h-16 w-auto'])
                 <nav class="hidden md:flex text-lg">
                     <a href="#faq" class="text-gray-800 hover:text-blue-400 py-3 px-6">Servicios</a>
                     <a href="#about" class="text-gray-800 hover:text-blue-400 py-3 px-6">Acerca de</a>
@@ -72,7 +72,7 @@
     <footer class="text-gray-600 body-font">
         <div class="container px-5 pt-8 pb-5 mx-auto flex items-center sm:flex-row flex-col">
             <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <x-jet-application-logo class="block h-4 w-auto" />
+                @include('logos.application-logo', ['attributes' => 'block h-4 w-auto'])
             </a>
             <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">(CC) BY-SA 2021 javguerra</p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

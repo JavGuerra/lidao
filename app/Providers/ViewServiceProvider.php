@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class ViewServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * Registrar servicios.
      *
      * @return void
      */
@@ -18,7 +18,7 @@ class ViewServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap services.
+     * Servicios.
      *
      * @return void
      */

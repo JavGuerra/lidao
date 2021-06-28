@@ -10,7 +10,7 @@ class Schoolyear extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * Los atributos que son asignables en masa.
      *
      * @var array
      */

@@ -91,7 +91,7 @@
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <div class="mt-6">
-                                <x-jet-application-logo class="block h-12 w-auto" />
+                                @include('logos.application-logo', ['attributes' => 'block h-12 w-auto'])
                             </div>
                             <div class="text-2xl mt-6">{{ __('Wellcome') }} {{ auth()->user()->name }}</div>
                         </div>

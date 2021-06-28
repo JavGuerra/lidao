@@ -12,21 +12,21 @@ use App\Models\Schoolyear;
 class EditSchoolyearForm extends Component
 {
     /**
-     * Indicates if school year $action is being confirmed.
+     * Indica si la acción a realizar está confirmada.
      *
      * @var bool
      */
     public $confirming = false;
 
     /**
-     * The modal's action.
+     * Contiene la acción a realizar.
      *
      * @var string
      */
     public $action = '';
 
     /**
-     * The modal content.
+     * Variables con el contenido para la ventana modal.
      *
      * @var string
      */
@@ -36,21 +36,21 @@ class EditSchoolyearForm extends Component
     public $confirmTxt;
 
     /**
-     * The user's current password.
+     * La contraseña del usuario actual.
      *
      * @var string
      */
     public $password = '';
 
     /**
-     * The schoolyear's current id.
+     * El id del curso actual.
      *
      * @var int
      */
     public $schoolyearId;
 
     /**
-     * Confirm the school year action.
+     * Confirma la acción.
      *
      * @return void
      */
@@ -59,9 +59,7 @@ class EditSchoolyearForm extends Component
         $this->resetErrorBag();
 
         if ($this->action == "delete") {
-
             $this->password = '';
-
             $this->dispatchBrowserEvent('confirming-delete-schoolyear');
         }
 
@@ -69,7 +67,7 @@ class EditSchoolyearForm extends Component
     }
 
     /**
-     * Activate the current school year.
+     * Activa el curso escolar.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -78,7 +76,7 @@ class EditSchoolyearForm extends Component
     {
         $this->resetErrorBag();
 
-        // Desactiva el curso activo y registra la fecha y hora
+        // Desactiva el curso activo y registra la fecha y hora de desactivación
         $schoolyearSelected = Schoolyear::where('selected', 1)->first();
         if ($schoolyearSelected) {
             $schoolyearSelected->update([
@@ -97,7 +95,7 @@ class EditSchoolyearForm extends Component
     }
 
     /**
-     * Deactivate the current school year.
+     * Desactiva el curso escolar actual.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -120,7 +118,7 @@ class EditSchoolyearForm extends Component
     }
 
     /**
-     * Delete the current school year.
+     * Borra el curso escolar.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -148,7 +146,7 @@ class EditSchoolyearForm extends Component
     }
 
     /**
-     * Render the component.
+     * Renderiza el componente.
      *
      * @return \Illuminate\View\View
      */

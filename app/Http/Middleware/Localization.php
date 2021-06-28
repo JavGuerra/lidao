@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\App;
 class Localization
 {
     /**
-     * Handle an incoming request.
+     * Maneja una solicitud entrante. 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

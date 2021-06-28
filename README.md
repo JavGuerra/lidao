@@ -6,9 +6,9 @@ Aprender ortografía es una tarea pesada para los alumnos de educación primaria
 
 Este proyecto desarrolla una plataforma Web educativa para fomentar y mejorar el conocimiento de las reglas ortográficas del español y sus competencias de lectura y escritura, a través del uso de libros digitales interactivos adaptados por edad. La plataforma se ofrecerá a modo de herramienta didáctica para el profesor, que podrá definir las distintas clases virtuales, los alumnos que participarán en ellas y los libros que cada clase deberá completar, pudiendo hacer un seguimiento del estado de las lecturas de sus alumnos.
 
-## Estátus
+## Estatus
 
-dev
+En desarrollo
 
 ## Licencia
 

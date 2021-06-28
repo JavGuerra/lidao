@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 class LogSuccessfulLogin
 {
     /**
-     * Create the event listener.
+     * Crea el detector de eventos.
      *
      * @return void
      */
@@ -18,7 +18,7 @@ class LogSuccessfulLogin
     }
 
     /**
-     * Handle the event.
+     * Maneja el evento.
      *
      * @param  object  $event
      * @return void

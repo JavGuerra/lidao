@@ -8,7 +8,7 @@ class NavigationMenuComposer
 {
 
     /**
-     * Bind data to the view.
+     * Vincular datos a la vista.
      *
      * @param  \Illuminate\View\View  $view
      * @return void

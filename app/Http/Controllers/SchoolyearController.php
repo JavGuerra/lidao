@@ -8,18 +8,17 @@ use App\Models\Schoolyear;
 class SchoolyearController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra el listado de cursos
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $schoolyears = Schoolyear::orderBy('end_at', 'DESC')->paginate(session()->get('paginate'));
+
         $selected = null;
         if (Schoolyear::count()) {
             $selected = Schoolyear::where('selected', true)->first();
-            // $schoolyears->forget($selected->id);
-            // $schoolyears->all();
         }
 
         return view('schoolyears.index', [
@@ -29,7 +28,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un curso
      *
      * @return \Illuminate\Http\Response
      */
@@ -39,7 +38,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Comprueba y guarda un nuevo curso en la BBDD
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -53,15 +52,14 @@ class SchoolyearController extends Controller
         ]);
 
         $schoolyear = Schoolyear::create($request->all());
+
         $schoolyear->id_creator = auth()->user()->id;
-        // Si es el primer registro
-        if (Schoolyear::count() == 1) {
+
+        // Si no hay cursos activos o es el primer curso, se activa.
+        if (Schoolyear::where('selected', true)->first() == null) {
             $schoolyear->selected = true;
-        } else {
-
-            // TODO si hay otros cursos, preguntar si activar este curso al crearlo
-
         }
+
         $schoolyear->save();
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
@@ -71,7 +69,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra la información del curso
      *
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
@@ -84,7 +82,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra la ventana de edición del curso
      *
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
@@ -97,7 +95,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Comprueba y actualiza el curso
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Schoolyear  $schoolyear
@@ -124,14 +122,14 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el curso escolar
      *
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
      */
     public function destroy(Schoolyear $schoolyear)
     {
-        // Confirmación de borrado en el componente LiveWire DeleteSchoolyearForm
+        // Confirmación y borrado realizado en el componente LiveWire EditSchoolyearForm
 
         return redirect()->route('schoolyears.index');
     }
