@@ -39,7 +39,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr class="bg-gradient-to-b from-gray-50 to-white">
+                <tr class="bg-gradient-to-b from-gray-50">
                   <td class="px-6 py-6 font-medium text-gray-900">
                     <span class="inline">{{ $selected->name }}</span>
                     @if($selected->annotation != null)
@@ -56,11 +56,23 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                     {{ $selected->end_at }}
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     {{ num_classrooms($selected->id) }}
+                    <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600 hover:text-indigo-900 border border-gray-300 rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                        <span class="sr-only">{{__('Add')}}</span>
+                      </svg>
+                    </a>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     0
+                    <a href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600 hover:text-indigo-900 border border-gray-300 rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                        <span class="sr-only">{{__('Add')}}</span>
+                      </svg>
+                    </a>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                     @if($selected->updated_at != null && $selected->updated_at != $selected->created_at && $selected->updated_at > $selected->closed_at)
@@ -70,7 +82,7 @@
                     @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="{{ route('schoolyears.show', $selected) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('View') }}</a>
+                    <a href="{{ route('schoolyears.show', $selected) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Show') }}</a>
                     <a href="{{ route('schoolyears.edit', $selected) }}" class="ml-4 text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                   </td>
                 </tr>
@@ -146,10 +158,10 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                     {{ $schoolyear->end_at }}
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     {{ num_classrooms($schoolyear->id) }}
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     0
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
@@ -160,7 +172,7 @@
                     @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="{{ route('schoolyears.show', $schoolyear) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('View') }}</a>
+                    <a href="{{ route('schoolyears.show', $schoolyear) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Show') }}</a>
                     <a href="{{ route('schoolyears.edit', $schoolyear) }}" class="ml-4 text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                   </td>
                 </tr>
@@ -187,7 +199,7 @@
 
     <!-- Si no hay nada que mmostrar... -->
     <div class="mt-3 py-10 flex justify-center">
-      @include('schoolyears.background-image')
+      @include('images.schoolyears')
     </div>
 
     <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no school years to show') }}</div>

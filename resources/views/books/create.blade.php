@@ -11,7 +11,7 @@
 
             <x-slot name="description">
                 {{ __('New book') }}
-                @include('books.background-image', ['attributes' => 'hidden md:flex w-11/12'])
+                @include('images.books', ['attributes' => 'hidden md:flex w-11/12'])
             </x-slot>
 
             <x-slot name="form">

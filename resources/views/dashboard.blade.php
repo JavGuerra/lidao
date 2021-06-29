@@ -5,6 +5,19 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            @if(! $schoolyear)
+            <x-suggestion>
+                {{ __('There are no active school years. Create or activate one by clicking ') }}
+                <span class="text-indigo-600 hover:text-indigo-900"><a href="{{route('schoolyears.index')}}">{{__('here')}}</a></span>.
+            </x-suggestion>
+            @elseif(! $classrooms)
+            <x-suggestion>
+                {{ __('There is no class created yet. Create one by clicking ') }}
+                <span class="text-indigo-600 hover:text-indigo-900"><a href="{{route('schoolyears.index')}}">{{__('here')}}</a></span>.
+            </x-suggestion>      
+            @endif
+
             <div class="max-w-full sm:mx-auto mb-4">
                 <div class="sm:flex sm:space-x-4">
 
@@ -91,7 +104,7 @@
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <div class="mt-6">
-                                @include('logos.application-logo', ['attributes' => 'block h-12 w-auto'])
+                                @include('images.application-logo', ['attributes' => 'block h-12 w-auto'])
                             </div>
                             <div class="text-2xl mt-6">{{ __('Wellcome') }} {{ auth()->user()->name }}</div>
                         </div>

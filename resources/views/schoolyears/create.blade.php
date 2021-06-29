@@ -11,7 +11,7 @@
 
             <x-slot name="description">
                 {{ __('Enter the name, the start and end years of the school year and write notes if required.') }}
-                @include('schoolyears.background-image', ['attributes' => 'hidden md:flex w-11/12'])
+                @include('images.schoolyears', ['attributes' => 'hidden md:flex w-11/12'])
             </x-slot>
 
             <x-slot name="form">

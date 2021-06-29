@@ -5,7 +5,7 @@
   <x-main>
 
     <div class="mt-3 py-10 flex justify-center">
-      @include('books.background-image')
+      @include('images.books')
     </div>
 
     <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no books to show') }}</div>

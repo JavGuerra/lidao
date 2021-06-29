@@ -11,7 +11,7 @@
 
             <x-slot name="description">
                 {{ __('Update the name, the start and end years of the school year and modify the annotations if required.') }}
-                @include('schoolyears.background-image', ['attributes' => 'hidden md:flex w-11/12'])
+                @include('images.schoolyears', ['attributes' => 'hidden md:flex w-11/12'])
             </x-slot>
 
             <x-slot name="form">

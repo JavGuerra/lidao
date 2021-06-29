@@ -66,6 +66,14 @@
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                   {{ num_classrooms($schoolyear->id) }}
+                  @if($schoolyear->selected)
+                  <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600 hover:text-indigo-900 border border-gray-300 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                      <span class="sr-only">{{__('Add')}}</span>
+                    </svg>
+                  </a>
+                  @endif
                 </dd>
               </div>
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">
@@ -74,6 +82,14 @@
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                   0
+                  @if($schoolyear->selected)
+                  <a href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600 hover:text-indigo-900 border border-gray-300 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                      <span class="sr-only">{{__('Add')}}</span>
+                    </svg>
+                  </a>
+                  @endif
                 </dd>
               </div>
             </div>
@@ -148,7 +164,7 @@
 
       </div>
 
-      <div class="py-2 sm:border-t sm:border-gray-200"></div>
+      <div class="pb-3 sm:border-t sm:border-gray-200"></div>
 
     </div>
 

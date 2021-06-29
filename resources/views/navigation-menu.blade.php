@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        @include('logos.application-mark', ['attributes' => 'block h-9 w-auto'])
+                        @include('images.application-mark', ['attributes' => 'block h-9 w-auto'])
                     </a>
                 </div>
 

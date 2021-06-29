@@ -6,6 +6,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 
+use App\Models\Schoolyear;
 use App\Models\Classroom;
 use App\Models\User;
 use App\Models\Book;
@@ -29,10 +30,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // Devuelve vista con los datos del panel.
     // TODO ajustar a curso activo y tal vez crear un controlador o helper.
     return view('/dashboard')
+        ->with('schoolyear', Schoolyear::where('selected', true)->first())
+        ->with('classrooms', Classroom::count())
         ->with('teachers', User::where('role', 2)->count())
         ->with('students', User::where('role', 0)->count())
-        ->with('books', Book::count())
-        ->with('classrooms', Classroom::count());
+        ->with('books', Book::count());
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('schoolyears', SchoolyearController::class);

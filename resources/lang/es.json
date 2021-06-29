@@ -735,6 +735,12 @@
     "Teacher": "Profesor",
     "Teachers": "Profesores",
     "Accessed": "Accedido",
+    "Show": "Ver",
+    "Suggestion": "Sugerencia",
+    "There are no active school years. Create or activate one by clicking ": "No hay cursos activos. Cree o active uno haciendo click ",
+    "There is no class created yet. Create one by clicking ": "Aún no hay ninguna clase creada. Cree una haciendo click ",
+    
+    "here": "aquí",
 
     "School year active": "Curso activo",
     "School years list": "Listado de cursos",
