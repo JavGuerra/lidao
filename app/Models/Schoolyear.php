@@ -19,7 +19,7 @@ class Schoolyear extends Model
         'annotation',
         'start_at',
         'end_at',
-        'id_creator',
+        'creator_id',
         'selected',
         'closed_at',
     ];

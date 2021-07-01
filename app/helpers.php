@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Classroom;
+use App\Models\Schoolyear;
 
 /**
  * Devuelve el nombre del usuario que conicide con el id
@@ -22,5 +23,53 @@ function user_name(int $id)
  */
 function num_classrooms(int $id)
 {
-    return Classroom::where('id_schoolyear', $id)->count();
+    return Classroom::where('schoolyear_id', $id)->count();
+}
+
+/**
+ * Devuelve true si hay un curso activo
+ *
+ * @return bool
+ */
+function isActiveSchoolyear()
+{
+    return (Schoolyear::where('selected', true)->count() == 0) ? false : true;
+}
+
+/**
+ * Devuelve el id del curso activo.
+ *
+ * @return int
+ */
+function activeSchoolyearId()
+{
+    $id = 0;
+    if (isActiveSchoolyear()) {
+        $id = Schoolyear::where('selected', true)->firstOrFail()->id;
+    }
+    return $id;
+}
+
+/**
+ * Devuelve el curso activo.
+ *
+ * @return Obj
+ */
+function activeSchoolyear()
+{
+    return Schoolyear::find(activeSchoolyearId());
+}
+
+/**
+ * Devuelve el número de clases del curso.
+ *
+ * @return int
+ */
+function numClassroomsSchoolyear()
+{
+    $num = 0;
+    if (activeSchoolyear()) {
+        $num = Classroom::where('schoolyear_id', activeSchoolyearId())->count();
+    }
+    return $num;
 }

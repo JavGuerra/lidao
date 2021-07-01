@@ -19,13 +19,11 @@ class CreateSchoolyearsTable extends Migration
             $table->string('annotation')->nullable();
             $table->year('start_at');
             $table->year('end_at');
-            $table->foreignId('id_creator')->nullable();
+            $table->foreignId('creator_id')->nullable();
             $table->boolean('selected')->nullable();
             $table->timestamps();
             $table->timestamp('closed_at')->nullable();
         });
-
-        // TODO on delete cascade
     }
 
     /**

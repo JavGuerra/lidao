@@ -738,13 +738,13 @@
     "Show": "Ver",
     "Suggestion": "Sugerencia",
     "There are no active school years. Create or activate one by clicking ": "No hay cursos activos. Cree o active uno haciendo click ",
-    "There is no class created yet. Create one by clicking ": "Aún no hay ninguna clase creada. Cree una haciendo click ",
-    
+    "There are no classes created this school year yet. Create one by clicking ": "Aún no hay ninguna clase creada en este curso. Cree una haciendo click ",
     "here": "aquí",
 
     "School year active": "Curso activo",
-    "School years list": "Listado de cursos",
+    "School year": "Curso",
     "School years": "Cursos",
+    "School years list": "Listado de cursos",   
     "Other school years": "Otros cursos",
     "New school year": "Nuevo curso",
     "School year information": "Información del curso",
@@ -769,10 +769,24 @@
     "Once the school year is deactivated, you will not be able to add classes or other resources, but you can reactivate it if you wish.": "Una vez el curso escolar esté desactivado, no podrá añadir clases u otros recursos, pero podrá volver a activarlo si lo desea.",
     "Are you sure you want to activate the school year? Once the school year is deactivated, you will not be able to add classes or other resources, but you can reactivate it if you wish.": "¿Está seguro que desea desactivar el curso? Una vez el curso escolar esté desactivado, no podrá añadir clases u otros recursos, pero podrá volver a activarlo si lo desea.",
     "The course has been deactivated.": "El curso ha sido desactivado.",
+    
+    "Classroom": "Clase",
     "Classrooms": "Clases",
+    "Classrooms list": "Listado de clases",
     "Number of classrooms": "Número de clases",
     "New classroom": "Nueva clase",
+    "Classroom information": "Información de la clase",
+    "Details of the classroom.": "Detalles de la clase.",
     "Create classroom": "Crear clase",
+    "Enter the name, the section, the teacher and write annotations if required.": "Introduzca el nombre, la sección, el profesor y escriba anotaciones si lo requiere.",
+    "Edit classroom": "Editar clase",
+    "Update the name, the section, the teacher and write annotations if required.": "Actualice el nombre, la sección, el profesor y modifique las anotaciones si lo requiere.",
+    "Delete classroom": "Eliminar clase",
+    "Permanently delete the classroom.": "Eliminar definitivamente la clase.",
+    "Once the classroom is deleted, all of it relationated data will be permanently deleted. Before deleting the classroom, please download any data or information that you wish to retain.": "Una vez que se elimina la clase, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar la clase, descargue cualquier dato o información que desee conservar.",
+    "Are you sure you want to delete the classroom? Once the classroom is deleted, all of it relationated data will be permanently deleted. Before deleting the classroom, please download any data or information that you wish to retain.": "¿Está seguro de que desea eliminar la clase? Una vez que se elimina la clase, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar la clase, descargue cualquier dato o información que desee conservar.",
+    "The classroom has been definitively eliminated.": "La clase ha sido eliminada definitivamente.",
+    
     
     "Users": "Usuarios",
     "New user": "Nuevo usuario",
@@ -781,6 +795,7 @@
     "Books": "Libros",
     "New book": "Nuevo libro",
     "Create book": "Crear libro",
+    "Number of books": "Número de libros",
     
     "There are no school years to show": "No hay cursos que mostrar",
     "There are no classrooms to show": "No hay clases que mostrar",
@@ -796,5 +811,7 @@
     "Closed": "Cerrado",
     "Show and edit": "Ver y editar",
     "More information...": "Más información...",
-    "Information icon with letter i.": "Icono de información con la letra i."
+    "Information icon with letter i.": "Icono de información con la letra i.",
+    "Years": "Años",
+    "Section": "Sección"
 }

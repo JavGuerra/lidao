@@ -13,6 +13,13 @@
                 <x-jet-section-border />
             @endif
 
+            <!-- TODO Conectar dentro de profile.update-profile-information-form -->
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.update-locale-form')
+            </div>
+
+            <x-jet-section-border />
+
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.update-password-form')

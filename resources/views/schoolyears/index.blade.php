@@ -15,14 +15,11 @@
             <table class="lg:table-fixed lg:w-full min-w-full divide-y divide-gray-200">
               <thead>
                 <tr>
-                  <th scope="col" class="whitespace-nowrap w-5/12 px-6 py-3 text-left text-lg leading-6 font-medium text-gray-900 tracking-wider">
+                  <th scope="col" class="whitespace-nowrap w-2/5 px-6 py-3 text-left text-lg leading-6 font-medium text-gray-900 tracking-wider">
                     {{__('School year active')}}
                   </th>
-                  <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('Start')}}
-                  </th>
-                  <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('End')}}
+                  <th scope="col" class="w-2/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    {{__('Start')}}&nbsp;-&nbsp;{{__('End')}}
                   </th>
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Classrooms')}}
@@ -30,10 +27,10 @@
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Students')}}
                   </th>
-                  <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" class="w-2/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Updated')}}
                   </th>
-                  <th scope="col" class="w-max relative px-6 py-3">
+                  <th scope="col" class="w-2/12 relative px-6 py-3">
                     <span class="sr-only">{{ __('Show and edit') }}</span>
                   </th>
                 </tr>
@@ -51,14 +48,13 @@
                     @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                    {{ $selected->start_at }}
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                    {{ $selected->end_at }}
+                    {{ $selected->start_at }} - {{ $selected->end_at }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                    {{ num_classrooms($selected->id) }}
-                    <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600 hover:text-indigo-900 border border-gray-300 rounded-md">
+                    <a href="{{ route('classrooms.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                      {{ num_classrooms($selected->id) }}
+                    </a>
+                    <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                         <span class="sr-only">{{__('Add')}}</span>
@@ -66,8 +62,10 @@
                     </a>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                    0
-                    <a href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600 hover:text-indigo-900 border border-gray-300 rounded-md">
+                    <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                      0
+                    </a>
+                    <a href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                         <span class="sr-only">{{__('Add')}}</span>
@@ -110,15 +108,12 @@
             <table class="lg:table-fixed lg:w-full min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
-                  <th scope="col" class="whitespace-nowrap w-5/12 px-6 text-left text-lg leading-6 font-medium text-gray-900 tracking-wider">
+                  <th scope="col" class="whitespace-nowrap w-2/5 px-6 text-left text-lg leading-6 font-medium text-gray-900 tracking-wider">
                     {{__('School years list')}}
                     <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-indigo-600 bg-indigo-100 rounded-full">{{$schoolyears->total()}}</span>
                   </th>
-                  <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('Start')}}
-                  </th>
-                  <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('End')}}
+                  <th scope="col" class="w-2/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    {{__('Start')}}&nbsp;-&nbsp;{{__('End')}}
                   </th>
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Classrooms')}}
@@ -126,17 +121,17 @@
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Students')}}
                   </th>
-                  <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" class="w-2/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Updated')}}
                   </th>
-                  <th scope="col" class="w-max relative px-6 py-3">
+                  <th scope="col" class="w-2/12 relative px-6 py-3">
                     <span class="sr-only">{{ __('Show and edit') }}</span>
                   </th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($schoolyears as $schoolyear)
-                <tr class="hover:bg-gray-50">
+                <tr class="hover:bg-gradient-to-r hover:from-gray-50">
                   <td class="px-6 py-4 font-medium text-gray-900">
                     <span class="inline">{{ $schoolyear->name }}</span>
                     @if($schoolyear->annotation != null)
@@ -153,10 +148,7 @@
                     @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                    {{ $schoolyear->start_at }}
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                    {{ $schoolyear->end_at }}
+                    {{ $schoolyear->start_at }} - {{ $schoolyear->end_at }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     {{ num_classrooms($schoolyear->id) }}

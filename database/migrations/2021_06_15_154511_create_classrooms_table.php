@@ -17,13 +17,11 @@ class CreateClassroomsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('annotation')->nullable();
-            $table->foreignId('id_schoolyear');
-            $table->foreignId('id_section');
-            $table->foreignId('id_teacher');
-            $table->foreignId('id_creator');
-            $table->boolean('status')->default(1);
+            $table->foreignId('schoolyear_id')->nullable(); //->constrained()->onDelete('SET NULL');
+            $table->foreignId('section_id')->nullable();
+            $table->foreignId('teacher_id')->nullable();
+            $table->foreignId('creator_id')->nullable();
             $table->timestamps();
-            $table->timestamp('closed_at')->nullable();
         });
     }
 

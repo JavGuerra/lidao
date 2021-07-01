@@ -60,7 +60,7 @@ class EditSchoolyearForm extends Component
 
         if ($this->action == "delete") {
             $this->password = '';
-            $this->dispatchBrowserEvent('confirming-delete-schoolyear');
+            $this->dispatchBrowserEvent('confirming-delete');
         }
 
         $this->confirming = true;

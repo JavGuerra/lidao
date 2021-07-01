@@ -28,10 +28,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // Devuelve vista con los datos del panel.
-    // TODO ajustar a curso activo y tal vez crear un controlador o helper.
+    // TODO ajustar a curso activo.
     return view('/dashboard')
         ->with('schoolyear', Schoolyear::where('selected', true)->first())
-        ->with('classrooms', Classroom::count())
+        ->with('classrooms', numClassroomsSchoolyear())
         ->with('teachers', User::where('role', 2)->count())
         ->with('students', User::where('role', 0)->count())
         ->with('books', Book::count());

@@ -13,9 +13,9 @@
             </x-suggestion>
             @elseif(! $classrooms)
             <x-suggestion>
-                {{ __('There is no class created yet. Create one by clicking ') }}
-                <span class="text-indigo-600 hover:text-indigo-900"><a href="{{route('schoolyears.index')}}">{{__('here')}}</a></span>.
-            </x-suggestion>      
+                {{ __('There are no classes created this school year yet. Create one by clicking ') }}
+                <span class="text-indigo-600 hover:text-indigo-900"><a href="{{route('classrooms.index')}}">{{__('here')}}</a></span>.
+            </x-suggestion>  
             @endif
 
             <div class="max-w-full sm:mx-auto mb-4">

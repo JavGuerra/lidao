@@ -8,7 +8,7 @@ use App\Models\Schoolyear;
 class SchoolyearController extends Controller
 {
     /**
-     * Muestra el listado de cursos
+     * Muestra el listado de cursos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Muestra el formulario para crear un curso
+     * Muestra el formulario para crear un curso.
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +38,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Comprueba y guarda un nuevo curso en la BBDD
+     * Comprueba y guarda un nuevo curso en la BBDD.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -53,7 +53,7 @@ class SchoolyearController extends Controller
 
         $schoolyear = Schoolyear::create($request->all());
 
-        $schoolyear->id_creator = auth()->user()->id;
+        $schoolyear->creator_id = auth()->user()->id;
 
         // Si no hay cursos activos o es el primer curso, se activa.
         if (Schoolyear::where('selected', true)->first() == null) {
@@ -69,7 +69,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Muestra la información del curso
+     * Muestra la información del curso.
      *
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
@@ -82,7 +82,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Muestra la ventana de edición del curso
+     * Muestra el formulario de edición del curso.
      *
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
@@ -95,7 +95,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Comprueba y actualiza el curso
+     * Comprueba y actualiza el curso.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Schoolyear  $schoolyear
@@ -122,7 +122,7 @@ class SchoolyearController extends Controller
     }
 
     /**
-     * Elimina el curso escolar
+     * Elimina el curso escolar.
      *
      * @param  \App\Models\Schoolyear  $schoolyear
      * @return \Illuminate\Http\Response
