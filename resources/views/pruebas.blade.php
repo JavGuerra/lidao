@@ -1,5 +1,5 @@
 <x-pruebas-layout>
 
-{{ $pruebas }}
+@livewire('pruebas')
 
 </x-pruebas-layout>

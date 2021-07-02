@@ -67,7 +67,7 @@
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
                   @if($schoolyear->selected)
                   <a href="{{ route('classrooms.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
-                    {{ num_classrooms($schoolyear->id) }}
+                    {{ numClassrooms($schoolyear->id) }}
                   </a>
                   <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -77,7 +77,7 @@
                   </a>
                   @else
                   <span class="font-bold">
-                    {{ num_classrooms($schoolyear->id) }}
+                    {{ numClassrooms($schoolyear->id) }}
                   </span>
                   @endif
                 </dd>
@@ -107,20 +107,22 @@
             </div>
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">
-                {{__('Created by')}}
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
-                {{ user_name($schoolyear->creator_id) }}
-              </dd>
-            </div>
-            <div class="bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
                 {{__('Annotations')}}
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
                 {{ $schoolyear->annotation }}
               </dd>
             </div>
+            @if($schoolyear->closed_at != null && ! $schoolyear->selected)
+            <div class="hidden md:flex bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">
+                &nbsp;
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
+
+              </dd>
+            </div>
+            @endif
           </dl>
         </div>
 
@@ -141,6 +143,14 @@
                   {{ __( $status[false] ) }}
                 </span>
                 @endif
+              </dd>
+            </div>
+            <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
+                {{__('Created by')}}
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {{ user_name($schoolyear->creator_id) }}
               </dd>
             </div>
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">

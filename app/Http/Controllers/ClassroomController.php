@@ -30,7 +30,9 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        return view('classrooms.create');
+        return view('classrooms.create',[
+            'teachers' => teachers(),
+        ]);
     }
 
     /**
@@ -44,7 +46,7 @@ class ClassroomController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'section_id' => 'required|integer|min:1',
-            'teacher_id' => 'required|integer|min:1',
+            'teacher_id' => 'integer|min:0',
         ]);
 
         $classroom = Classroom::create($request->all());
@@ -103,7 +105,7 @@ class ClassroomController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'section_id' => 'required|integer|min:1',
-            'teacher_id' => 'required|integer|min:1',
+            'teacher_id' => 'integer|min:0',
         ]);
 
         $classroom->update($request->all());

@@ -52,7 +52,7 @@
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     <a href="{{ route('classrooms.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
-                      {{ num_classrooms($selected->id) }}
+                      {{ numClassrooms($selected->id) }}
                     </a>
                     <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -151,7 +151,7 @@
                     {{ $schoolyear->start_at }} - {{ $schoolyear->end_at }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                    {{ num_classrooms($schoolyear->id) }}
+                    {{ numClassrooms($schoolyear->id) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     0

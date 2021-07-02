@@ -28,6 +28,6 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('navigation-menu', 'App\Http\View\Composers\NavigationMenuComposer');
         View::composer('users/index', 'App\Http\View\Composers\RoleProfileComposer');
         View::composer('*', 'App\Http\View\Composers\StatusProfileComposer');
-        View::composer(['users/index', 'livewire/profile/update-locale-form'], 'App\Http\View\Composers\LocaleProfileComposer');
+        View::composer(['users/index', 'profile/update-locale-form'], 'App\Http\View\Composers\LocaleProfileComposer');
     }
 }

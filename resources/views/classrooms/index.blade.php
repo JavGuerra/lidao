@@ -2,7 +2,7 @@
   <x-slot name="header">
     <x-title-add title="{{ __('Classrooms') }}" :link="route('classrooms.create')"></x-title-add>
   </x-slot>
-  <x-main>  
+  <x-main>
 
     @if ($classrooms->count())
 
@@ -56,7 +56,11 @@
                     {{ $classroom->section_id }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {{ user_name($classroom->teacher_id) }}
+                    @if($classroom->teacher_id)
+                      {{ user_name($classroom->teacher_id) }}
+                    @else
+                    --
+                    @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">

@@ -3,9 +3,13 @@
 namespace App\Http\Livewire\Profile;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\App;
+
 
 class UpdateLocaleForm extends Component
 {
+
+    public $lang;
 
     /**
      * Cambia el idioma
@@ -14,7 +18,8 @@ class UpdateLocaleForm extends Component
      */
     public function updateLocale()
     {
-        //
+        //App::setlocale($this->lang);
+        //session()->put('locale', $this->lang);
         
         $this->emit('saved');
 
@@ -28,6 +33,6 @@ class UpdateLocaleForm extends Component
      */
     public function render()
     {
-        return view('livewire.profile.update-locale-form');
+        return view('profile.update-locale-form');
     }
 }

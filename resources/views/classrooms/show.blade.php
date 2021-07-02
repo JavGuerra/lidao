@@ -46,17 +46,30 @@
                 {{ __('School year') }}
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0">
-                <span class="inline">{{ $yearName }}</span>
-                    @if($yearAnnotation != null)
-                    <dfn title="{{ $yearAnnotation }}">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 inline h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                      </svg>
-                    </dfn>
-                    @endif
+                <!-- TODO si no es administrador, no mostrar enlace ni anotación -->
+                <a href="{{ route('schoolyears.show', $classroom->schoolyear_id) }}" class="inline text-indigo-600 hover:text-indigo-900">
+                  {{ $yearName }}
+                </a>
+                @if($yearAnnotation != null)
+                <dfn title="{{ $yearAnnotation }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 inline h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                  </svg>
+                </dfn>
+                @endif
               </dd>
             </div>
-            <div class="bg-gray-50 px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
+
+            <div class="bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">
+                {{ __('Section') }}
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0">
+                1
+              </dd>
+            </div>
+
+            <div class="bg-white px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">
                   {{ __('Start') }} - {{ __('End') }}
@@ -67,14 +80,18 @@
               </div>
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">
-                  {{__('Section')}}
+                  {{__('Teacher')}}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  1
+                  @if($classroom->teacher_id)
+                  {{ user_name($classroom->teacher_id) }}
+                  @else
+                  --
+                  @endif
                 </dd>
               </div>
             </div>
-            <div class="bg-white px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
+            <div class="bg-gray-50 px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">
                   {{__('Number of students')}}
@@ -108,24 +125,6 @@
                 </dd>
               </div>
             </div>
-            <div class="bg-gray-50 px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
-              <div class="sm:grid sm:grid-cols-2 sm:gap-4">
-                <dt class="text-sm font-medium text-gray-500">
-                  {{__('Teacher')}}
-                </dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  {{ user_name($classroom->teacher_id) }}
-                </dd>
-              </div>
-              <div class="sm:grid sm:grid-cols-2 sm:gap-4">
-                <dt class="text-sm font-medium text-gray-500">
-                  {{__('Created by')}}
-                </dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  {{ user_name($classroom->creator_id) }}
-                </dd>
-              </div>
-            </div>
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">
                 {{__('Annotations')}}
@@ -140,6 +139,14 @@
         <!-- Columna derecha -->
         <div class="sm:col-span-2 border-t border-gray-200 sm:border-0">
           <dl>
+            <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
+                {{__('Created by')}}
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {{ user_name($classroom->creator_id) }}
+              </dd>
+            </div>
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
                 {{__('Created')}}

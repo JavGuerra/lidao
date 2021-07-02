@@ -68,7 +68,7 @@
                                         {{ __('Number of classrooms') }}
                                     </dt>
                                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                                        {{ num_classrooms($schoolyear->id) }}
+                                        {{ numClassrooms($schoolyear->id) }}
                                     </dd>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-2 sm:gap-4">

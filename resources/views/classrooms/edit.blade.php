@@ -34,7 +34,7 @@
                     <!-- Profesor -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="teacher_id" value="{{ __('Teacher') }}" />
-                        <x-jet-input id="teacher_id" name="teacher_id" class="mt-1 block w-full" type="number" step="1" min="1" value="{{ old('teacher_id', $classroom->teacher_id) }}" required="required" />
+                        <x-select name="teacher_id" class="mt-1 block w-full" :options="teachers()" :objId="$classroom->teacher_id" />
                         <x-jet-input-error for="teacher_id" class="mt-2" />
                     </div>
 
@@ -73,13 +73,7 @@
             <x-jet-section-border />
         </div>
         <div class="mt-10 sm:mt-0">
-            <livewire:edit-classroom-form
-                action="delete"
-                :classroomId="$classroom->id"
-                :title="__('Delete classroom')"
-                :desc="__('Permanently delete the classroom.')"
-                :text="__('Once the classroom is deleted, all of it relationated data will be permanently deleted. Before deleting the classroom, please download any data or information that you wish to retain.')"
-                :confirmTxt="__('Are you sure you want to delete the classroom? Once the classroom is deleted, all of it relationated data will be permanently deleted. Before deleting the classroom, please download any data or information that you wish to retain.')" />
+            <livewire:edit-classroom-form action="delete" :classroomId="$classroom->id" :title="__('Delete classroom')" :desc="__('Permanently delete the classroom.')" :text="__('Once the classroom is deleted, all of it relationated data will be permanently deleted. Before deleting the classroom, please download any data or information that you wish to retain.')" :confirmTxt="__('Are you sure you want to delete the classroom? Once the classroom is deleted, all of it relationated data will be permanently deleted. Before deleting the classroom, please download any data or information that you wish to retain.')" />
         </div>
 
     </x-main>

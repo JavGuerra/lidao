@@ -32,7 +32,7 @@
                 <!-- Profesor -->
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="teacher_id" value="{{ __('Teacher') }}" />
-                    <x-jet-input id="teacher_id" name="teacher_id"  class="mt-1 block w-full" type="number" step="1" min="1" value="{{ old('teacher_id') }}" required="required" />
+                    <x-select name="teacher_id" class="mt-1 block w-full" :options="teachers()" />
                     <x-jet-input-error for="teacher_id" class="mt-2" />
                 </div>
 
