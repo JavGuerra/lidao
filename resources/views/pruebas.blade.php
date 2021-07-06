@@ -2,4 +2,6 @@
 
 @livewire('pruebas')
 
+<livewire:cookie-announcement />
+
 </x-pruebas-layout>

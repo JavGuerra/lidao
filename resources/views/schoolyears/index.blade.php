@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title-add title="{{ __('School years') }}" :link="route('schoolyears.create')" />
+    <x-title title="{{ __('School years') }}" :link="route('schoolyears.create')" />
   </x-slot>
   <x-main>
 
@@ -22,7 +22,7 @@
                     {{__('Start')}}&nbsp;-&nbsp;{{__('End')}}
                   </th>
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('Classrooms')}}
+                    {{__('Sections')}}
                   </th>
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Students')}}
@@ -51,10 +51,10 @@
                     {{ $selected->start_at }} - {{ $selected->end_at }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                    <a href="{{ route('classrooms.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
-                      {{ numClassrooms($selected->id) }}
+                    <a href="{{ route('sections.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                      {{ numSections($selected->id) }}
                     </a>
-                    <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
+                    <a href="{{ route('sections.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                         <span class="sr-only">{{__('Add')}}</span>
@@ -91,7 +91,7 @@
       </div>
     </div>
     @endif
-
+   
     <!-- Otros cursos -->
     @if (($schoolyears->total() == 1 && ! $selected) || ($schoolyears->total() > 1 && $schoolyears->currentPage() > 1) || ($schoolyears->total() > 1) )
 
@@ -116,7 +116,7 @@
                     {{__('Start')}}&nbsp;-&nbsp;{{__('End')}}
                   </th>
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    {{__('Classrooms')}}
+                    {{__('Sections')}}
                   </th>
                   <th scope="col" class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     {{__('Students')}}
@@ -141,7 +141,7 @@
                       </svg>
                     </dfn>
                     @endif
-                    @if($schoolyear->selected)
+                    @if(thisSchoolyearIsActive($schoolyear->id))
                     <span class="ml-2 px-2 inline text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                       {{ __( $status[true] ) }}
                     </span>
@@ -151,7 +151,7 @@
                     {{ $schoolyear->start_at }} - {{ $schoolyear->end_at }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                    {{ numClassrooms($schoolyear->id) }}
+                    {{ numSections($schoolyear->id) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                     0

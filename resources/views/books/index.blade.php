@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title-add title="{{ __('Books') }}" :link="route('books.create')"></x-title-add>
+    <x-title title="{{ __('Books') }}" :link="route('books.create')" />
   </x-slot>
   <x-main>
 

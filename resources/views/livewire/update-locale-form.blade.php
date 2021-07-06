@@ -9,18 +9,15 @@
 
     <x-slot name="form">
         <!-- Language -->
-        @php
-        $langSelected = $languages[App::getLocale()];
-        @endphp
         <div class="col-span-6 sm:col-span-4">
 
-            <x-jet-label for="locale" value="{{ __('Language') }}" /> 
-            <select wire:model="lang" name="locale" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            <x-jet-label for="locale" value="{{ __('Language') }}" />
+            <select wire:model="lang" name="locale" class="mt-1 block w-1/2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                 @foreach($languages as $key => $language)
-                <option value="{{$key}}" {{(old('locale') == $key || $langSelected == $language) ? 'selected' : '' }}>{{$language}}</option>
+                <option value="{{$key}}" {{($langSelected == $key) ? 'selected' : '' }}>{{$language}}</option>
                 @endforeach()
             </select>
- 
+
         </div>
     </x-slot>
 

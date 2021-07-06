@@ -36,6 +36,6 @@ class LogSuccessfulLogin
         session()->put('locale', $locale);
 
         // Pone el numero de registros por defecto para la paginación
-        session()->put('paginate', 5);
+        session()->put('paginate', getConfig('paginate'));
     }
 }

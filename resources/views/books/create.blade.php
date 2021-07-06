@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-title title="{{ __('New book') }}"></x-title>
+        <x-title title="{{ __('New book') }}" />
     </x-slot>
     <x-main>
 

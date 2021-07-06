@@ -7,6 +7,9 @@
     <option>Nombre3</option>
     </select>
 
+    {{$valor}}
+    <input type="text" wire:model="numero" wire:keydown.enter.tab="suma" />
+
     {{$cuenta}}
     <x-jet-button class="ml-2" wire:click="hacer" wire:loading.attr="disabled">
         hacer
@@ -19,5 +22,10 @@
     @foreach($languages as $key => $value)
     [̣̣{{$key}},{{$value}}], 
     @endforeach
+
+
+    <br>
+    <br>
+    @livewire('years')
 
 </div>

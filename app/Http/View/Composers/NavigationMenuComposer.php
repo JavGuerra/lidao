@@ -19,7 +19,7 @@ class NavigationMenuComposer
         $navLinks = [
             ['href' => 'dashboard', 'name' => 'dashboard', 'text' => 'Dashboard', 'rol' => [0, 1, 2]],
             ['href' => 'schoolyears.index', 'name' => 'schoolyears.*', 'text' => 'School years', 'rol' => 1],
-            ['href' => 'classrooms.index', 'name' => 'classrooms.*', 'text' => 'Classrooms', 'rol' => [0, 1, 2]],
+            ['href' => 'sections.index', 'name' => 'sections.*', 'text' => 'Sections', 'rol' => [0, 1, 2]],
             ['href' => 'users.index', 'name' => 'users.*', 'text' => 'Users', 'rol' => 1],
             //['href' => 'users.index', 'name' => 'users.*', 'text' => 'Students', 'rol' => 2],
             ['href' => 'books.index', 'name' => 'books.*', 'text' => 'Books', 'rol' => [0, 1, 2]],

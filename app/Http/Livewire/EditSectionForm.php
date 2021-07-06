@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
-use App\Models\Classroom;
+use App\Models\Section;
 
-class EditClassroomForm extends Component
+class EditSectionForm extends Component
 {
     /**
      * Indica si la acción a realizar está confirmada.
@@ -47,7 +47,7 @@ class EditClassroomForm extends Component
      *
      * @var int
      */
-    public $classroomId;
+    public $sectionId;
 
     /**
      * Confirma la acción.
@@ -85,14 +85,14 @@ class EditClassroomForm extends Component
         }
 
         // Borrando de la clase...
-        if ($this->classroomId) {
-            Classroom::find($this->classroomId)->delete();
+        if ($this->sectionId) {
+            Section::find($this->sectionId)->delete();
             // y lanzando el aviso
-            $request->session()->flash('flash.banner', __('The classroom has been definitively eliminated.'));
+            $request->session()->flash('flash.banner', __('The section has been definitively eliminated.'));
             $request->session()->flash('flash.bannerStyle', 'success');
         }
 
-        return redirect()->route('classrooms.index');
+        return redirect()->route('sections.index');
     }
 
     /**
@@ -102,6 +102,6 @@ class EditClassroomForm extends Component
      */
     public function render()
     {
-        return view('livewire.edit-classroom-form');
+        return view('livewire.edit-section-form');
     }
 }

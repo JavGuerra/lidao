@@ -65,10 +65,10 @@
                             <div class="bg-gray-50 px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
                                 <div class="sm:grid sm:grid-cols-2 sm:gap-4">
                                     <dt class="text-sm font-medium text-gray-500">
-                                        {{ __('Number of classrooms') }}
+                                        {{ __('Number of sections') }}
                                     </dt>
                                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                                        {{ numClassrooms($schoolyear->id) }}
+                                        {{ numSections($schoolyear->id) }}
                                     </dd>
                                 </div>
                                 <div class="sm:grid sm:grid-cols-2 sm:gap-4">
@@ -85,7 +85,7 @@
                                     {{__('Created by')}}
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
-                                    {{ user_name($schoolyear->creator_id) }}
+                                    {{ userName($schoolyear->creator_id) }}
                                 </dd>
                             </div>
                             <div class="bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
@@ -107,7 +107,7 @@
                                     {{__('Status')}}
                                 </dt>
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    @if($schoolyear->selected)
+                                    @if(thisSchoolyearIsActive($schoolyear->id))
                                     <span id="status" class="mt-1 px-2 inline text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                         {{ __( $status[true] ) }}
                                     </span>
@@ -136,7 +136,7 @@
                                 </dd>
                             </div>
                             @endif
-                            @if($schoolyear->closed_at != null && ! $schoolyear->selected)
+                            @if($schoolyear->closed_at != null && ! thisSchoolyearIsActive($schoolyear->id))
                             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
                                     {{__('Closed')}}

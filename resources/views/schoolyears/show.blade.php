@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title title="{{ Str::limit($schoolyear->name, 64) }}"></x-title>
+    <x-title title="{{ Str::limit($schoolyear->name, 64) }}" />
   </x-slot>
   <x-main-container>
 
@@ -62,14 +62,14 @@
             <div class="bg-gray-50 px-4 py-4 grid grid-cols-2 gap-4 sm:px-6">
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">
-                  {{ __('Number of classrooms') }}
+                  {{ __('Number of sections') }}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  @if($schoolyear->selected)
-                  <a href="{{ route('classrooms.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
-                    {{ numClassrooms($schoolyear->id) }}
+                  @if(thisSchoolyearIsActive($schoolyear->id))
+                  <a href="{{ route('sections.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                    {{ numSections($schoolyear->id) }}
                   </a>
-                  <a href="{{ route('classrooms.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
+                  <a href="{{ route('sections.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                       <span class="sr-only">{{__('Add')}}</span>
@@ -77,7 +77,7 @@
                   </a>
                   @else
                   <span class="font-bold">
-                    {{ numClassrooms($schoolyear->id) }}
+                    {{ numSections($schoolyear->id) }}
                   </span>
                   @endif
                 </dd>
@@ -87,7 +87,7 @@
                   {{__('Number of students')}}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  @if($schoolyear->selected)
+                  @if(thisSchoolyearIsActive($schoolyear->id))
                   <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
                     0
                   </a>
@@ -113,7 +113,7 @@
                 {{ $schoolyear->annotation }}
               </dd>
             </div>
-            @if($schoolyear->closed_at != null && ! $schoolyear->selected)
+            @if($schoolyear->closed_at != null && ! thisSchoolyearIsActive($schoolyear->id))
             <div class="hidden md:flex bg-gray-50 px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">
                 &nbsp;
@@ -134,7 +134,7 @@
                 {{__('Status')}}
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                @if($schoolyear->selected)
+                @if(thisSchoolyearIsActive($schoolyear->id))
                 <span id="status" class="mt-1 px-2 inline text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   {{ __( $status[true] ) }}
                 </span>
@@ -150,7 +150,7 @@
                 {{__('Created by')}}
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {{ user_name($schoolyear->creator_id) }}
+                {{ userName($schoolyear->creator_id) }}
               </dd>
             </div>
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
@@ -171,7 +171,7 @@
               </dd>
             </div>
             @endif
-            @if($schoolyear->closed_at != null && ! $schoolyear->selected)
+            @if($schoolyear->closed_at != null && ! thisSchoolyearIsActive($schoolyear->id))
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
                 {{__('Closed')}}

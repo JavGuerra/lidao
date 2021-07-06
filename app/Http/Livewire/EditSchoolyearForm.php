@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
-use App\Models\Schoolyear;
 
 class EditSchoolyearForm extends Component
 {
@@ -76,17 +75,17 @@ class EditSchoolyearForm extends Component
     {
         $this->resetErrorBag();
 
-        // Desactiva el curso activo y registra la fecha y hora de desactivación
-        $schoolyearSelected = Schoolyear::where('selected', 1)->first();
-        if ($schoolyearSelected) {
+        // Desactiva el curso activo (si lo hubiera) y registra la fecha y hora de desactivación
+        if (thereIsAnActiveSchoolyear()) {
+            $schoolyearSelected = activeSchoolyear();
             $schoolyearSelected->update([
-                'selected' => 0,
                 'closed_at' => now(),
             ]);
         }
+        // Obtiene el curso
+        $schoolyear = theSchoolyear($this->schoolyearId);
         // Activa el curso actual
-        $schoolyear = Schoolyear::find($this->schoolyearId);
-        $schoolyear->update(['selected' => 1]);
+        activateSchoolYear($schoolyear->id);
 
         $request->session()->flash('flash.banner', __('The course has been activated.'));
         $request->session()->flash('flash.bannerStyle', 'success');
@@ -104,10 +103,14 @@ class EditSchoolyearForm extends Component
     {
         $this->resetErrorBag();
 
-        // Desactiva el curso actual y registra la fecha y hora
-        $schoolyear = Schoolyear::find($this->schoolyearId);
+        // Obtiene el curso
+        $schoolyear = theSchoolyear($this->schoolyearId);
+        
+        // Desactiva el curso
+        deactivateSchoolYear();
+
+        // Registra la fecha y hora de desactivación
         $schoolyear->update([
-            'selected' => 0,
             'closed_at' => now(),
         ]);
 
@@ -136,8 +139,8 @@ class EditSchoolyearForm extends Component
 
         // Borrando el curso...
         if ($this->schoolyearId) {
-            Schoolyear::find($this->schoolyearId)->delete();
-            // y lanzando el aviso
+            theSchoolyear($this->schoolyearId)->delete();
+
             $request->session()->flash('flash.banner', __('The school year has been definitively eliminated.'));
             $request->session()->flash('flash.bannerStyle', 'success');
         }

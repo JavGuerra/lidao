@@ -1,17 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-title title="{{ __('New classroom') }}"></x-title>
+        <x-title title="{{ __('New section') }}" />
     </x-slot>
     <x-main>
 
-        <x-form-section :submit="route ('classrooms.store')">
+        <x-form-section :submit="route ('sections.store')">
             <x-slot name="title">
-                {{ __('Create classroom') }}
+                {{ __('Create section') }}
             </x-slot>
 
             <x-slot name="description">
-                {{ __('Enter the name, the section, the teacher and write annotations if required.') }}
-                @include('images.classrooms', ['attributes' => 'hidden md:flex w-11/12'])
+                {{ __('Enter the name, the level and write annotations if required.') }}
+                @include('images.sections', ['attributes' => 'hidden md:flex w-11/12'])
             </x-slot>
 
             <x-slot name="form">
@@ -22,18 +22,11 @@
                     <x-jet-input-error for="name" class="mt-2" />
                 </div>
 
-                <!-- Sección -->
+                <!-- Etapa y nivel -->
                 <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="section_id" value="{{ __('Section') }}" />
-                    <x-jet-input id="section_id" name="section_id" class="mt-1 block w-full" type="number" step="1" min="1" value="{{ old('section_id') }}" required="required" />
-                    <x-jet-input-error for="section_id" class="mt-2" />
-                </div>
-
-                <!-- Profesor -->
-                <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="teacher_id" value="{{ __('Teacher') }}" />
-                    <x-select name="teacher_id" class="mt-1 block w-full" :options="teachers()" />
-                    <x-jet-input-error for="teacher_id" class="mt-2" />
+                    <x-jet-label for="stagelevel_id" value="{{ __('Level') }}" />
+                    <x-select id="stagelevel_id" name="stagelevel_id" class="mt-1 block w-full" :options="$stagelevels" />
+                    <x-jet-input-error for="stagelevel_id" class="mt-2" />
                 </div>
 
                 <!-- Anotaciones -->

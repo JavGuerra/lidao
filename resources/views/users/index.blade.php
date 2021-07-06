@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title-add title="{{ __('Users') }}" :link="route('users.create')"></x-title-add>
+    <x-title title="{{ __('Users') }}" :link="route('users.create')" />
   </x-slot>
   <x-main>
 

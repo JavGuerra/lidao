@@ -2,12 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SchoolyearController;
-use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 
-use App\Models\Schoolyear;
-use App\Models\Classroom;
 use App\Models\User;
 use App\Models\Book;
 
@@ -27,11 +25,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // Devuelve vista con los datos del panel.
     // TODO ajustar a curso activo.
     return view('/dashboard')
-        ->with('schoolyear', Schoolyear::where('selected', true)->first())
-        ->with('classrooms', numClassroomsSchoolyear())
+        ->with('schoolyear', activeSchoolyear())
+        ->with('sections', numSectionsActiveSchoolyear())
         ->with('teachers', User::where('role', 2)->count())
         ->with('students', User::where('role', 0)->count())
         ->with('books', Book::count());
@@ -39,7 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('schoolyears', SchoolyearController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->resource('classrooms', ClassroomController::class);
+Route::middleware(['auth:sanctum', 'verified'])->resource('sections', SectionController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('users', UserController::class);
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classroom extends Model
+class Section extends Model
 {
     use HasFactory;
 
@@ -18,8 +18,7 @@ class Classroom extends Model
         'name',
         'annotation',
         'schoolyear_id',
-        'section_id',
-        'teacher_id',
+        'stagelevel_id',
         'creator_id',
     ];
 }

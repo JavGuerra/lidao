@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-title title="{{ __('New school year') }}"></x-title>
+        <x-title title="{{ __('New school year') }}" />
     </x-slot>
     <x-main>
 
@@ -23,23 +23,7 @@
                 </div>
 
                 <!-- Fechas -->
-                <div class="col-span-6 sm:col-span-4">
-                    <div class="flex justify-between">
-                        <div>
-                            <x-jet-label for="start_at" value="{{ __('Start year') }}" />
-                            <x-jet-input id="start_at" name="start_at" class="mt-1 block w-full" type="number" step="1" min="1901" max="2155" maxlength="4" value="{{ old('start_at') }}" required="required" placeholder="{{__('yyyy')}}" pattern="\d{4}" />
-                        </div>
-
-                        <div class="ml-4">
-                            <x-jet-label for="end_at" value="{{ __('Ending year') }}" />
-                            <x-jet-input id="end_at" name="end_at" class="mt-1 block w-full" type="number" step="1" min="1901" max="2155" maxlength="4" value="{{ old('end_at') }}" required="required" placeholder="{{__('yyyy')}}" pattern="\d{4}" />
-                        </div>
-
-                        <div class="sm:w-1/4"></div>
-                    </div>
-                    <x-jet-input-error for="start_at" class="mt-2" />
-                    <x-jet-input-error for="end_at" class="mt-2" />
-                </div>
+                <livewire:years />
 
                 <!-- Anotaciones -->
                 <div class="col-span-6 sm:col-span-4">

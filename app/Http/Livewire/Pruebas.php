@@ -10,10 +10,18 @@ class Pruebas extends Component
 
     public $texto;
     public $cuenta = 1;
+    public $numero;
+    public $valor;
+
+    public function suma()
+    {
+        $this->valor = $this->numero;
+        return $this->valor++;
+    }
 
     public function hacer()
     {
-        $this->cuenta++;
+        return $this->cuenta++;
     }
 
     public function render()

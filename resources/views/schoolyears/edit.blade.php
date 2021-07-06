@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-title title="{{ Str::limit($schoolyear->name, 64) }}"></x-title>
+        <x-title title="{{ Str::limit($schoolyear->name, 64) }}" />
     </x-slot>
     <x-main>
 
@@ -26,23 +26,7 @@
                     </div>
 
                     <!-- Fechas -->
-                    <div class="col-span-6 sm:col-span-4">
-                        <div class="flex justify-between">
-                            <div>
-                                <x-jet-label for="start_at" value="{{ __('Start year') }}" />
-                                <x-jet-input id="start_at" name="start_at" class="mt-1 block w-full" type="number" step="1" min="1901" max="2155" maxlength="4" value="{{ old('start_at', $schoolyear->start_at) }}" required="required" placeholder="{{__('yyyy')}}" pattern="\d{4}" />
-                            </div>
-
-                            <div class="ml-4">
-                                <x-jet-label for="end_at" value="{{ __('Ending year') }}" />
-                                <x-jet-input id="end_at" name="end_at" class="mt-1 block w-full" type="number" step="1" min="1901" max="2155" maxlength="4" value="{{ old('end_at', $schoolyear->end_at) }}" required="required" placeholder="{{__('yyyy')}}" pattern="\d{4}" />
-                            </div>
-
-                            <div class="sm:w-1/4"></div>
-                        </div>
-                        <x-jet-input-error for="start_at" class="mt-2" />
-                        <x-jet-input-error for="end_at" class="mt-2" />
-                    </div>
+                    <livewire:years :startYear="$schoolyear->start_at" />
 
                     <!-- Anotaciones -->
                     <div class="col-span-6 sm:col-span-4">
@@ -57,7 +41,7 @@
 
                 <div class="col-span-6 sm:col-span-2 sm:mt-6  sm:pl-6">
                     <x-jet-label for="status" value="{{ __('Status') }} " />
-                    @if($schoolyear->selected)
+                    @if(thisSchoolyearIsActive($schoolyear->id))
                     <span id="status" class="mt-1 px-2 inline text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         {{ __( $status[true] ) }}
                     </span>
@@ -93,7 +77,7 @@
 
         </x-form-section>
 
-        @if($schoolyear->selected)
+        @if(thisSchoolyearIsActive($schoolyear->id))
         <div class="mt-10 sm:mt-0">
             <x-jet-section-border />
         </div>
@@ -116,8 +100,8 @@
             :schoolyearId="$schoolyear->id"
             :title="__('Activate school year')"
             :desc="__('Activate the school year to add resources.')"
-            :text="__('Once the school year is activated, you will be able to add classrooms and other resources, but the activation of this course implies the closure of the active course if there is one.')"
-            :confirmTxt="__('Are you sure you want to activate the school year? Once the school year is activated, you will be able to add classrooms and other resources, but the activation of this course implies the closure of the active course if there is one.')"
+            :text="__('Once the school year is activated, you will be able to add sections and other resources, but the activation of this course implies the closure of the active course if there is one.')"
+            :confirmTxt="__('Are you sure you want to activate the school year? Once the school year is activated, you will be able to add sections and other resources, but the activation of this course implies the closure of the active course if there is one.')"
              />
         </div>
         <div class="mt-10 sm:mt-0">
@@ -129,8 +113,8 @@
             :schoolyearId="$schoolyear->id"
             :title="__('Delete school year')"
             :desc="__('Permanently delete the school year.')"
-            :text="__('Once the school year is deleted, all of its classrooms and relationated data will be permanently deleted. Before deleting the school year, please download any data or information that you wish to retain.')"
-            :confirmTxt="__('Are you sure you want to delete the school year? Once the school year is deleted, all of its classrooms and relationated data will be permanently deleted. Before deleting the school year, please download any data or information that you wish to retain.')"
+            :text="__('Once the school year is deleted, all of its sections and relationated data will be permanently deleted. Before deleting the school year, please download any data or information that you wish to retain.')"
+            :confirmTxt="__('Are you sure you want to delete the school year? Once the school year is deleted, all of its sections and relationated data will be permanently deleted. Before deleting the school year, please download any data or information that you wish to retain.')"
              />
         </div>
         @endif

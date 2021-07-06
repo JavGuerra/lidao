@@ -20,7 +20,6 @@ class Schoolyear extends Model
         'start_at',
         'end_at',
         'creator_id',
-        'selected',
         'closed_at',
     ];
 }

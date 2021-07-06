@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>LIDAO</title>
-
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-</head>
-
-<body class="antialiased">
+<x-guest-layout>
 
     <div class="bg-white flex flex-col font-sans">
         <div class="container mx-auto px-8">
@@ -48,7 +36,7 @@
                 </button>
 
                 <!-- TODO opciones en menú desplegable -->
-                
+
             </header>
 
             <main class="flex flex-col-reverse sm:flex-row jusitfy-between items-center py-8">
@@ -68,6 +56,7 @@
 
         </div>
     </div>
+
     <!-- </div> -->
     <footer class="text-gray-600 body-font">
         <div class="container px-5 pt-8 pb-5 mx-auto flex items-center sm:flex-row flex-col">
@@ -75,6 +64,8 @@
                 @include('images.application-logo', ['attributes' => 'block h-4 w-auto'])
             </a>
             <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">(CC) BY-SA 2021 javguerra</p>
+            <a href="{{route('terms.show')}}" target="_blank" class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">Términos del servicio</a>
+            <a href="{{route('policy.show')}}" target="_blank" class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">Política de Privacidad</a>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                 <a class="text-gray-500">
                     <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -102,6 +93,6 @@
         </div>
     </footer>
 
-</body>
+    <livewire:cookie-announcement />
 
-</html>
+</x-guest-layout>

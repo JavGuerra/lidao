@@ -16,10 +16,7 @@ class SchoolyearController extends Controller
     {
         $schoolyears = Schoolyear::orderBy('end_at', 'DESC')->paginate(session()->get('paginate'));
 
-        $selected = null;
-        if (Schoolyear::count()) {
-            $selected = Schoolyear::where('selected', true)->first();
-        }
+        $selected = activeSchoolyear();
 
         return view('schoolyears.index', [
             'schoolyears' => $schoolyears,
@@ -46,18 +43,20 @@ class SchoolyearController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255|unique:schoolyears',
-            'start_at' => 'required|digits:4|integer|min:1901|max:2155',
-            'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
+            'name' => 'required|max:255|unique:schoolyears,name',
+            'start_at' => 'required|digits:4|integer|min:'.startYear().'|max:2154|unique:schoolyears,start_at',
+            // calculado 'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
         ]);
 
-        $schoolyear = Schoolyear::create($request->all());
+        // Se guarda el request y el valor de end_at calculado en el registro
+        $schoolyear = Schoolyear::create($request->all() + ['end_at' => $request->start_at + 1]);
 
         $schoolyear->creator_id = auth()->user()->id;
 
         // Si no hay cursos activos o es el primer curso, se activa.
-        if (Schoolyear::where('selected', true)->first() == null) {
-            $schoolyear->selected = true;
+        if (!thereIsAnActiveSchoolyear()) {
+            // El curso activo es el nuevo curso creado.
+            activateSchoolYear($schoolyear->id);
         }
 
         $schoolyear->save();
@@ -109,11 +108,11 @@ class SchoolyearController extends Controller
         // el error de campo duplicado.
         $request->validate([
             'name' => 'required|max:255|unique:schoolyears,name,' . $schoolyear->id,
-            'start_at' => 'required|digits:4|integer|min:1901|max:2155',
-            'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
+            'start_at' => 'digits:4|integer|min:1901|max:2154|unique:schoolyears,start_at,' . $schoolyear->id,
+            // calculado 'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
         ]);
 
-        $schoolyear->update($request->all());
+        $schoolyear->update($request->all() + ['end_at' => $request->start_at + 1]);
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');

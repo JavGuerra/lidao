@@ -15,7 +15,7 @@
 
             <!-- TODO Conectar dentro de profile.update-profile-information-form -->
             <div class="mt-10 sm:mt-0">
-                @livewire('profile.update-locale-form')
+                @livewire('update-locale-form')
             </div>
 
             <x-jet-section-border />
