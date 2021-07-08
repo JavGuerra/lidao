@@ -39,7 +39,7 @@
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($users as $user)
-                <tr class="hover:bg-gray-50">
+                <tr class="hover:bg-gradient-to-r hover:from-gray-50">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
                       <div class="flex-shrink-0 h-10 w-10">
@@ -77,13 +77,11 @@
                     {{ \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <!-- <a href="#" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a> -->
-                    {{ __('Edit') }}
+                    <a href="{{ route('users.show', $user) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Show') }}</a>
+                    <a href="{{ route('users.edit', $user) }}" class="ml-4 text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                   </td>
                 </tr>
                 @endforeach
-
-                <!-- More people... -->
               </tbody>
             </table>
 

@@ -26,7 +26,6 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'date_of_birth' => $this->faker->dateTimeInInterval($startDate = '-6 years', $interval = '+ 1 years', $timezone = null),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'nia' => mt_rand(1000000, 9999999),

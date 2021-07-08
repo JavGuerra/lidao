@@ -16,7 +16,9 @@
 
             <x-slot name="form">
                 <div class="col-span-6 sm:col-span-4">
-
+                <!-- TODO ver si emplear procesos de alta del sistema. -->
+                <p class="text-lg font-bold mb-2">En preparación...</p>
+                    <p>Aún no se ha iniciado la programación de esta parte de la app.</p>
                 </div>
             </x-slot>
 

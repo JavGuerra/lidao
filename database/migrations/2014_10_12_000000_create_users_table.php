@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('nia')->nullable();
             $table->string('name');
-            $table->date('date_of_birth')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->char('role', 1)->default(0);
@@ -30,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->ipAddress('last_login_ip')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->timestamps();
-            $table->timestamp('unsubscribed_at')->nullable();
+            $table->timestamp('inactived_at')->nullable();
         });
     }
 

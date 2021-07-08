@@ -37,6 +37,15 @@ function setLang(string $lang)
     session()->put('locale', $lang);
 }
 
+/**
+ * Obtiene el número de entradas por página.
+ *
+ * @return int
+ */
+function numPaginate()
+{
+    return session()->get('paginate');
+}
 
 /**
  * Devuelve el valor de las configuraciones en la BBDD.
@@ -58,22 +67,12 @@ function getConfig(string $key)
  */
 function setConfig(string $key, string $value)
 {
-    $config = Configuration::find($key);
-    $config->value = $value;
-    $config->save();
+    if (Configuration::find($key)) {
+        $config = Configuration::find($key);
+        $config->value = $value;
+        $config->save();
+    }
 }
-
-/**
- * Devuelve el nombre del usuario que conicide con el id
- *
- * @param int
- * @return string
- */
-function userName(int $id)
-{
-    return User::find($id)->name;
-}
-
 
 /**
  * Devuelve true si hay un curso activo
@@ -158,6 +157,17 @@ function theSchoolyear(int $id)
 }
 
 /**
+ * Devuelve el número de cursos escolares
+ *
+ * @return int
+ */
+function numSchoolyears()
+{
+    return Schoolyear::count();
+}
+
+
+/**
  * Devuelve el número de clases que pertenecen a un año escolar
  *
  * @param int
@@ -185,6 +195,28 @@ function numSectionsActiveSchoolyear()
 
 
 /**
+ * Devuelve el año actual.
+ *
+ * @return int
+ */
+function sthisYear()
+{
+    return Carbon::now()->format('Y');
+}
+
+/**
+ * Año actual dentro del rango de fechas posibles.
+ *
+ * @return bool
+ */
+function thisYearInRange()
+{
+    return sthisYear() <= 2154 && sthisYear() >= 1901;
+}
+
+
+
+/**
  * Devuelve el año de inicio.
  *
  * @return int
@@ -193,11 +225,26 @@ function startYear()
 {
     $startYear = Carbon::now()->format('Y');
     $startYear--;
-    if ($startYear < 1901) {$startYear = 1901;}
-    if ($startYear > 2154) {$startYear = 2154;}
+    if ($startYear < 1901) {
+        $startYear = 1901;
+    }
+    if ($startYear > 2154) {
+        $startYear = 2154;
+    }
     return $startYear;
 }
 
+
+/**
+ * Devuelve el nombre del usuario que conicide con el id
+ *
+ * @param int
+ * @return string
+ */
+function userName(int $id)
+{
+    return User::find($id)->name;
+}
 
 
 /**

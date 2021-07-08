@@ -16,7 +16,9 @@
 
             <x-slot name="form">
                 <div class="col-span-6 sm:col-span-4">
-
+                <!-- TODO ver si emplear procesos de alta del sistema. -->
+                    <p class="text-lg font-bold mb-2">En preparación...</p>
+                    <p>Evaluando el uso de los procesos de alta que Laravel Jetstream incorpora por defecto para el registro de usuarios.</p>
                 </div>
             </x-slot>
 

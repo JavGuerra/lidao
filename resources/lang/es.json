@@ -740,6 +740,7 @@
     "Teachers": "Profesores",
     "Number of teachers": "Número de profesores",
     "Accessed": "Accedido",
+    "Login IP": "IP de sesión",
     "Show": "Ver",
     "Suggestion": "Sugerencia",
     "There are no active school years. Create or activate one by clicking ": "No hay cursos activos. Cree o active uno haciendo click ",
@@ -800,7 +801,17 @@
     
     "Users": "Usuarios",
     "New user": "Nuevo usuario",
+    "User information": "Información del usuario",
+    "Details of the user.": "Detalles del usuario.",
     "Create user": "Crear usuario",
+    "Edit user": "Editar usuario",
+    "Update the name and the rest of the user data.": "Actualice el nombre y el resto de datos del usuario.",
+    "Delete user": "Eliminar usuario",
+    "Permanently delete the user.": "Eliminar definitivamente el usuario.",
+    "Once the user is deleted, all of it relationated data will be permanently deleted. Before deleting the user, please download any data or information that you wish to retain.": "Una vez que se elimina el usuario, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar al usuario, descargue cualquier dato o información que desee conservar.",
+    "Are you sure you want to delete the user? Once the user is deleted, all of it relationated data will be permanently deleted. Before deleting the user, please download any data or information that you wish to retain.": "¿Está seguro de que desea eliminar al usuario? Una vez que se elimina el usuario, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar al usuario, descargue cualquier dato o información que desee conservar.",
+    "The user has been definitively eliminated.": "El usuario ha sido eliminada definitivamente.",
+   
     
     "Books": "Libros",
     "New book": "Nuevo libro",

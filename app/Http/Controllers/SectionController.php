@@ -15,8 +15,8 @@ class SectionController extends Controller
     public function index()
     {
         // Obtiene las secciones que coinciden con el id del curso activo, si lo hay
-        $sections = Section::where('schoolyear_id', getConfig('activeSchoolyearId'))
-            ->paginate(session()->get('paginate'));
+        $sections = Section::where('schoolyear_id', activeSchoolyearId())
+            ->orderBy('stagelevel_id', 'ASC')->paginate(numPaginate());
 
         return view('sections.index', [
             'sections' => $sections,
@@ -53,7 +53,7 @@ class SectionController extends Controller
 
             $section = Section::create($request->all());
 
-            $section->schoolyear_id = getConfig('activeSchoolyearId');
+            $section->schoolyear_id = activeSchoolyearId();
             $section->creator_id = auth()->user()->id;
 
             $section->save();
@@ -75,7 +75,7 @@ class SectionController extends Controller
      */
     public function show(Section $section)
     {
-        if (thereIsAnActiveSchoolyear()) {
+        if (thereIsAnActiveSchoolyear() && $section->schoolyear_id == activeSchoolyearId()) {
             $activeSchoolyear = activeSchoolyear();
             return view('sections.show', [
                 'section' => $section,
@@ -97,7 +97,7 @@ class SectionController extends Controller
      */
     public function edit(Section $section)
     {
-        if (thereIsAnActiveSchoolyear()) {
+        if (thereIsAnActiveSchoolyear() && $section->schoolyear_id == activeSchoolyearId()) {
             return view('sections.edit', [
                 'section' => $section,
             ]);
@@ -115,7 +115,7 @@ class SectionController extends Controller
      */
     public function update(Request $request, Section $section)
     {
-        if (thereIsAnActiveSchoolyear()) {
+        if (thereIsAnActiveSchoolyear() && $section->schoolyear_id == activeSchoolyearId()) {
             $request->validate([
                 'name' => 'required|max:255',
                 'stagelevel_id' => 'required|in:1,2',

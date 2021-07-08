@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Schoolyear;
+use App\Models\Section;
 
 class SchoolyearController extends Controller
 {
@@ -14,7 +15,7 @@ class SchoolyearController extends Controller
      */
     public function index()
     {
-        $schoolyears = Schoolyear::orderBy('end_at', 'DESC')->paginate(session()->get('paginate'));
+        $schoolyears = Schoolyear::orderBy('end_at', 'DESC')->paginate(numPaginate());
 
         $selected = activeSchoolyear();
 
@@ -31,7 +32,13 @@ class SchoolyearController extends Controller
      */
     public function create()
     {
-        return view('schoolyears.create');
+        // Si el año actual está en el rango de años posibles 1901-(2155-1) permitidos
+        // por el tipo de campo YEAR de MySQL, devuelve la vista. Sino error.
+        if (thisYearInRange()) {
+            return view('schoolyears.create');
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -44,7 +51,7 @@ class SchoolyearController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255|unique:schoolyears,name',
-            'start_at' => 'required|digits:4|integer|min:'.startYear().'|max:2154|unique:schoolyears,start_at',
+            'start_at' => 'required|digits:4|integer|min:' . startYear() . '|max:2154|unique:schoolyears,start_at',
             // calculado 'end_at' => 'required|digits:4|integer|min:1901|max:2155|gte:start_at',
         ]);
 
@@ -60,6 +67,35 @@ class SchoolyearController extends Controller
         }
 
         $schoolyear->save();
+
+        // Crea secciones automáticamente basándose en las secciones
+        // del curso de fecha anterior más cercana.
+        // Si existe más de un curso escolar...
+        if (numSchoolyears() > 1) {
+            // Obtengo la lista de cursos cuyo año de inicio es menor al curso recien creado...
+            $schoolyearsList = Schoolyear::where('start_at', '<', $schoolyear->start_at)
+                ->orderBy('start_at', 'DESC')->get();
+            // y si hay cursos...
+            if ($schoolyearsList) {
+                // los recorro para obtener el primer curso que tenga secciones...
+                foreach ($schoolyearsList as $schoolyearItem) {
+                    // si el curso tiene secciones
+                    if (numSections($schoolyearItem->id)) {
+                        // obtengo la lista de secciones de ese curso...
+                        $sectionsList = Section::where('schoolyear_id', $schoolyearItem->id)->get();
+                        foreach ($sectionsList as $sectionItem) {
+                            // y copio una por una las secciones asociándolas al nuevo curso.
+                            $clone = $sectionItem->replicate();
+                            $clone->schoolyear_id = $schoolyear->id;
+                            $clone->annotation = null; // sin las anotaciones.
+                            $clone->push();
+                        }
+                        // Como ya encontré lo que buscaba, abandono la búsqueda.
+                        break;
+                    }
+                }
+            }
+        }
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');

@@ -16,7 +16,7 @@ class ConfigurationSeeder extends Seeder
     {
 
         DB::table('configurations')->insert([
-            ['key' => 'paginate',           'value' => 5],
+            ['key' => 'paginate',           'value' => 10],
             ['key' => 'activeSchoolyearId', 'value' => ''],
         ]);
     }

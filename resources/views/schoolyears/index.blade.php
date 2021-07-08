@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title title="{{ __('School years') }}" :link="route('schoolyears.create')" />
+    <x-title title="{{ __('School years') }}" :link="thisYearInRange() ? route('schoolyears.create') : ''" />
   </x-slot>
   <x-main>
 
@@ -91,7 +91,7 @@
       </div>
     </div>
     @endif
-   
+
     <!-- Otros cursos -->
     @if (($schoolyears->total() == 1 && ! $selected) || ($schoolyears->total() > 1 && $schoolyears->currentPage() > 1) || ($schoolyears->total() > 1) )
 

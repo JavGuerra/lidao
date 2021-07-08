@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <x-title title="{{ __('Sections') }}" :link=" thereIsAnActiveSchoolyear() ? route('sections.create') : '' " />
+    <x-title title="{{ __('Sections') }}" :link="thereIsAnActiveSchoolyear() ? route('sections.create') : ''" />
   </x-slot>
   <x-main>
 
@@ -14,7 +14,7 @@
 
               <thead class="bg-gray-50">
                 <tr>
-                  <th scope="col" class="whitespace-nowrap w-2/5 px-6 text-left text-lg leading-6 font-medium text-gray-900 tracking-wider">
+                  <th scope="col" class="whitespace-nowrap w-1/2 px-6 text-left text-lg leading-6 font-medium text-gray-900 tracking-wider">
                     {{__('Sections list')}}
                     <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-indigo-600 bg-indigo-100 rounded-full">{{$sections->total()}}</span>
                   </th>
@@ -53,7 +53,7 @@
                     @endif
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {{__($stagelevels[$section->stagelevel_id]->short)}}
+                    {{ __($stagelevels[$section->stagelevel_id - 1]->short) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                     <!-- TODO inidicar número de profesores asociados a esta sección -->

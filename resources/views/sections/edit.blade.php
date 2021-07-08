@@ -27,7 +27,7 @@
                     <!-- Etapa y nivel -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="stagelevel_id" value="{{ __('Level') }}" />
-                        <x-select id="stagelevel_id" name="stagelevel_id" class="mt-1 block w-full" :options="$stagelevels" :objId="$section->id" />
+                        <x-select id="stagelevel_id" name="stagelevel_id" class="mt-1 block w-full" :options="$stagelevels" :objId="$section->stagelevel_id" />
                         <x-jet-input-error for="stagelevel_id" class="mt-2" />
                     </div>
 
@@ -43,7 +43,6 @@
 
                 <div class="col-span-6 sm:col-span-2 sm:pl-6">
                     <a href="{{ route('sections.show', $section) }}" class="block mt-2 sm:mt-8 text-xs text-gray-400 hover:text-gray-300 active:text-gray-400 disabled:opacity-25 transition">
-
                         <svg xmlns="http://www.w3.org/2000/svg" id="info" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-labelledby="infoTitle infoDesc" role="button">
                             <title id="infoTitle">{{__('More information...')}}</title>
                             <desc id="infoDesc">{{__('Information icon with letter i.')}}</desc>
