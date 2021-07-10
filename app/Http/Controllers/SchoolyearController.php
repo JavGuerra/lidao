@@ -72,26 +72,39 @@ class SchoolyearController extends Controller
         // del curso de fecha anterior más cercana.
         // Si existe más de un curso escolar...
         if (numSchoolyears() > 1) {
-            // Obtengo la lista de cursos cuyo año de inicio es menor al curso recien creado...
-            $schoolyearsList = Schoolyear::where('start_at', '<', $schoolyear->start_at)
-                ->orderBy('start_at', 'DESC')->get();
-            // y si hay cursos...
-            if ($schoolyearsList) {
-                // los recorro para obtener el primer curso que tenga secciones...
-                foreach ($schoolyearsList as $schoolyearItem) {
-                    // si el curso tiene secciones
-                    if (numSections($schoolyearItem->id)) {
-                        // obtengo la lista de secciones de ese curso...
-                        $sectionsList = Section::where('schoolyear_id', $schoolyearItem->id)->get();
-                        foreach ($sectionsList as $sectionItem) {
-                            // y copio una por una las secciones asociándolas al nuevo curso.
-                            $clone = $sectionItem->replicate();
-                            $clone->schoolyear_id = $schoolyear->id;
-                            $clone->annotation = null; // sin las anotaciones.
-                            $clone->push();
+            // Si hay un curso activo, y tiene seccones...
+            if (thereIsAnActiveSchoolyear() && numSections(activeSchoolyearId())) {
+                // obtengo la lista de secciones del curso activo...
+                $sectionsList = Section::where('schoolyear_id', activeSchoolyearId())->get();
+                foreach ($sectionsList as $sectionItem) {
+                    // y copio una por una las secciones asociándolas al nuevo curso.
+                    $clone = $sectionItem->replicate();
+                    $clone->schoolyear_id = $schoolyear->id;
+                    $clone->annotation = null; // sin las anotaciones.
+                    $clone->push();
+                }
+            } else {
+                // Sino, obtengo la lista de cursos cuyo año de inicio es menor al del curso recien creado...
+                $schoolyearsList = Schoolyear::where('start_at', '<', $schoolyear->start_at)
+                    ->orderBy('start_at', 'DESC')->get();
+                // y si hay cursos...
+                if ($schoolyearsList) {
+                    // los recorro para obtener el primer curso que tenga secciones...
+                    foreach ($schoolyearsList as $schoolyearItem) {
+                        // si el curso tiene secciones
+                        if (numSections($schoolyearItem->id)) {
+                            // obtengo la lista de secciones de ese curso...
+                            $sectionsList = Section::where('schoolyear_id', $schoolyearItem->id)->get();
+                            foreach ($sectionsList as $sectionItem) {
+                                // y copio una por una las secciones asociándolas al nuevo curso.
+                                $clone = $sectionItem->replicate();
+                                $clone->schoolyear_id = $schoolyear->id;
+                                $clone->annotation = null; // sin las anotaciones.
+                                $clone->push();
+                            }
+                            // Como ya encontré lo que buscaba, abandono la búsqueda.
+                            break;
                         }
-                        // Como ya encontré lo que buscaba, abandono la búsqueda.
-                        break;
                     }
                 }
             }

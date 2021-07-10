@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
+
 class SectionController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class SectionController extends Controller
     {
         // Obtiene las secciones que coinciden con el id del curso activo, si lo hay
         $sections = Section::where('schoolyear_id', activeSchoolyearId())
-            ->orderBy('stagelevel_id', 'ASC')->paginate(numPaginate());
+            ->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->paginate(numPaginate());
 
         return view('sections.index', [
             'sections' => $sections,
@@ -47,7 +48,8 @@ class SectionController extends Controller
     {
         if (thereIsAnActiveSchoolyear()) {
             $request->validate([
-                'name' => 'required|max:255',
+                'name' => 'required|max:255|unique:sections,name,NULL,id,stagelevel_id,'
+                    . $request->stagelevel_id . ',schoolyear_id,' . activeSchoolyearId(),
                 'stagelevel_id' => 'required|in:1,2'
             ]);
 
@@ -116,8 +118,10 @@ class SectionController extends Controller
     public function update(Request $request, Section $section)
     {
         if (thereIsAnActiveSchoolyear() && $section->schoolyear_id == activeSchoolyearId()) {
+            // Valida que el registro no exsita con el mismo nombre y nivel dentro del curso activo
             $request->validate([
-                'name' => 'required|max:255',
+                'name' => 'required|max:255|unique:sections,name,' . $section->id . ',id,stagelevel_id,'
+                    . $request->stagelevel_id . ',schoolyear_id,' . activeSchoolyearId(),
                 'stagelevel_id' => 'required|in:1,2',
             ]);
 

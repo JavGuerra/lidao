@@ -36,7 +36,7 @@
                         {{ old('annotation') }}
                     </x-textarea>
                     <x-jet-input-error for="annotation" class="mt-2" />
-                </div>
+                </div>                
             </x-slot>
 
             <x-slot name="actions">

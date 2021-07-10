@@ -24,11 +24,18 @@
                         <x-jet-input-error for="name" class="mt-2" />
                     </div>
 
-                    <!-- Email -->
+                    <!-- Correo electrónico -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="email" value="{{ __('Email') }}" />
                         <x-jet-input id="email" name="email" type="email" class="mt-1 block w-full" value="{{ old('email', $user->email) }}" required="required" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" />
                         <x-jet-input-error for="email" class="mt-2" />
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="col-span-6 sm:col-span-4">
+                        <x-jet-label for="password" value="{{ __('Password') }}" />
+                        <x-jet-input id="password" name="password" type="password" class="mt-1 block w-full" value="{{ old('password') }}" />
+                        <x-jet-input-error for="password" class="mt-2" />
                     </div>
 
                     <!-- TODO Siguientes campos... -->

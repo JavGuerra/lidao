@@ -168,7 +168,7 @@ function numSchoolyears()
 
 
 /**
- * Devuelve el número de clases que pertenecen a un año escolar
+ * Devuelve el número de secciones que pertenecen a un año escolar
  *
  * @param int
  * @return int

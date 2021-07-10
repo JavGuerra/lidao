@@ -65,7 +65,13 @@
             <x-jet-section-border />
         </div>
         <div class="mt-10 sm:mt-0">
-            <livewire:edit-section-form action="delete" :sectionId="$section->id" :title="__('Delete section')" :desc="__('Permanently delete the section.')" :text="__('Once the section is deleted, all of it relationated data will be permanently deleted. Before deleting the section, please download any data or information that you wish to retain.')" :confirmTxt="__('Are you sure you want to delete the section? Once the section is deleted, all of it relationated data will be permanently deleted. Before deleting the section, please download any data or information that you wish to retain.')" />
+            <livewire:edit-section-form
+                action="delete"
+                :sectionId="$section->id"
+                :title="__('Delete section')"
+                :desc="__('Permanently delete the section.')"
+                :text="__('Once the section is deleted, all of it relationated data will be permanently deleted. Before deleting the section, please download any data or information that you wish to retain.')"
+                :confirmTxt="__('Are you sure you want to delete the section? Once the section is deleted, all of it relationated data will be permanently deleted. Before deleting the section, please download any data or information that you wish to retain.')" />
         </div>
 
     </x-main>

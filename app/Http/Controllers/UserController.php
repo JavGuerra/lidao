@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         return view('users.index', [
             'users' => User::orderBy('name', 'ASC')->paginate(numPaginate())
-          ]);
+        ]);
     }
 
     /**
@@ -81,10 +81,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'required|min:8',
         ]);
 
-        $user->update(['name' => $request->name, 'email' => $request->email]);
-        //$user->update($request->has('password') ? $request->all() : $request->except(['password']));
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');
