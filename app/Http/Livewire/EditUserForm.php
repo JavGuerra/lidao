@@ -64,7 +64,62 @@ class EditUserForm extends Component
         $this->confirming = true;
     }
 
-    
+    /**
+     * Activa el usuario seleccionado.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function active(Request $request)
+    {
+        $this->resetErrorBag();
+
+        // // Desactiva el curso activo (si lo hubiera) y registra la fecha y hora de desactivación
+        // if (thereIsAnActiveSchoolyear()) {
+        //     $schoolyearSelected = activeSchoolyear();
+        //     $schoolyearSelected->update([
+        //         'closed_at' => now(),
+        //     ]);
+        // }
+        // // Obtiene el curso
+        // $schoolyear = theSchoolyear($this->schoolyearId);
+        // // Activa el curso actual
+        // activateSchoolYear($schoolyear->id);
+
+        $request->session()->flash('flash.banner', __('The user is now active.'));
+        $request->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('users.edit', $user);
+    }
+
+    /**
+     * Desactiva el usuario seleccionado.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function deactive(Request $request)
+    {
+        $this->resetErrorBag();
+
+        // // Obtiene el curso
+        // $schoolyear = theSchoolyear($this->schoolyearId);
+        
+        // // Desactiva el curso
+        // deactivateSchoolYear();
+
+        // // Registra la fecha y hora de desactivación
+        // $schoolyear->update([
+        //     'closed_at' => now(),
+        // ]);
+
+        $request->session()->flash('flash.banner', __('The user is now inactive.'));
+        $request->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('users.edit', $user);
+    }
+
+
     /**
      * Borra la clase.
      *

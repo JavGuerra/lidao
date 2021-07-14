@@ -746,8 +746,10 @@
     "There are no active school years. Create or activate one by clicking ": "No hay cursos activos. Cree o active uno haciendo click ",
     "There are no sections created this school year yet. Create one by clicking ": "Aún no hay ninguna sección creada en este curso. Cree una haciendo click ",
     "here": "aquí",
+    "Change password": "Cambiar contraseña",
+    "To change the user's password, enter the new password and confirm it before making the change.": "Para cambiar la contraseña del usuario, introduzca la nueva contraseña y confírmela antes del hacer el cambio.",
 
-    "School year active": "Curso activo",
+    "Active school year": "Curso activo",
     "School year": "Curso",
     "School years": "Cursos",
     "School years list": "Listado de cursos",   
@@ -801,6 +803,7 @@
     
     "Users": "Usuarios",
     "New user": "Nuevo usuario",
+    "New users": "Nuevos usuarios",
     "User information": "Información del usuario",
     "Details of the user.": "Detalles del usuario.",
     "Create user": "Crear usuario",
@@ -811,8 +814,22 @@
     "Once the user is deleted, all of it relationated data will be permanently deleted. Before deleting the user, please download any data or information that you wish to retain.": "Una vez que se elimina el usuario, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar al usuario, descargue cualquier dato o información que desee conservar.",
     "Are you sure you want to delete the user? Once the user is deleted, all of it relationated data will be permanently deleted. Before deleting the user, please download any data or information that you wish to retain.": "¿Está seguro de que desea eliminar al usuario? Una vez que se elimina el usuario, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar al usuario, descargue cualquier dato o información que desee conservar.",
     "The user has been definitively eliminated.": "El usuario ha sido eliminada definitivamente.",
-   
-    
+    "Upload users": "Subir usuarios",
+    "Upload a batch of users.": "Subir un lote de usuarios.",
+    "Import": "Importar",
+    " new user(s).": " usuario(s) nuevo(s).",
+    "Student identification number": "Nº de identificación del alumno (NIA)",
+    "Activate user": "Activar usuario",
+    "Deactivate user": "Desactivar usuario",
+    "The user is now active.": "El usuario está ahora en activo.",
+    "The user is now inactive.": "El usuario está ahora inactivo.",
+    "The user will not be able to operate on the platform.": "El usuario no podrá operar en la plataforma.",
+    "The user may resume their activity on the platform.": "El usuario podrá retomar su actividad en la plataforma.",
+    "When the user is inactive, he cannot access the sections in which he is enrolled to read his books or be enrolled in new sections.": "Cuando el usuario está inactivo no puede acceder a las secciones en las que esté matriculado para leer sus libros ni ser matriculado en nuevas secciones",
+    "When the user is active, he can access the sections in which he is enrolled to read his books and be enrolled in new sections.": "Cuando el usuario está activo puede acceder a las secciones en las que esté matriculado para leer sus libros y ser matriculado en nuevas secciones.",
+    "Are you sure you want to deactivate the user? When the user is inactive, he cannot access the sections in which he is enrolled to read his books or be enrolled in new sections.": "¿Está seguro que desea desactivar el usuario? Cuando el usuario está inactivo no puede acceder a las secciones en las que esté matriculado para leer sus libros ni ser matriculado en nuevas secciones",
+    "Are you sure you want to activate the user? When the user is active, he can access the sections in which he is enrolled to read his books and be enrolled in new sections.": "¿Está seguro que desea activar el usuario? Cuando el usuario está activo puede acceder a las secciones en las que esté matriculado para leer sus libros y ser matriculado en nuevas secciones.",
+
     "Books": "Libros",
     "New book": "Nuevo libro",
     "Create book": "Crear libro",
@@ -832,5 +849,6 @@
     "Closed": "Cerrado",
     "Show and edit": "Ver y editar",
     "More information...": "Más información...",
-    "Information icon with letter i.": "Icono de información con la letra i."
+    "Information icon with letter i.": "Icono de información con la letra i.",
+    "Your account is not active.": "Su cuenta no está activa."
 }

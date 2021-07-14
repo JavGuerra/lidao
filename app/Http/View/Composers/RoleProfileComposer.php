@@ -16,7 +16,12 @@ class RoleProfileComposer
     public function compose(View $view)
     {
         // Pasa la lista de roles de usuario a las vistas
-        $roles = ['0' => 'Student', '1' => 'Admin', '2' => 'Teacher'];
+        $roles = collect([
+            (object) [ 'id' =>  '0', 'name' => 'Admin'],
+            (object) [ 'id' =>  '1', 'name' => 'Teacher'],
+            (object) [ 'id' =>  '2', 'name' => 'Student'],
+        ]);
+
         $view->with('roles', $roles);
     }
 }

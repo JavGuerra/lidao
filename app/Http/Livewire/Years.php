@@ -35,8 +35,8 @@ class Years extends Component
     {
         return <<<'blade'
                 <div class="col-span-6 sm:col-span-4">
-                    <div class="flex justify-between">
-                        <div class="mr-3 col-span-3 sm:col-span-2 w-full">
+                    <div class="flex justify-between gap-6">
+                        <div class="col-span-3 sm:col-span-2 w-full">
                             <x-jet-label for="start_at" value="{{ __('Start year') }}" />
                             <input id="start_at" name="start_at"
                                 wire:model="startYear" wire:change="plusOne()"
@@ -48,7 +48,7 @@ class Years extends Component
                             />
                         </div>
 
-                        <div class="ml-3 col-span-3 sm:col-span-2 w-full">
+                        <div class="col-span-3 sm:col-span-2 w-full">
                             <x-jet-label for="end_at" value="{{ __('Ending year') }}" />
                             <x-jet-input id="end_at" name="end_at" class="mt-1 block w-full disabled:opacity-50" type="number" value="{{ $endYear }}" placeholder="{{__('yyyy')}}" disabled="disabled" />
                         </div>

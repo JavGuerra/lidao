@@ -29,8 +29,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('/dashboard')
         ->with('schoolyear', activeSchoolyear())
         ->with('sections', numSectionsActiveSchoolyear())
-        ->with('teachers', User::where('role', 2)->count())
-        ->with('students', User::where('role', 0)->count())
+        ->with('teachers', User::where('role', 1)->count())
+        ->with('students', User::where('role', 2)->count())
         ->with('books', Book::count());
 })->name('dashboard');
 
@@ -40,8 +40,9 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('sections', SectionCon
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('users', UserController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->resource('books', BookController::class);
+Route::middleware(['auth:sanctum', 'verified'])->post('users/import', [UserController::class, 'import'])->name('users.import');
 
+Route::middleware(['auth:sanctum', 'verified'])->resource('books', BookController::class);
 
 // Pruebas durante el desarrollo. TODO BORRAR
 Route::get('pruebas', function () {

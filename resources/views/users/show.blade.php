@@ -67,7 +67,7 @@
                   {{ __('Rol') }}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  {{ __($roles[$user->role]) }}
+                  {{ __($roles->get($user->role)->name) }}
                 </dd>
               </div>
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">

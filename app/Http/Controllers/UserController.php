@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Muestra el listado de alumnos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +23,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra la vista para crear usuarios.
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,20 +33,70 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda el nuevo usuario creado.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'role' => 'required|in:0,1,2',
+            'nia' => 'min:7|unique:users,nia',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $user = User::create($request->all());
+
+        $user->save();
+
+        $request->session()->flash('flash.banner', __('The information was saved successfully.'));
+        $request->session()->flash('flash.bannerStyle', 'success');
 
         return redirect()->route('users.index');
     }
 
     /**
-     * Display the specified resource.
+     * Guarda un lote de usuarios a partir de un archivo.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function import(Request $request)
+    {
+        $error = null;
+        try {
+            $import = new UsersImport();
+            $file = $request->file('file');
+            Excel::import($import, $file);
+        } catch (\Exception $e) {
+            $error = $e->getMessage();
+        }
+
+        if ($error == null) {
+            $text = $import->getRowCount() . __(' new user(s).');
+            $type = 'success';
+        } else {
+            $text =  __($error);
+            $type = 'danger';
+        }
+        $request->session()->now('flash.banner', $text);
+        $request->session()->now('flash.bannerStyle', $type);
+
+        // if ($error == null) {
+            return view('users.index', [
+                'users' => User::orderBy('name', 'ASC')->paginate(numPaginate())
+            ]);
+        // } else {
+        //     // TODO volver a la misma página y mostrar aviso
+        //     return back()->withInput();
+        // }
+    }
+
+    /**
+     * Muestra información del usuario.
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
@@ -57,7 +109,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra la vista para editar un usuario.
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
@@ -70,7 +122,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza la información del usuario.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
@@ -83,6 +135,14 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'required|min:8',
         ]);
+
+        // $request->validate([
+        //     'name' => 'required|max:255',
+        //     'role' => 'required|in:0,1,2',
+        //     'nia' => 'min:7|unique:users,code',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => 'required|string|confirmed|min:8',
+        // ]);
 
         $user->update([
             'name' => $request->name,
@@ -97,7 +157,7 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina un usuario.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

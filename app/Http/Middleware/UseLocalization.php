@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
-class Localization
+class UseLocalization
 {
     /**
      * Maneja una solicitud entrante. 

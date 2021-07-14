@@ -1,4 +1,4 @@
-@props(['submit' => null, 'method' => 'post'])
+@props(['submit' => null, 'method' => 'post', 'enctype' => ''])
 
 <div {{ $attributes->merge(['class' => 'md:grid md:grid-cols-3 md:gap-6']) }}>
     <x-jet-section-title>
@@ -8,7 +8,7 @@
 
     <div class="mt-5 md:mt-0 md:col-span-2">
 
-        <form action="{{ $submit }}" method="{{ strtolower($method) == 'get' ? 'get' : 'post'  }}">
+        <form action="{{ $submit }}" method="{{ strtolower($method) == 'get' ? 'get' : 'post'  }}" enctype="{{ $enctype }}">
 
             @if(strtolower($method) != 'get')
                 @csrf
