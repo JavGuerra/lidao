@@ -26,7 +26,20 @@
                     </div>
 
                     <!-- Fechas -->
-                    <livewire:years :startYear="$schoolyear->start_at" />
+                    <div class="col-span-6 sm:col-span-4">
+                        <div x-data="{year: ''}" class="flex justify-between gap-6">
+                            <div class="col-span-3 sm:col-span-2 w-full">
+                                <x-jet-label for="start_at" value="{{ __('Start year') }}" />
+                                <x-jet-input id="start_at" name="start_at" type="text" class="mt-1 block w-full disabled:opacity-50" value="{{ $schoolyear->start_at }}" required="required" disabled="disabled" />
+                            </div>
+                            <div class="col-span-3 sm:col-span-2 w-full">
+                                <x-jet-label for="end_at" value="{{ __('Ending year') }}" />
+                                <x-jet-input id="end_at" name="end_at" type="text" class="mt-1 block w-full disabled:opacity-50" value="{{ $schoolyear->end_at }}" required="required" disabled="disabled" />
+                            </div>
+                            <div class="sm:col-span-2 sm:w-full"></div>
+                        </div>
+                        <x-jet-input-error for="start_at" class="mt-2" />
+                    </div>
 
                     <!-- Anotaciones -->
                     <div class="col-span-6 sm:col-span-4">

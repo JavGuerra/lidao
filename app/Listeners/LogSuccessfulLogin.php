@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use Illuminate\Support\Facades\Log;
+
 class LogSuccessfulLogin
 {
     /**
@@ -22,11 +24,12 @@ class LogSuccessfulLogin
      */
     public function handle($event)
     {
-        // Si el usuario no está activo, lo saca y pone error
+        // Si el usuario no está activo, lo saca, lo refleja en el log, y pone error.
         $status = $event->user->status;
         if ($status == false) {
-        session()->flush();
-        return redirect()->guest('login')->with('status', __('Your account is not active.'));
+            session()->flush();
+            Log::info($event->user->name . ', with the id: ' . $event->user->id . ', has tried to log in while idle.');
+            return redirect()->guest('login')->withErrors([__('Your account is not active.')]);
         };
 
         // Guarda los datos de inicio de sesión del usuario

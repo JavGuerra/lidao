@@ -32,7 +32,27 @@
                     </div>
 
                     <!-- Rol y NIA -->
-                    <livewire:nia :roles="$roles" />
+                    <div class="col-span-6 sm:col-span-4 grid gap-6">
+                        <div x-data="{role: '{{old('role', $user->role)}}'}" class="lg:flex grid gap-6">
+
+                            <!-- Rol -->
+                            <div class="col-span-6 lg:col-span-2 w-full">
+                                <x-jet-label for="role" value="{{ __('Role') }}" />
+                                <x-select id="role" name="role" x-model="role" class="mt-1 block w-full" :options="$roles" :sel="old('role', $user->role)" />
+                                <x-jet-input-error for="role" class="mt-2" />
+                            </div>
+
+                            <!-- NIA -->
+                            <div class="col-span-6 lg:col-span-2 w-full">
+                                <div x-show="role == 2"  x-transition>
+                                    <x-jet-label for="nia" value="{{ __('Student identification number') }}" />
+                                    <x-jet-input x-bind:disabled="(role == 2) ? false : true" name="nia" type="text" value="{{ old('nia', $user->nia) }}" class="mt-1 block w-full" required="required" minlength="7" />
+                                    <x-jet-input-error for="nia" class="mt-2" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
 
                 </div>
 
@@ -125,8 +145,8 @@
                 :userId="$user->id"
                 :title="__('Deactivate user')"
                 :desc="__('The user will not be able to operate on the platform.')"
-                :text="__('When the user is inactive, he cannot access the sections in which he is enrolled to read his books or be enrolled in new sections.')"
-                :confirmTxt="__('Are you sure you want to deactivate the user? When the user is inactive, he cannot access the sections in which he is enrolled to read his books or be enrolled in new sections.')"
+                :text="__('When the user is inactive, he cannot log into the platform to access the sections in which he are enrolled and read their books, nor can he be enrolled in new sections.')"
+                :confirmTxt="__('Are you sure you want to deactivate the user? When the user is inactive, he cannot log into the platform to access the sections in which he are enrolled and read their books, nor can he be enrolled in new sections.')"
             />
         </div>
         @else
@@ -136,8 +156,8 @@
                 :userId="$user->id"
                 :title="__('Activate user')"
                 :desc="__('The user may resume their activity on the platform.')"
-                :text="__('When the user is active, he can access the sections in which he is enrolled to read his books and be enrolled in new sections.')"
-                :confirmTxt="__('Are you sure you want to activate the user? When the user is active, he can access the sections in which he is enrolled to read his books and be enrolled in new sections')"
+                :text="__('When the user is active, he can log into the platform to access the sections in which he is enrolled and read his books, and he can be enrolled in new sections.')"
+                :confirmTxt="__('Are you sure you want to activate the user? When the user is active, he can log into the platform to access the sections in which he is enrolled and read his books, and he can be enrolled in new sections.')"
             />
         </div>
         @endif

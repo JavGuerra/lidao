@@ -27,7 +27,7 @@
                     <!-- Etapa y nivel -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="stagelevel_id" value="{{ __('Level') }}" />
-                        <x-select id="stagelevel_id" name="stagelevel_id" class="mt-1 block w-full" :options="$stagelevels" :objId="$section->stagelevel_id" />
+                        <x-select id="stagelevel_id" name="stagelevel_id" class="mt-1 block w-full" :options="$stagelevels" :sel="$section->stagelevel_id" />
                         <x-jet-input-error for="stagelevel_id" class="mt-2" />
                     </div>
 

@@ -815,7 +815,7 @@
     "Are you sure you want to delete the user? Once the user is deleted, all of it relationated data will be permanently deleted. Before deleting the user, please download any data or information that you wish to retain.": "¿Está seguro de que desea eliminar al usuario? Una vez que se elimina el usuario, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar al usuario, descargue cualquier dato o información que desee conservar.",
     "The user has been definitively eliminated.": "El usuario ha sido eliminada definitivamente.",
     "Upload users": "Subir usuarios",
-    "Upload a batch of users.": "Subir un lote de usuarios.",
+    "Upload a batch of users through a .csv file.": "Subir un lote de usuarios mediante un archivo .csv.",
     "Import": "Importar",
     " new user(s).": " usuario(s) nuevo(s).",
     "Student identification number": "Nº de identificación del alumno (NIA)",
@@ -825,10 +825,10 @@
     "The user is now inactive.": "El usuario está ahora inactivo.",
     "The user will not be able to operate on the platform.": "El usuario no podrá operar en la plataforma.",
     "The user may resume their activity on the platform.": "El usuario podrá retomar su actividad en la plataforma.",
-    "When the user is inactive, he cannot access the sections in which he is enrolled to read his books or be enrolled in new sections.": "Cuando el usuario está inactivo no puede acceder a las secciones en las que esté matriculado para leer sus libros ni ser matriculado en nuevas secciones",
-    "When the user is active, he can access the sections in which he is enrolled to read his books and be enrolled in new sections.": "Cuando el usuario está activo puede acceder a las secciones en las que esté matriculado para leer sus libros y ser matriculado en nuevas secciones.",
-    "Are you sure you want to deactivate the user? When the user is inactive, he cannot access the sections in which he is enrolled to read his books or be enrolled in new sections.": "¿Está seguro que desea desactivar el usuario? Cuando el usuario está inactivo no puede acceder a las secciones en las que esté matriculado para leer sus libros ni ser matriculado en nuevas secciones",
-    "Are you sure you want to activate the user? When the user is active, he can access the sections in which he is enrolled to read his books and be enrolled in new sections.": "¿Está seguro que desea activar el usuario? Cuando el usuario está activo puede acceder a las secciones en las que esté matriculado para leer sus libros y ser matriculado en nuevas secciones.",
+    "When the user is inactive, he cannot log into the platform to access the sections in which he are enrolled and read their books, nor can he be enrolled in new sections.": "Cuando el usuario está inactivo no puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, ni puede ser matriculado en nuevas secciones.",
+    "When the user is active, he can log into the platform to access the sections in which he is enrolled and read his books, and he can be enrolled in new sections.": "Cuando el usuario está activo puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, y puede ser matriculado en nuevas secciones.",
+    "Are you sure you want to deactivate the user? When the user is inactive, he cannot log into the platform to access the sections in which he are enrolled and read their books, nor can he be enrolled in new sections.": "¿Está seguro que desea desactivar el usuario? Cuando el usuario está inactivo no puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, ni puede ser matriculado en nuevas secciones.",
+    "Are you sure you want to activate the user? When the user is active, he can log into the platform to access the sections in which he is enrolled and read his books, and he can be enrolled in new sections.": "¿Está seguro que desea activar el usuario? Cuando el usuario está activo puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, y puede ser matriculado en nuevas secciones.",
 
     "Books": "Libros",
     "New book": "Nuevo libro",
@@ -850,5 +850,6 @@
     "Show and edit": "Ver y editar",
     "More information...": "Más información...",
     "Information icon with letter i.": "Icono de información con la letra i.",
-    "Your account is not active.": "Su cuenta no está activa."
+    "Your account is not active.": "Su cuenta no está activa.",
+    "Drag your file here or click in this area.": "Arrastre su archivo aquí o haga clic en este área."
 }
