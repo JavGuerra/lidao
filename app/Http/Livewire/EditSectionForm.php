@@ -102,6 +102,6 @@ class EditSectionForm extends Component
      */
     public function render()
     {
-        return view('livewire.edit-section-form');
+        return view('livewire.edit-confirm-form');
     }
 }

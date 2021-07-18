@@ -20,7 +20,7 @@
                     <!-- Nombre -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="name" value="{{ __('Name') }}" />
-                        <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full" value="{{ old('name') }}" required="required" />
+                        <x-jet-input autofocus="autofocus" id="name" name="name" type="text" class="mt-1 block w-full" value="{{ old('name') }}" required="required" />
                         <x-jet-input-error for="name" class="mt-2" />
                     </div>
 

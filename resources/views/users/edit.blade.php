@@ -20,7 +20,7 @@
                     <!-- Nombre -->
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="name" value="{{ __('Name') }}" />
-                        <x-jet-input id="name" name="name" type="text" class="mt-1 block w-full" value="{{ old('name', $user->name) }}" required="required" />
+                        <x-jet-input autofocus="autofocus" id="name" name="name" type="text" class="mt-1 block w-full" value="{{ old('name', $user->name) }}" required="required" />
                         <x-jet-input-error for="name" class="mt-2" />
                     </div>
 
@@ -67,7 +67,7 @@
                         {{ __( $status[false] ) }}
                     </span>
                     @endif
-                    <a href="{{ route('users.show', $user) }}" class="block mt-2 sm:mt-8 text-xs text-gray-400 hover:text-gray-300 active:text-gray-400 disabled:opacity-25 transition">
+                    <a role="button" href="{{ route('users.show', $user) }}" class="block mt-2 sm:mt-8 text-xs text-gray-400 hover:text-gray-300 active:text-gray-400 disabled:opacity-25 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" id="info" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-labelledby="infoTitle infoDesc" role="button">
                             <title id="infoTitle">{{__('More information...')}}</title>
                             <desc id="infoDesc">{{__('Information icon with letter i.')}}</desc>

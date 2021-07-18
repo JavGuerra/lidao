@@ -3,6 +3,9 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 use App\Models\User;
 
@@ -104,7 +107,7 @@ class EditUserForm extends Component
 
         // // Obtiene el curso
         // $schoolyear = theSchoolyear($this->schoolyearId);
-        
+
         // // Desactiva el curso
         // deactivateSchoolYear();
 
@@ -130,6 +133,13 @@ class EditUserForm extends Component
     {
         $this->resetErrorBag();
 
+        // Comprobando la contraseña...
+        if (!Hash::check($this->password, Auth::user()->password)) {
+            throw ValidationException::withMessages([
+                'password' => [__('This password does not match our records.')],
+            ]);
+        }
+
         // Borrando de la clase...
         if ($this->userId) {
             User::find($this->userId)->delete();
@@ -148,6 +158,6 @@ class EditUserForm extends Component
      */
     public function render()
     {
-        return view('livewire.edit-user-form');
+        return view('livewire.edit-confirm-form');
     }
 }

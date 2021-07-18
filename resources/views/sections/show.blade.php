@@ -18,7 +18,7 @@
         </div>
         <div>
           <div class="px-4 py-4 sm:px-6">
-            <a href="{{ route('sections.edit', $section) }}" class="inline-flex items-center ml-2 px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
+            <a autofocus="autofocus" role="button" href="{{ route('sections.edit', $section) }}" class="inline-flex items-center ml-2 px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
               </svg>
@@ -87,7 +87,7 @@
                   <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
                     0
                   </a>
-                  <a href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
+                  <a role="button" href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                       <span class="sr-only">{{__('Add')}}</span>
@@ -103,7 +103,7 @@
                   <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
                     0
                   </a>
-                  <a href="{{ route('books.create') }}" class="px-1 py-1 ml-2 text-indigo-600 bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
+                  <a role="button" href="{{ route('books.create') }}" class="px-1 py-1 ml-2 text-indigo-600 bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                       <span class="sr-only">{{__('Add')}}</span>

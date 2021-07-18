@@ -155,6 +155,6 @@ class EditSchoolyearForm extends Component
      */
     public function render()
     {
-        return view('livewire.edit-schoolyear-form');
+        return view('livewire.edit-confirm-form');
     }
 }
