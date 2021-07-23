@@ -27,7 +27,7 @@
                 <div class="col-span-6 sm:col-span-4">
 
                     <!-- Véase comillas em x-data. Si old está vacío se inicializa con '' -->
-                    <div x-data="{ year: parseInt('{{ old('start_at') }}') }" class="flex justify-between gap-6">
+                    <div x-data="{ year: {{ old('start_at', startYear()) }} }" class="flex justify-between gap-6">
                        
                         <div class="col-span-3 sm:col-span-2 w-full">
                             <x-jet-label for="start_at" value="{{ __('Start year') }}" />

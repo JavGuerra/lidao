@@ -38,7 +38,7 @@
                             <!-- Rol -->
                             <div class="col-span-6 lg:col-span-2 w-full">
                                 <x-jet-label for="role" value="{{ __('Role') }}" />
-                                <x-select id="role" name="role" x-model="role" class="mt-1 block w-full" :options="$roles" :sel="old('role', $user->role)" />
+                                <x-select id="role" name="role" x-model="role" class="mt-1 block w-full" :options="$roles" :selected="old('role', $user->role)" />
                                 <x-jet-input-error for="role" class="mt-2" />
                             </div>
 
@@ -90,7 +90,7 @@
             <x-jet-section-border />
         </div>
 
-        <x-form-section :submit="route ('users.update', $user)" method="PUT">
+        <x-form-section :submit="route ('users.pwd', $user)" method="PUT">
             <x-slot name="title">
                 {{ __('Change password') }}
             </x-slot>

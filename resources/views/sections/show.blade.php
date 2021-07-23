@@ -73,8 +73,9 @@
                   {{__('Number of teachers')}}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  <!-- TODO inidicar número de profesores asociados a esta sección -->
-                  0
+                  <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                    0
+                  </a>
                 </dd>
               </div>
             </div>
@@ -87,7 +88,7 @@
                   <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
                     0
                   </a>
-                  <a role="button" href="{{ route('users.create') }}" class="px-1 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
+                  <a role="button" href="{{ route('users.create') }}" class="px-2 py-1 ml-2 text-indigo-600  bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                       <span class="sr-only">{{__('Add')}}</span>
@@ -100,14 +101,8 @@
                   {{ __('Number of books') }}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                  <a href="{{ route('books.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
                     0
-                  </a>
-                  <a role="button" href="{{ route('books.create') }}" class="px-1 py-1 ml-2 text-indigo-600 bg-white hover:text-indigo-900 border border-gray-300 rounded-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                      <span class="sr-only">{{__('Add')}}</span>
-                    </svg>
                   </a>
                 </dd>
               </div>

@@ -93,7 +93,7 @@
                   {{ __('Accessed') }}
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                  {{ ($user->last_login_at == null) ? __('Never') : \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() }}
+                  {{ ($user->last_login_at == null) ? __('never') : \Carbon\Carbon::parse($user->last_login_at)->diffForHumans() }}
                 </dd>
               </div>
               <div class="sm:grid sm:grid-cols-2 sm:gap-4">

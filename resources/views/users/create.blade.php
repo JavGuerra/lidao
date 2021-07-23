@@ -57,7 +57,7 @@
                             <!-- Rol -->
                             <div class="col-span-6 lg:col-span-2 w-full">
                                 <x-jet-label for="role" value="{{ __('Role') }}" />
-                                <x-select id="role" name="role" x-model="role" class="mt-1 block w-full" :options="$roles" :sel="old('role')" />
+                                <x-select id="role" name="role" x-model="role" class="mt-1 block w-full" :options="$roles" :selected="old('role')" />
                                 <x-jet-input-error for="role" class="mt-2" />
                             </div>
 
@@ -111,7 +111,7 @@
                                 @dragleave="$refs.dnd.classList.remove('bg-gray-100')"
                                 @drop="$refs.dnd.classList.remove('bg-gray-100')"
                             />
-                            <div class="flex flex-col items-center justify-center py-6 text-center">
+                            <div class="flex flex-col items-center justify-center py-10 text-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m 16,17 h 3 a -2,-2 0 0 0 2,-2 V 6 A -2,-2 0 0 0 19,4 H 5 A -2,-2 0 0 0 3,6 v 9 a -2,-2 0 0 0 2,2 h 3 m 1,-4 3,-3 m 0,0 3,3 m -3,-3 v 10" />
                                 </svg>

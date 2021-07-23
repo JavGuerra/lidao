@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index', [
-            'users' => User::orderBy('name', 'ASC')->paginate(numPaginate())
+            'users' => User::all()
         ]);
     }
 
@@ -48,6 +48,8 @@ class UserController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
+        // TODO Nia required si role = 2
+
         $user = User::create($request->all());
 
         $user->save();
@@ -55,7 +57,7 @@ class UserController extends Controller
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.edit', $user);
     }
 
     /**
@@ -86,9 +88,9 @@ class UserController extends Controller
         $request->session()->now('flash.bannerStyle', $type);
 
         // if ($error == null) {
-            return view('users.index', [
-                'users' => User::orderBy('name', 'ASC')->paginate(numPaginate())
-            ]);
+        return view('users.index', [
+            'users' => User::orderBy('name', 'ASC')->paginate(numPaginate())
+        ]);
         // } else {
         //     // TODO volver a la misma página y mostrar aviso
         //     return back()->withInput();
@@ -132,23 +134,39 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
+            'role' => 'required|in:0,1,2',
+            'nia' => 'min:7|required_if:role,2|unique:users,nia,' . $user->id,
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'required|min:8',
         ]);
 
-        // $request->validate([
-        //     'name' => 'required|max:255',
-        //     'role' => 'required|in:0,1,2',
-        //     'nia' => 'min:7|unique:users,code',
-        //     'email' => 'required|email|unique:users,email',
-        //     'password' => 'required|string|confirmed|min:8',
-        // ]);
+        if ($request->role <> 2) {
+            $request->merge(['nia' => null]);
+        }
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+        $user->update($request->all());
+
+        $request->session()->flash('flash.banner', __('The information was saved successfully.'));
+        $request->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('users.edit', $user);
+    }
+
+    /**
+     * Cambia el password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function pwd(Request $request, User $user)
+    {
+        dd($request);
+         
+        $request->validate([
+            'password' => 'required|string|confirmed|min:8',
         ]);
+
+        $user->update(['password' => bcrypt($request->password)]);
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');

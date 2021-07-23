@@ -113,7 +113,7 @@ class SchoolyearController extends Controller
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('schoolyears.index');
+        return redirect()->route('schoolyears.edit', $schoolyear);
     }
 
     /**

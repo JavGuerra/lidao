@@ -77,17 +77,8 @@ class EditUserForm extends Component
     {
         $this->resetErrorBag();
 
-        // // Desactiva el curso activo (si lo hubiera) y registra la fecha y hora de desactivación
-        // if (thereIsAnActiveSchoolyear()) {
-        //     $schoolyearSelected = activeSchoolyear();
-        //     $schoolyearSelected->update([
-        //         'closed_at' => now(),
-        //     ]);
-        // }
-        // // Obtiene el curso
-        // $schoolyear = theSchoolyear($this->schoolyearId);
-        // // Activa el curso actual
-        // activateSchoolYear($schoolyear->id);
+        $user = User::find($this->userId);
+        $user->update(['status' => true]);
 
         $request->session()->flash('flash.banner', __('The user is now active.'));
         $request->session()->flash('flash.bannerStyle', 'success');
@@ -105,16 +96,8 @@ class EditUserForm extends Component
     {
         $this->resetErrorBag();
 
-        // // Obtiene el curso
-        // $schoolyear = theSchoolyear($this->schoolyearId);
-
-        // // Desactiva el curso
-        // deactivateSchoolYear();
-
-        // // Registra la fecha y hora de desactivación
-        // $schoolyear->update([
-        //     'closed_at' => now(),
-        // ]);
+        $user = User::find($this->userId);
+        $user->update(['status' => false]);
 
         $request->session()->flash('flash.banner', __('The user is now inactive.'));
         $request->session()->flash('flash.bannerStyle', 'success');

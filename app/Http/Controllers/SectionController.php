@@ -63,7 +63,7 @@ class SectionController extends Controller
             $request->session()->flash('flash.banner', __('The information was saved successfully.'));
             $request->session()->flash('flash.bannerStyle', 'success');
 
-            return redirect()->route('sections.index');
+            return redirect()->route('sections.edit', $section);
         } else {
             abort(404);
         }

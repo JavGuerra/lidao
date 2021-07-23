@@ -218,6 +218,7 @@ function thisYearInRange()
 
 /**
  * Devuelve el año de inicio.
+ * Si el año ya está en uso, busca el año siguiente disponible.
  *
  * @return int
  */
@@ -230,6 +231,9 @@ function startYear()
     }
     if ($startYear > 2154) {
         $startYear = 2154;
+    }
+    while (Schoolyear::where('start_at', $startYear)->first() != null && $startYear < 2155) {
+        $startYear++;
     }
     return $startYear;
 }
