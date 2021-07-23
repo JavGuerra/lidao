@@ -24,7 +24,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
             'name' => $row['nombre'],
             'email' => $row['email'],
             'password' => bcrypt($row['password']),
-            'role' => ($row['rol'] == 'profesor') ? 2 : 0,
+            'role' => ($row['rol'] == 'profesor') ? 1 : 2,
         ]);
     }
 
