@@ -42,7 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('users', UserControlle
 
 Route::middleware(['auth:sanctum', 'verified'])->post('users/import', [UserController::class, 'import'])->name('users.import');
 
-Route::middleware(['auth:sanctum', 'verified'])->post('users/pwd', [UserController::class, 'pwd'])->name('users.pwd');
+Route::middleware(['auth:sanctum', 'verified'])->put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('books', BookController::class);
 

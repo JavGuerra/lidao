@@ -90,7 +90,7 @@
             <x-jet-section-border />
         </div>
 
-        <x-form-section :submit="route ('users.pwd', $user)" method="PUT">
+        <x-form-section :submit="route ('users.passwd', $user)" method="PUT">
             <x-slot name="title">
                 {{ __('Change password') }}
             </x-slot>

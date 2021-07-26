@@ -711,6 +711,8 @@
     "Åland Islands": "Islas Åland",
     
     "Dismiss": "Quitar",
+    "Pagination": "Paginación",
+    "Interactive search...": "Búsqueda interactiva...",
     "Learn more": "Saber más",
     "This website uses cookies.": "Este sitio web usa cookies.",
     "This website uses cookies. Learn more about our privacy policy.": "Este sitio web usa cookies. Conozca más sobre nuestra política de privacidad.",
@@ -815,7 +817,7 @@
     "Are you sure you want to delete the user? Once the user is deleted, all of it relationated data will be permanently deleted. Before deleting the user, please download any data or information that you wish to retain.": "¿Está seguro de que desea eliminar al usuario? Una vez que se elimina el usuario, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar al usuario, descargue cualquier dato o información que desee conservar.",
     "The user has been definitively eliminated.": "El usuario ha sido eliminada definitivamente.",
     "Upload users": "Subir usuarios",
-    "Upload a batch of users through a .csv file.": "Subir un lote de usuarios mediante un archivo .csv.",
+    "Upload a batch of users through a file in one of the following file formats: csv, xls, xlsx, ods, gnumeric and xml.": "Subir un lote de usuarios a traves de un fichero en uno de los siguientes formatos de fichero: csv, xls, xlsx, ods, gnumeric y xml.",
     "Import": "Importar",
     " new user(s).": " usuario(s) nuevo(s).",
     "Student identification number": "Nº de identificación del alumno (NIA)",

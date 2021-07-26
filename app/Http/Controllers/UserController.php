@@ -41,11 +41,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'role' => 'required|in:0,1,2',
-            'nia' => 'min:7|unique:users,nia',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8',
+            'name'      => 'required|max:255',
+            'role'      => 'required|in:0,1,2',
+            'nia'       => 'min:7|unique:users,nia',
+            'email'     => 'required|email|unique:users,email',
+            'password'  => 'required|string|min:8',
         ]);
 
         // TODO Nia required si role = 2
@@ -68,10 +68,14 @@ class UserController extends Controller
      */
     public function import(Request $request)
     {
+        $request->validate([
+            'file' => 'required|mimes:csv,xls,xlsx,ods,gnumeric,xml',
+        ]);
+
         $error = null;
         try {
-            $import = new UsersImport();
             $file = $request->file('file');
+            $import = new UsersImport();
             Excel::import($import, $file);
         } catch (\Exception $e) {
             $error = $e->getMessage();
@@ -88,12 +92,12 @@ class UserController extends Controller
         $request->session()->now('flash.bannerStyle', $type);
 
         // if ($error == null) {
-        return view('users.index', [
-            'users' => User::orderBy('name', 'ASC')->paginate(numPaginate())
-        ]);
+            return view('users.index', [
+                'users' => User::all()
+            ]);
         // } else {
-        //     // TODO volver a la misma página y mostrar aviso
-        //     return back()->withInput();
+            // TODO volver a la misma página y mostrar aviso
+            //return back()->withInput();
         // }
     }
 
@@ -133,9 +137,9 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'role' => 'required|in:0,1,2',
-            'nia' => 'min:7|required_if:role,2|unique:users,nia,' . $user->id,
+            'name'  => 'required|max:255',
+            'role'  => 'required|in:0,1,2',
+            'nia'   => 'min:7|required_if:role,2|unique:users,nia,' . $user->id,
             'email' => 'required|email|unique:users,email,' . $user->id,
         ]);
 
@@ -158,12 +162,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function pwd(Request $request, User $user)
+    public function passwd(Request $request, User $user)
     {
-        dd($request);
-         
         $request->validate([
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'required|string|confirmed|min:8'
         ]);
 
         $user->update(['password' => bcrypt($request->password)]);
