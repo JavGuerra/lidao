@@ -21,9 +21,10 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
         ++$this->numRows;
 
         return new User([
+            'nia' => $row['nia'],
             'name' => $row['nombre'],
-            'email' => $row['email'],
-            'password' => bcrypt($row['password']),
+            'email' => $row['correo'],
+            'password' => bcrypt($row['clave']),
             'role' => ($row['rol'] == 'profesor') ? 1 : 2,
         ]);
     }
@@ -31,9 +32,10 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
     public function rules(): array
     {
         return [
+            'nia' => 'nullable|min:7|unique:users,nia',
             'nombre' => 'required|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
+            'correo' => 'required|email|unique:users,email',
+            'clave' => 'required|string|min:8',
             'rol' => 'nullable|in:profesor,alumno',
         ];
     }

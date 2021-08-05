@@ -27,7 +27,7 @@ class UpdateLocaleForm extends Component
 
         $this->emit('saved');
 
-        // TODO actualizar página  con AJAX y restaurar 'selected' en el select
+        // TODO actualizar página con AJAX
         // $this->emit('refresh-navigation-menu');
         return redirect()->route('profile.show');
     }

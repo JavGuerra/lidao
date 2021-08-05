@@ -69,7 +69,7 @@ class UserController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xls,xlsx,ods,gnumeric,xml',
+            'file' => 'required|mimes:csv,txt,xls,xlsx,ods,gnumeric,xml',
         ]);
 
         $error = null;
@@ -77,27 +77,37 @@ class UserController extends Controller
             $file = $request->file('file');
             $import = new UsersImport();
             Excel::import($import, $file);
-        } catch (\Exception $e) {
-            $error = $e->getMessage();
+            // } catch (\Exception $e) {
+            //     $error = $e->getMessage();
+            // }
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+
+            foreach ($failures as $failure) {
+                $error .= $failure->row(); // row that went wrong
+                $error .= $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $error .= implode(' ', $failure->errors()); // Actual error messages from Laravel validator
+                $error .= implode(' ', $failure->values()); // The values of the row that has failed.
+            }
         }
 
-        if ($error == null) {
+        if ($failures == null) {
             $text = $import->getRowCount() . __(' new user(s).');
             $type = 'success';
         } else {
-            $text =  __($error);
+            $text = $error;
             $type = 'danger';
         }
         $request->session()->now('flash.banner', $text);
         $request->session()->now('flash.bannerStyle', $type);
 
         // if ($error == null) {
-            return view('users.index', [
-                'users' => User::all()
-            ]);
+        return view('users.index', [
+            'users' => User::all()
+        ]);
         // } else {
-            // TODO volver a la misma página y mostrar aviso
-            //return back()->withInput();
+        // TODO volver a la misma página y mostrar aviso
+        //return back()->withInput();
         // }
     }
 

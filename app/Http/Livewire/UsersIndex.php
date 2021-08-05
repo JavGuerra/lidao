@@ -22,6 +22,8 @@ class UsersIndex extends Component
     protected $sections;
 
     public $search = '';
+    public $sort = 'name';
+    public $direction = 'ASC';
     public $perPage;
     public $role;
     public $status;
@@ -47,10 +49,22 @@ class UsersIndex extends Component
 
     public function restart()
     {
-        $this->role = '';
-        $this->status = '';
-        $this->section = '';
         $this->clear();
+        $this->reset(['sort', 'direction', 'role', 'status', 'section']);
+    }
+
+    public function order($sort)
+    {
+        if ($this->sort == $sort) {
+            if ($this->direction == 'ASC') {
+                $this->direction = 'DESC';
+            } else {
+                $this->direction = 'ASC';
+            }
+        } else {
+            $this->sort = $sort;
+            $this->direction = 'ASC';
+        }
     }
 
     public function render()
@@ -67,12 +81,12 @@ class UsersIndex extends Component
         });
         // Subconsulta para búsqueda de texto
         $query->where(function ($q) {
-            return $q->where ('name',  'LIKE', "%{$this->search}%")
-                    ->orWhere('email', 'LIKE', "%{$this->search}%")
-                    ->orWhere('nia',   'LIKE', "%{$this->search}%");
+            return $q->where('name',  'LIKE', "%{$this->search}%")
+                ->orWhere('email', 'LIKE', "%{$this->search}%")
+                ->orWhere('nia',   'LIKE', "%{$this->search}%");
         });
         // Resultado de la búsqueda ordenado y paginado
-        $this->users = $query->orderBy('name', 'ASC')->paginate($this->perPage);
+        $this->users = $query->orderBy($this->sort, $this->direction)->paginate($this->perPage);
 
         $this->sections = Section::where('schoolyear_id', activeSchoolyearId())->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->get();
 

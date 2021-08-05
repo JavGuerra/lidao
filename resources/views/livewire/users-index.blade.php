@@ -18,7 +18,12 @@
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 flex px-4 py-3 sm:px-6 bg-gradient-to-t from-gray-50">
                     <div class="flex col-span-1 lg:col-span-3 gap-4">
                         <div class="relative w-full">
-                            <x-jet-input wire:model.debounce.500ms="search" autofocus="autofocus" name="search" id="search" class="w-full rounded-md shadow-sm block w-full" type="text" placeholder="{{__('Interactive search...')}}" />
+                            <x-jet-input wire:model.debounce.500ms="search" autofocus="autofocus" name="search" id="search" class="w-full px-10 rounded-md shadow-sm block w-full" type="text" placeholder="{{__('Search')}}" />
+                            <div wire:click="clear" class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm leading-5 text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
                             @if($search !== '')
                             <div wire:click="clear" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -40,9 +45,9 @@
                             <option value="0">{{__('Inactive')}}</option>
                         </select>
 
-                        <x-jet-secondary-button wire:click="restart">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        <x-jet-secondary-button wire:click="restart" class="px-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
                         </x-jet-secondary-button>
 
@@ -65,23 +70,29 @@
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 
                     @if($users->count())
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="table-fixed min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="w-3/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" wire:click="order('name')" class="w-4/12 cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <x-sort-icon name="name" :sort="$sort" :direction="$direction" />
                                     {{__('Name')}}&nbsp;/&nbsp;{{__('NIA')}}
-                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-indigo-600 bg-indigo-100 rounded-full">{{$users->total()}}</span>
+                                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-indigo-600 bg-indigo-100 rounded-full">
+                                        {{$users->total()}}
+                                    </span>
                                 </th>
-                                <th scope="col" class="w-3/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" wire:click="order('email')" class="w-3/12 cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <x-sort-icon name="email" :sort="$sort" :direction="$direction" />
                                     {{__('Email')}}
                                 </th>
-                                <th scope="col" class="w-1/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" wire:click="order('role')" class="w-1/12 cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <x-sort-icon name="role" :sort="$sort" :direction="$direction" />
                                     {{__('Role')}}
                                 </th>
-                                <th scope="col" class="w-1/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <!-- <th scope="col" class="w-1/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     {{__('Language')}}
-                                </th>
-                                <th scope="col" class="w-1/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                </th> -->
+                                <th scope="col" wire:click="order('last_login_at')" class="w-2/12 cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <x-sort-icon name="last_login_at" :sort="$sort" :direction="$direction" />
                                     {{__('Status')}}&nbsp;/&nbsp;{{__('Accessed')}}
                                 </th>
                                 <th scope="col" class="w-2/12 relative px-6 py-3">
@@ -115,9 +126,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ __($roles->get($user->role)->name) }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $languages[$user->locale] }}
-                                </td>
+                                </td> -->
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     @if( $user->status)
                                     <span class="px-1.5 inline-flex text-xs leading-1 font-semibold rounded-full bg-green-200 text-green-800">

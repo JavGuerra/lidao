@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('/welcome');
 })->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->get('/dashboard', function () {
     // TODO ajustar a curso activo.
     return view('/dashboard')
         ->with('schoolyear', activeSchoolyear())
@@ -34,17 +34,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         ->with('books', Book::count());
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->resource('schoolyears', SchoolyearController::class);
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('schoolyears', SchoolyearController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->resource('sections', SectionController::class);
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('sections', SectionController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->resource('users', UserController::class);
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('users', UserController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->post('users/import', [UserController::class, 'import'])->name('users.import');
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->post('users/import', [UserController::class, 'import'])->name('users.import');
 
-Route::middleware(['auth:sanctum', 'verified'])->put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
 
-Route::middleware(['auth:sanctum', 'verified'])->resource('books', BookController::class);
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('books', BookController::class);
 
 // Pruebas durante el desarrollo. TODO BORRAR
 Route::get('pruebas', function () {
