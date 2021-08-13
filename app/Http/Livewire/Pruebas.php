@@ -24,6 +24,11 @@ class Pruebas extends Component
         return $this->cuenta++;
     }
 
+    /**
+     * Renderiza el componente.
+     *
+     * @return \Illuminate\View\View
+     */
     public function render()
     {
         return view('livewire.pruebas');

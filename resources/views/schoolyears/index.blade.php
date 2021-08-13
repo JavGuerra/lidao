@@ -62,7 +62,7 @@
                     </a>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                    <a href="{{ route('users.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                    <a href="{{ route('enrollments.index') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
                       0
                     </a>
                   </td>

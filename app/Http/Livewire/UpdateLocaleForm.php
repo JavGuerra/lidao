@@ -3,15 +3,20 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\App;
+use App\Models\User;
+
 
 class UpdateLocaleForm extends Component
 {
+    // Valor del lenguaje actual y lenguaje seleccionado
     public $lang;
     public $langSelected;
 
+    // Obtiene valor inicial del lenguaje
     public function mount()
     {
-        $this->langSelected = getLang();
+        $this->langSelected = App::getLocale();
         $this->lang = $this->langSelected;
     }
 
@@ -22,18 +27,29 @@ class UpdateLocaleForm extends Component
      */
     public function updateLocale()
     {
-        setLang($this->lang);
-        $this->langSelected = $this->lang;
+        // Si se ha producido cambio...
+        if ($this->lang != $this->langSelected) {
+            // Cambia valor del idioma seleccionado en el componente
+            $this->langSelected = $this->lang;
 
+            // Obtiene el usuario y actualiza el valor de su idioma
+            $user = User::find(auth()->user()->id);
+            $user->locale = $this->lang;
+            $user->save();
+
+            // Cambia el lenguaje en la aplicación y en la sesión
+            App::setlocale($this->lang);
+            session()->put('locale', $this->lang);
+
+            // Recarga la página para aplicar los cambios de idioma
+            $this->redirectRoute('profile.show');
+        }
+        // lanza evento de aviso para la vista del componente
         $this->emit('saved');
-
-        // TODO actualizar página con AJAX
-        // $this->emit('refresh-navigation-menu');
-        return redirect()->route('profile.show');
     }
 
     /**
-     * Render the component.
+     * Renderiza el componente.
      *
      * @return \Illuminate\View\View
      */

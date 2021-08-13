@@ -18,7 +18,7 @@ class CreateSectionsTable extends Migration
             $table->string('name');
             $table->string('annotation')->nullable();
             $table->foreignId('schoolyear_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('stagelevel_id')->nullable();
+            $table->integer('stagelevel_id')->nullable();
             $table->foreignId('creator_id')->nullable();
             $table->timestamps();
         });

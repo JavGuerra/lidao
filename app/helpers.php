@@ -9,33 +9,7 @@ use App\Models\Configuration;
 use App\Models\User;
 use App\Models\Section;
 use App\Models\Schoolyear;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Carbon;
-
-/**
- * Obtiene el idioma en el registro de usuario.
- *
- * @return string
- */
-function getLang()
-{
-    return App::getLocale();;
-}
-
-/**
- * Cambia el idioma en el registro de usuario.
- *
- * @param string $key
- * @return void
- */
-function setLang(string $lang)
-{
-    $user = User::find(auth()->user()->id);
-    $user->locale = $lang;
-    $user->save();
-    App::setlocale($lang);
-    session()->put('locale', $lang);
-}
 
 /**
  * Obtiene el número de entradas por página.
@@ -199,7 +173,7 @@ function numSectionsActiveSchoolyear()
  *
  * @return int
  */
-function sthisYear()
+function thisYear()
 {
     return Carbon::now()->format('Y');
 }
@@ -211,20 +185,23 @@ function sthisYear()
  */
 function thisYearInRange()
 {
-    return sthisYear() <= 2154 && sthisYear() >= 1901;
+    return thisYear() <= 2154 && thisYear() >= 1901;
 }
 
 
 
 /**
  * Devuelve el año de inicio.
- * Si el año ya está en uso, busca el año siguiente disponible.
+ * Si el año ya está en uso, busca el año siguiente disponible hasta 2155
+ * Si no quedan años disponibles, el último calculado es devuelto, pero
+ * la aplicación no permitirá la creación del nuevo curso escolar al existir
+ * ya un curso previamente creado con el año de inicio devuelto.
  *
  * @return int
  */
 function startYear()
 {
-    $startYear = Carbon::now()->format('Y');
+    $startYear = thisYear();
     $startYear--;
     if ($startYear < 1901) {
         $startYear = 1901;

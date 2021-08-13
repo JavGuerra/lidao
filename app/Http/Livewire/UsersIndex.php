@@ -36,15 +36,9 @@ class UsersIndex extends Component
         $this->sections = Section::where('schoolyear_id', activeSchoolyearId())->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->get();
     }
 
-    public function page1()
-    {
-        $this->page = 1;
-    }
-
     public function clear()
     {
         $this->search = '';
-        $this->page1();
     }
 
     public function restart()
@@ -67,6 +61,11 @@ class UsersIndex extends Component
         }
     }
 
+    /**
+     * Renderiza el componente.
+     *
+     * @return \Illuminate\View\View
+     */
     public function render()
     {
         // Abre la consulta sobre usuarios
@@ -90,8 +89,8 @@ class UsersIndex extends Component
 
         $this->sections = Section::where('schoolyear_id', activeSchoolyearId())->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->get();
 
-        // Con cada cambio, lleva a la págian 1 para evitar mostrar páginas vacías
-        $this->page1();
+        // Con cada cambio, resetea la paginación para evitar errores por páginas vacías
+        $this->resetPage();
 
         // Muestra el resultado
         return view('livewire.users-index', [

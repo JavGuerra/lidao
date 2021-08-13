@@ -800,6 +800,8 @@
     "First cycle: 2nd Primary (7-8 years)": "Primer ciclo: 2º Primaria (7-8 años)",
     "1st Primary": "1º Primaria",
     "2nd Primary": "2º Primaria",
+
+    "Enrollments": "Matrículas",
     
     "Users": "Usuarios",
     "New user": "Nuevo usuario",
@@ -837,6 +839,7 @@
     
     "There are no school years to show": "No hay cursos que mostrar",
     "There are no sections to show": "No hay secciones que mostrar",
+    "There are no enrollments to show": "No hay matriculaciones que mostrar",
     "There are no teachers to show": "No hay profesores que mostrar",
     "There are no students to show": "No hay alumnos que mostrar",
     "There are no users to show": "No hay usuarios que mostrar",

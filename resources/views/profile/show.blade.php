@@ -13,7 +13,6 @@
                 <x-jet-section-border />
             @endif
 
-            <!-- TODO Conectar dentro de profile.update-profile-information-form -->
             <div class="mt-10 sm:mt-0">
                 @livewire('update-locale-form')
             </div>

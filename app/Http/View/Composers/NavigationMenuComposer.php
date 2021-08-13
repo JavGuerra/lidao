@@ -6,7 +6,6 @@ use Illuminate\View\View;
 
 class NavigationMenuComposer
 {
-
     /**
      * Vincular datos a la vista.
      *
@@ -17,12 +16,12 @@ class NavigationMenuComposer
     {
         // Pasa la lista de enlaces del menú a las vistas
         $navLinks = [
-            ['href' => 'dashboard', 'name' => 'dashboard', 'text' => 'Dashboard', 'rol' => [0, 1, 2]],
-            ['href' => 'schoolyears.index', 'name' => 'schoolyears.*', 'text' => 'School years', 'rol' => 1],
-            ['href' => 'sections.index', 'name' => 'sections.*', 'text' => 'Sections', 'rol' => [0, 1, 2]],
-            ['href' => 'users.index', 'name' => 'users.*', 'text' => 'Users', 'rol' => 1],
-            //['href' => 'users.index', 'name' => 'users.*', 'text' => 'Students', 'rol' => 2],
-            ['href' => 'books.index', 'name' => 'books.*', 'text' => 'Books', 'rol' => [0, 1, 2]],
+            ['href' => 'dashboard', 'name' => 'dashboard', 'text' => 'Dashboard'],
+            ['href' => 'schoolyears.index', 'name' => 'schoolyears.*', 'text' => 'School years'],
+            ['href' => 'sections.index', 'name' => 'sections.*', 'text' => 'Sections'],
+            ['href' => 'enrollments.index', 'name' => 'enrollments.*', 'text' => 'Enrollments'],
+            ['href' => 'users.index', 'name' => 'users.*', 'text' => 'Users'],
+            ['href' => 'books.index', 'name' => 'books.*', 'text' => 'Books'],
         ];
         $view->with('navLinks', $navLinks);
     }

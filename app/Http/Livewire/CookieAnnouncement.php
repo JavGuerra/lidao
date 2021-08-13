@@ -9,7 +9,7 @@ class CookieAnnouncement extends Component
 {
 
     public ?bool $bannerClicked = false;
-    
+
     private string $cookieName = 'lidao_cookie_banner';
 
 
@@ -22,12 +22,16 @@ class CookieAnnouncement extends Component
     public function bannerClicked()
     {
         $this->bannerClicked = true;
-        
+
         // params are name, value, expire
         Cookie::queue($this->cookieName, 1, 15);
-
     }
 
+    /**
+     * Renderiza el componente.
+     *
+     * @return \Illuminate\View\View
+     */
     public function render()
     {
         return view('livewire.cookie-announcement');

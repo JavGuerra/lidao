@@ -24,7 +24,7 @@
             {{ __('Saved.') }}
         </x-jet-action-message>
 
-        <x-jet-button>
+        <x-jet-button wire:loading.attr="disabled">
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>

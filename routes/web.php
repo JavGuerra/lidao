@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SchoolyearController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 
@@ -35,15 +36,11 @@ Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->get('/dashboard'
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('schoolyears', SchoolyearController::class);
-
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('sections', SectionController::class);
-
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('enrollments', EnrollmentController::class);
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('users', UserController::class);
-
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->post('users/import', [UserController::class, 'import'])->name('users.import');
-
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
-
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('books', BookController::class);
 
 // Pruebas durante el desarrollo. TODO BORRAR
