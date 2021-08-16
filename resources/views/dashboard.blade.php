@@ -6,6 +6,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
        
+        @if(Auth::user()->role == 0)
+
             @if(! $schoolyear)
             <x-suggestion>
                 {{ __('There are no active school years. Create or activate one by clicking ') }}
@@ -90,6 +92,8 @@
                 </div>
             </div>
 
+        @endif
+
             <div class="mt-6 border-b border-gray-200 bg-white overflow-hidden shadow-lg sm:rounded-lg">
                 <div class="min-w-full bg-gray-50 border-b border-gray-200">
                     <div class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -106,7 +110,7 @@
                             <div class="mt-6">
                                 @include('images.application-logo', ['attributes' => 'block h-12 w-auto'])
                             </div>
-                            <div class="text-2xl mt-6">{{ __('Wellcome') }} {{ auth()->user()->name }}</div>
+                            <div class="text-2xl mt-6">{{ __('Wellcome') }} {{ Auth::user()->name }}</div>
                         </div>
 
                         <div class="mt-5 md:mt-0 md:col-span-2 bg-white text-gray-500">

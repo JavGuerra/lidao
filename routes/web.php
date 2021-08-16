@@ -25,6 +25,11 @@ Route::get('/', function () {
     return view('/welcome');
 })->name('home');
 
+// Pruebas durante el desarrollo. TODO BORRAR
+Route::get('pruebas', function () {
+    return view('pruebas');
+});
+
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->get('/dashboard', function () {
     // TODO ajustar a curso activo.
     return view('/dashboard')
@@ -35,15 +40,43 @@ Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->get('/dashboard'
         ->with('books', Book::count());
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('schoolyears', SchoolyearController::class);
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('sections', SectionController::class);
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('enrollments', EnrollmentController::class);
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('users', UserController::class);
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->post('users/import', [UserController::class, 'import'])->name('users.import');
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
-Route::middleware(['auth:sanctum', 'verified', 'checkstatus'])->resource('books', BookController::class);
+// Rutas de los administradores
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus', 'userrole:0'])->group(function () {
+    Route::resource('schoolyears', SchoolyearController::class);
+    Route::resource('sections', SectionController::class);
+    Route::resource('enrollments', EnrollmentController::class);
+    Route::resource('users', UserController::class);
+    Route::post('users/import', [UserController::class, 'import'])->name('users.import');
+    Route::put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
+    Route::resource('books', BookController::class);
+});
 
-// Pruebas durante el desarrollo. TODO BORRAR
-Route::get('pruebas', function () {
-    return view('pruebas');
+// Rutas de los profesores
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus', 'userrole:1'])->group(function () {
+
+    Route::get('mysections', function () {
+        return view('mysections.index');
+    })->name('mysections.index');
+
+    Route::get('students', function () {
+        return view('students.index');
+    })->name('students.index');
+
+    Route::get('library', function () {
+        return view('library.index');
+    })->name('library.index');
+
+});
+
+// Rutas de los alumnos
+Route::middleware(['auth:sanctum', 'verified', 'checkstatus', 'userrole:2'])->group(function () {
+
+    Route::get('readings', function () {
+        return view('readings.index');
+    })->name('readings.index');
+
+    Route::get('library', function () {
+        return view('library.index');
+    })->name('library.index');
+
 });

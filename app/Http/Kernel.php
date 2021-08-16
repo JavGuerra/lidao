@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // Cambia el idioma de la vista
             \App\Http\Middleware\UseLocalization::class,
         ],
 
@@ -63,6 +64,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        // Verifica que el usuario esté activo
         'checkstatus' => \App\Http\Middleware\CheckStatus::class,
+        // Verifica el rol del usuario
+        'userrole' => \App\Http\Middleware\EnsureUserHasRole::class,
     ];
 }

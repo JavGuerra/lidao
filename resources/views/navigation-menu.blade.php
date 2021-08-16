@@ -13,9 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @foreach ($navLinks as $link)
-                    <x-jet-nav-link href="{{ route($link['href']) }}" :active="request()->routeIs($link['name'])">
-                        {{ __($link['text']) }}
-                    </x-jet-nav-link>
+                        @if($link['role'] == Auth::user()->role)
+                            <x-jet-nav-link href="{{ route($link['href']) }}" :active="request()->routeIs($link['name'])">
+                                {{ __($link['text']) }}
+                            </x-jet-nav-link>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -141,9 +143,11 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @foreach ($navLinks as $link)
-            <x-jet-responsive-nav-link href="{{ route($link['href']) }}" :active="request()->routeIs($link['name'])">
-                {{ __($link['text']) }}
-            </x-jet-responsive-nav-link>
+                @if($link['role'] == Auth::user()->role)
+                    <x-jet-responsive-nav-link href="{{ route($link['href']) }}" :active="request()->routeIs($link['name'])">
+                        {{ __($link['text']) }}
+                    </x-jet-responsive-nav-link>
+                @endif
             @endforeach
         </div>
 
