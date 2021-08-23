@@ -8,7 +8,7 @@ Este proyecto desarrolla una plataforma Web educativa para fomentar y mejorar el
 
 ## Estatus
 
-En desarrollo
+En desarrollo.
 
 ## Licencia
 
