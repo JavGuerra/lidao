@@ -45,38 +45,21 @@ Route::middleware(['auth:sanctum', 'verified', 'checkstatus', 'userrole:0'])->gr
     Route::resource('schoolyears', SchoolyearController::class);
     Route::resource('sections', SectionController::class);
     Route::resource('enrollments', EnrollmentController::class);
-    Route::resource('users', UserController::class);
     Route::post('users/import', [UserController::class, 'import'])->name('users.import');
     Route::put('users/{user}/passwd', [UserController::class, 'passwd'])->name('users.passwd');
+    Route::resource('users', UserController::class);
     Route::resource('books', BookController::class);
 });
 
 // Rutas de los profesores
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus', 'userrole:1'])->group(function () {
-
-    Route::get('mysections', function () {
-        return view('mysections.index');
-    })->name('mysections.index');
-
-    Route::get('students', function () {
-        return view('students.index');
-    })->name('students.index');
-
-    Route::get('library', function () {
-        return view('library.index');
-    })->name('library.index');
-
+    Route::get('mysections', function () {return view('mysections.index');})->name('mysections.index');
+    Route::get('students', function () {return view('students.index');})->name('students.index');
+    Route::get('library', function () {return view('library.index');})->name('library.index');
 });
 
 // Rutas de los alumnos
 Route::middleware(['auth:sanctum', 'verified', 'checkstatus', 'userrole:2'])->group(function () {
-
-    Route::get('readings', function () {
-        return view('readings.index');
-    })->name('readings.index');
-
-    Route::get('library', function () {
-        return view('library.index');
-    })->name('library.index');
-
+    Route::get('readings', function () {return view('readings.index');})->name('readings.index');
+    Route::get('library', function () {return view('library.index');})->name('library.index');
 });

@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
 
         // TODO deshabilitar en producción
         \App\Models\User::factory(10)->create();
+        \App\Models\Nia::factory(10)->create();
     }
 }

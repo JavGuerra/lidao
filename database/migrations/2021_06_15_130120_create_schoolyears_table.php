@@ -19,7 +19,7 @@ class CreateSchoolyearsTable extends Migration
             $table->string('annotation')->nullable();
             $table->year('start_at')->unique();
             $table->year('end_at')->unique();
-            $table->foreignId('creator_id')->nullable();
+            $table->unsignedBigInteger('creator_id')->nullable();
             $table->timestamps();
             $table->timestamp('closed_at')->nullable();
         });

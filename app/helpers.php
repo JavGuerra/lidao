@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Código de ayuda disponible en toda la aplicación
+ * Código de ayuda disponible en toda la aplicación.
  * Se carga con composer.json
  */
 
@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Section;
 use App\Models\Schoolyear;
 use Illuminate\Support\Carbon;
+
 
 /**
  * Obtiene el número de entradas por página.
@@ -21,6 +22,7 @@ function numPaginate()
     return session()->get('paginate');
 }
 
+
 /**
  * Devuelve el valor de las configuraciones en la BBDD.
  *
@@ -31,6 +33,7 @@ function getConfig(string $key)
 {
     return Configuration::find($key)->value;
 }
+
 
 /**
  * Fija el valor de las configuraciones en la BBDD.
@@ -48,8 +51,9 @@ function setConfig(string $key, string $value)
     }
 }
 
+
 /**
- * Devuelve true si hay un curso activo
+ * Devuelve true si hay un curso activo.
  *
  * @return bool
  */
@@ -57,6 +61,7 @@ function thereIsAnActiveSchoolyear()
 {
     return getConfig('activeSchoolyearId') != '';
 }
+
 
 /**
  * Devuelve true si el curso indicado está activo
@@ -69,8 +74,9 @@ function thisSchoolyearIsActive(int $id)
     return getConfig('activeSchoolyearId') == $id;
 }
 
+
 /**
- * Activa el curso indicado mediante id
+ * Activa el curso indicado mediante id.
  *
  * @param int $id
  * @return void
@@ -79,6 +85,7 @@ function activateSchoolYear(int $id)
 {
     setConfig('activeSchoolyearId', $id);
 }
+
 
 /**
  * Desactiva el curso activo
@@ -89,6 +96,7 @@ function deactivateSchoolYear()
 {
     setConfig('activeSchoolyearId', '');
 }
+
 
 /**
  * Devuelve el id del curso activo.
@@ -119,8 +127,9 @@ function activeSchoolyear()
     return $selected;
 }
 
+
 /**
- * Devuelve el curso solicitado mediante id
+ * Devuelve el curso solicitado mediante id.
  *
  * @param int $id
  * @return object
@@ -129,6 +138,7 @@ function theSchoolyear(int $id)
 {
     return Schoolyear::find($id);
 }
+
 
 /**
  * Devuelve el número de cursos escolares
@@ -142,7 +152,7 @@ function numSchoolyears()
 
 
 /**
- * Devuelve el número de secciones que pertenecen a un año escolar
+ * Devuelve el número de secciones que pertenecen a un año escolar.
  *
  * @param int
  * @return int
@@ -154,7 +164,7 @@ function numSections(int $id)
 
 
 /**
- * Devuelve el número de clases del curso activo.
+ * Devuelve el número de secciones del curso activo.
  *
  * @return int
  */
@@ -178,6 +188,7 @@ function thisYear()
     return Carbon::now()->format('Y');
 }
 
+
 /**
  * Año actual dentro del rango de fechas posibles.
  *
@@ -187,7 +198,6 @@ function thisYearInRange()
 {
     return thisYear() <= 2154 && thisYear() >= 1901;
 }
-
 
 
 /**
@@ -235,5 +245,5 @@ function userName(int $id)
  */
 function teachers()
 {
-    return User::where('role', 2)->where('status', true)->get();
+    return User::where('role', 1)->where('status', true)->get();
 }
