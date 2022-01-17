@@ -43,7 +43,7 @@ class EditSectionForm extends Component
     public $password = '';
 
     /**
-     * El id de la clase actual.
+     * El id de la sección actual.
      *
      * @var int
      */
@@ -68,7 +68,7 @@ class EditSectionForm extends Component
 
     
     /**
-     * Borra la clase.
+     * Borra la sección.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -84,7 +84,7 @@ class EditSectionForm extends Component
             ]);
         }
 
-        // Borrando de la clase...
+        // Borrando de la sección...
         if ($this->sectionId) {
             Section::find($this->sectionId)->delete();
             // y lanzando el aviso

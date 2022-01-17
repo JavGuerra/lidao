@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Nia;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,7 +19,8 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index', [
-            'users' => User::all()
+            'users' => User::all(),
+            //'nias' => Nia::all()
         ]);
     }
 
@@ -43,21 +45,28 @@ class UserController extends Controller
         $request->validate([
             'name'      => 'required|max:255',
             'role'      => 'required|in:0,1,2',
-            'nia'       => 'min:7|unique:users,nia',
+            'nia'       => 'required_if:role,2|min:7|unique:users,nia',
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|string|min:8',
         ]);
 
-        // TODO Nia required si role = 2
-
-        $user = User::create($request->all());
-
+        // Crea el usuario, en la tabla Usuarios, con los datos del formulario, salvo el NIA.
+        $user = User::create($request->except('nia'));
         $user->save();
+        
+        $nia = '';
+        // Si el usuario es 'Alumno' (role 2), guarda su NIA en la tabla 'nias'.
+        if ($request->role == 2) {
+            $nia = Nia::create($request->only('nia'));
+            $nia->user_id = $user->id;
+            $nia->save();
+        }
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');
 
         return redirect()->route('users.edit', $user);
+        //TODO pasar nia a users.edit
     }
 
     /**
@@ -149,15 +158,16 @@ class UserController extends Controller
         $request->validate([
             'name'  => 'required|max:255',
             'role'  => 'required|in:0,1,2',
-            'nia'   => 'min:7|required_if:role,2|unique:users,nia,' . $user->id,
+            'nia'   => 'required_if:role,2|min:7|unique:users,nia,' . $user->id,
             'email' => 'required|email|unique:users,email,' . $user->id,
         ]);
 
-        if ($request->role <> 2) {
-            $request->merge(['nia' => null]);
-        }
+        $user->update($request->except('nia'));
 
-        $user->update($request->all());
+        if ($request->role <> 2) {
+            // $request->merge(['nia' => null]);
+            // TODO borrar nia de la tabla nias
+        }
 
         $request->session()->flash('flash.banner', __('The information was saved successfully.'));
         $request->session()->flash('flash.bannerStyle', 'success');

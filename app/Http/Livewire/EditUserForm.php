@@ -43,7 +43,7 @@ class EditUserForm extends Component
     public $password = '';
 
     /**
-     * El id de la clase actual.
+     * El id del usuario actual.
      *
      * @var int
      */
@@ -107,7 +107,7 @@ class EditUserForm extends Component
 
 
     /**
-     * Borra la clase.
+     * Borra el usuario.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -123,7 +123,7 @@ class EditUserForm extends Component
             ]);
         }
 
-        // Borrando de la clase...
+        // Borrando del usuario...
         if ($this->userId) {
             User::find($this->userId)->delete();
             // y lanzando el aviso

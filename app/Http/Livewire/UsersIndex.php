@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use App\Models\Nia;
 use App\Models\Section;
 
 class UsersIndex extends Component
@@ -20,6 +21,7 @@ class UsersIndex extends Component
     ];
 
     protected $sections;
+    protected $users;
 
     public $search = '';
     public $sort = 'name';
@@ -70,20 +72,25 @@ class UsersIndex extends Component
     {
         // Abre la consulta sobre usuarios
         $query = User::query();
+
         // Consulta para rol si rol está seleccionado
         $query->when($this->role != '', function ($q) {
             return $q->where('role', $this->role);
         });
+
         // Consulta para status si status está seleccionado
         $query->when($this->status != '', function ($q) {
             return $q->where('status', $this->status);
         });
+
+        //                ->orWhere('nia',   'LIKE', "%{$this->search}%");
+
         // Subconsulta para búsqueda de texto
         $query->where(function ($q) {
             return $q->where('name',  'LIKE', "%{$this->search}%")
-                ->orWhere('email', 'LIKE', "%{$this->search}%")
-                ->orWhere('nia',   'LIKE', "%{$this->search}%");
+                ->orWhere('email', 'LIKE', "%{$this->search}%");
         });
+        
         // Resultado de la búsqueda ordenado y paginado
         $this->users = $query->orderBy($this->sort, $this->direction)->paginate($this->perPage);
 
