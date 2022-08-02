@@ -66,7 +66,7 @@ class EditSectionForm extends Component
         $this->confirming = true;
     }
 
-    
+
     /**
      * Borra la sección.
      *

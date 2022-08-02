@@ -23,4 +23,3 @@ class Schoolyear extends Model
         'closed_at',
     ];
 }
-

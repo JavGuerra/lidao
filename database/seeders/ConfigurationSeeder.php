@@ -14,10 +14,13 @@ class ConfigurationSeeder extends Seeder
      */
     public function run()
     {
-
         DB::table('configurations')->insert([
             ['key' => 'paginate',           'value' => 10],
             ['key' => 'activeSchoolyearId', 'value' => ''],
+            ['key' => 'theme',              'value' =>'default'],
+            ['key' => 'adminDoc',           'value' =>'https://lidao-docs.readthedocs.io/es/latest/administrador/index.html'],
+            ['key' => 'teacherDoc',         'value' =>'https://lidao-docs.readthedocs.io/es/latest/profesor/index.html'],
+            ['key' => 'studentDoc',         'value' =>'https://lidao-docs.readthedocs.io/es/latest/alumno/index.html'],
         ]);
     }
 }

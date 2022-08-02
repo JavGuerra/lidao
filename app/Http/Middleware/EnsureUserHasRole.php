@@ -17,10 +17,12 @@ class EnsureUserHasRole
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if (Auth::check() && Auth::user()->role != $role) {
-            return abort(403);
+        $result = $next($request);
+        
+        if (Auth::check() && userRole(Auth::user()->role) != $role) {
+            $result = abort(403);
         }
 
-        return $next($request);
+        return $result;
     }
 }

@@ -62,7 +62,7 @@
         </x-form-section>
 
         <div class="mt-10 sm:mt-0">
-            <x-jet-section-border />
+            <x-section-border />
         </div>
         <div class="mt-10 sm:mt-0">
             <livewire:edit-section-form

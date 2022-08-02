@@ -105,7 +105,7 @@ class EditSchoolyearForm extends Component
 
         // Obtiene el curso
         $schoolyear = theSchoolyear($this->schoolyearId);
-        
+
         // Desactiva el curso
         deactivateSchoolYear();
 

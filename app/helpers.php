@@ -247,3 +247,15 @@ function teachers()
 {
     return User::where('role', 1)->where('status', true)->get();
 }
+
+/**
+ * Devuelve el nombre del rol
+ * 
+ * @return string
+ */
+function userRole(int $role)
+{   
+    $roles =  ['Admin', 'Teacher', 'Student'];
+    $role = (int) $role;
+    return ($role >= 0 && $role <= 2) ? $roles[$role] : null;
+}

@@ -91,7 +91,7 @@
 
     @if($selected)
     <div class="mt-10 sm:mt-0">
-      <x-jet-section-border />
+      <x-section-border />
     </div>
     @endif
 
@@ -183,12 +183,7 @@
 
     @else
 
-    <!-- Si no hay nada que mmostrar... -->
-    <div class="mt-3 py-10 flex justify-center">
-      @include('images.schoolyears')
-    </div>
-
-    <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no school years to show') }}</div>
+    <x-nada-que-mostrar img="images.schoolyears" msg="There are no school years to show" />
 
     @endif
 

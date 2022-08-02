@@ -10,12 +10,12 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class UsersImport implements ToModel, WithHeadingRow, WithValidation
 {
     private $numRows = 0;
-    
+
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         ++$this->numRows;
@@ -39,7 +39,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
             'rol' => 'nullable|in:profesor,alumno',
         ];
     }
- 
+
     public function getRowCount(): int
     {
         return $this->numRows;

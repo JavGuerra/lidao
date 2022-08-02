@@ -17,7 +17,8 @@ class UseLocalization
      */
     public function handle(Request $request, Closure $next)
     {
-        // Obtiene el idioma si la variable 'locale' de la sesión, y lo pasa a App
+        // Obtiene el idioma de la variable 'locale' de la sesión si existe,
+        // y lo fija
         if (session()->has('locale')) {
             App::setlocale(session()->get('locale'));
         }

@@ -705,12 +705,12 @@
     "Zimbabwe": "Zimbabwe",
     "Zip \/ Postal Code": "Zip \/ Código postal",
     "Åland Islands": "Islas Åland",
-
     "Dismiss": "Quitar",
     "Learn more": "Saber más",
     "This website uses cookies.": "Este sitio web usa cookies.",
     "This website uses cookies. Learn more about our privacy policy.": "Este sitio web usa cookies. Conozca más sobre nuestra política de privacidad.",
     "This project develops an educational Web platform to promote and improve knowledge of the spelling rules of Spanish and their reading and writing skills, through the use of interactive digital books adapted by age. The platform will be offered as a didactic tool for the teacher, who will be able to define the different virtual sections, the students who will participate in them and the books that each section must complete, being able to monitor the status of their students' readings.": "Este proyecto desarrolla una plataforma Web educativa para fomentar y mejorar el conocimiento de las reglas ortográficas del español y sus competencias de lectura y escritura, a través del uso de libros digitales interactivos adaptados por edad. La plataforma se ofrecerá a modo de herramienta didáctica para el profesor, que podrá definir las distintas secciones virtuales, los alumnos que participarán en ellas y los libros que cada sección deberá completar, pudiendo hacer un seguimiento del estado de las lecturas de sus alumnos.",
+    "User's manual": "Manual de usuario",
     "Wellcome": "Bienvenido",
     "About": "Acerca de",
     "Language": "Idioma",
@@ -744,11 +744,10 @@
     "here": "aquí",
     "Change password": "Cambiar contraseña",
     "To change the user's password, enter the new password and confirm it before making the change.": "Para cambiar la contraseña del usuario, introduzca la nueva contraseña y confírmela antes del hacer el cambio.",
-
     "Active school year": "Curso activo",
     "School year": "Curso",
     "School years": "Cursos",
-    "School years list": "Listado de cursos",   
+    "School years list": "Listado de cursos",
     "Other school years": "Otros cursos",
     "New school year": "Nuevo curso",
     "School year information": "Información del curso",
@@ -773,7 +772,6 @@
     "Once the school year is deactivated, you will not be able to add sections or other resources, but you can reactivate it if you wish.": "Una vez el curso escolar esté desactivado, no podrá añadir secciones u otros recursos, pero podrá volver a activarlo si lo desea.",
     "Are you sure you want to activate the school year? Once the school year is deactivated, you will not be able to add sections or other resources, but you can reactivate it if you wish.": "¿Está seguro que desea desactivar el curso? Una vez el curso escolar esté desactivado, no podrá añadir secciones u otros recursos, pero podrá volver a activarlo si lo desea.",
     "The course has been deactivated.": "El curso ha sido desactivado.",
-    
     "Section": "Sección",
     "Sections": "Secciones",
     "Sections list": "Listado de secciones",
@@ -790,15 +788,12 @@
     "Once the section is deleted, all of it relationated data will be permanently deleted. Before deleting the section, please download any data or information that you wish to retain.": "Una vez que se elimina la sección, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar la sección, descargue cualquier dato o información que desee conservar.",
     "Are you sure you want to delete the section? Once the section is deleted, all of it relationated data will be permanently deleted. Before deleting the section, please download any data or information that you wish to retain.": "¿Está seguro de que desea eliminar la sección? Una vez que se elimina la sección, todas los datos relacionados se eliminarán permanentemente. Antes de eliminar la sección, descargue cualquier dato o información que desee conservar.",
     "The section has been definitively eliminated.": "La sección ha sido eliminada definitivamente.",
-    
     "Level": "Nivel",
     "First cycle: 1st Primary (6-7 years)": "Primer ciclo: 1º Primaria (6-7 años)",
     "First cycle: 2nd Primary (7-8 years)": "Primer ciclo: 2º Primaria (7-8 años)",
     "1st Primary": "1º Primaria",
     "2nd Primary": "2º Primaria",
-
     "Enrollments": "Matrículas",
-    
     "Users": "Usuarios",
     "New user": "Nuevo usuario",
     "New users": "Nuevos usuarios",
@@ -827,15 +822,12 @@
     "When the user is active, he can log into the platform to access the sections in which he is enrolled and read his books, and he can be enrolled in new sections.": "Cuando el usuario está activo puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, y puede ser matriculado en nuevas secciones.",
     "Are you sure you want to deactivate the user? When the user is inactive, he cannot log into the platform to access the sections in which he are enrolled and read their books, nor can he be enrolled in new sections.": "¿Está seguro que desea desactivar el usuario? Cuando el usuario está inactivo no puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, ni puede ser matriculado en nuevas secciones.",
     "Are you sure you want to activate the user? When the user is active, he can log into the platform to access the sections in which he is enrolled and read his books, and he can be enrolled in new sections.": "¿Está seguro que desea activar el usuario? Cuando el usuario está activo puede iniciar sesión en la plataforma para acceder a las secciones en las que esté matriculado y leer sus libros, y puede ser matriculado en nuevas secciones.",
-
     "Books": "Libros",
     "New book": "Nuevo libro",
     "Create book": "Crear libro",
     "Number of books": "Número de libros",
-
     "Readings": "Lecturas",
     "Library": "Biblioteca",
-    
     "There are no school years to show": "No hay cursos que mostrar",
     "There are no sections to show": "No hay secciones que mostrar",
     "There are no enrollments to show": "No hay matriculaciones que mostrar",

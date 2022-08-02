@@ -53,7 +53,7 @@ class UserController extends Controller
         // Crea el usuario, en la tabla Usuarios, con los datos del formulario, salvo el NIA.
         $user = User::create($request->except('nia'));
         $user->save();
-        
+
         $nia = '';
         // Si el usuario es 'Alumno' (role 2), guarda su NIA en la tabla 'nias'.
         if ($request->role == 2) {

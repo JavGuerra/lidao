@@ -105,14 +105,9 @@
       </div>
     </div>
 
-
     @else
 
-    <div class="mt-3 py-10 flex justify-center">
-      @include('images.sections')
-    </div>
-
-    <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no sections to show') }}</div>
+    <x-nada-que-mostrar img="images.sections" msg="There are no sections to show" />
 
     @endif
 

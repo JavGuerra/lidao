@@ -46,7 +46,7 @@
     </x-jet-form-section>
 
     @if ($this->user->tokens->isNotEmpty())
-        <x-jet-section-border />
+        <x-section-border />
 
         <!-- Manage API Tokens -->
         <div class="mt-10 sm:mt-0">

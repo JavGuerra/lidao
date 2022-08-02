@@ -4,11 +4,7 @@
   </x-slot>
   <x-main>
 
-    <div class="mt-3 py-10 flex justify-center">
-      @include('images.enrollments')
-    </div>
+    <x-nada-que-mostrar img="images.enrollments" msg="There are no enrollments to show" />
 
-    <div class="text-center text-2xl text-gray-500 mb-10">{{ __('There are no enrollments to show') }}</div>
-    
   </x-main>
 </x-app-layout>

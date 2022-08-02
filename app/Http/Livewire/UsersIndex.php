@@ -35,7 +35,9 @@ class UsersIndex extends Component
     {
         $this->perPage = numPaginate();
 
-        $this->sections = Section::where('schoolyear_id', activeSchoolyearId())->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->get();
+        $this->sections = Section::where('schoolyear_id', activeSchoolyearId())
+            ->orderBy('stagelevel_id', 'ASC')
+            ->orderBy('name', 'ASC')->get();
     }
 
     public function clear()
@@ -90,13 +92,17 @@ class UsersIndex extends Component
             return $q->where('name',  'LIKE', "%{$this->search}%")
                 ->orWhere('email', 'LIKE', "%{$this->search}%");
         });
-        
+
         // Resultado de la búsqueda ordenado y paginado
-        $this->users = $query->orderBy($this->sort, $this->direction)->paginate($this->perPage);
+        $this->users = $query->orderBy($this->sort, $this->direction)
+            ->paginate($this->perPage);
 
-        $this->sections = Section::where('schoolyear_id', activeSchoolyearId())->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->get();
+        $this->sections = Section::where('schoolyear_id', activeSchoolyearId())
+            ->orderBy('stagelevel_id', 'ASC')
+            ->orderBy('name', 'ASC')->get();
 
-        // Con cada cambio, resetea la paginación para evitar errores por páginas vacías
+        // Con cada cambio, resetea la paginación para evitar
+        // errores por páginas vacías
         $this->resetPage();
 
         // Muestra el resultado

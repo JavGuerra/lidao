@@ -1,4 +1,4 @@
-<x-jet-form-section submit="updateLocale">
+<x-form-section submit="updateLocale" prevent="true">
     <x-slot name="title">
         {{ __('Choose Language') }}
     </x-slot>
@@ -28,4 +28,4 @@
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>
-</x-jet-form-section>
+</x-form-section>
