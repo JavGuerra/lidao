@@ -145,13 +145,13 @@
               </dd>
             </div>
             @endif
-            @if(!$user->status && $user->inactived_at != null)
+            @if(!$user->status && $user->deactivated_at != null)
             <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500 sm:col-span-2">
                 {{__('Inactive')}}
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                {{ \Carbon\Carbon::parse($user->inactived_at)->format('d M Y H:i') }}
+                {{ \Carbon\Carbon::parse($user->deactivated_at)->format('d M Y H:i') }}
               </dd>
             </div>
             @endif

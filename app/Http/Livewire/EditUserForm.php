@@ -97,7 +97,7 @@ class EditUserForm extends Component
         $this->resetErrorBag();
 
         $user = User::find($this->userId);
-        $user->update(['status' => false, 'inactived_at' => \Carbon\Carbon::now()]);
+        $user->update(['status' => false, 'deactivated_at' => \Carbon\Carbon::now()]);
 
         $request->session()->flash('flash.banner', __('The user is now inactive.'));
         $request->session()->flash('flash.bannerStyle', 'success');

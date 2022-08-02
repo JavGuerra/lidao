@@ -32,7 +32,7 @@ class User extends Authenticatable
         'locale',
         'last_login_ip',
         'last_login_at',
-        'inactived_at',
+        'deactivated_at',
     ];
 
     /**

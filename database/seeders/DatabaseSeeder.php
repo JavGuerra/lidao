@@ -13,9 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(AdminSeeder::class);
         $this->call(ConfigurationSeeder::class);
 
-        // TODO deshabilitar los factories en producción, quitar esta línea y dejar la siguiente.
+        // TODO deshabilitar los factories en producción.
         // Poblar la BBDD con usuarios de prueba al azar
         //\App\Models\User::factory(10)->create();
         //\App\Models\Nia::factory(10)->create();

@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->ipAddress('last_login_ip')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->timestamps();
-            $table->timestamp('inactived_at')->nullable();
+            $table->timestamp('deactivated_at')->nullable();
         });
     }
 
