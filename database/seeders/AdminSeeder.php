@@ -18,11 +18,11 @@ class AdminSeeder extends Seeder
             [
                 'id' => '1',
                 'name' => 'Admin',
-                'email' => 'admin@email.es',
+                'email' => 'admin@correo.es',
                 'email_verified_at' => null,
                 'role' => 0,
                 'locale' => 'es',
-                'password' => '$2y$10$CiK4KgbiamkMKRqIj1sDlOTlr9z82zC5trlc/IJ8I8ls2zXiN5Vjy',
+                'password' => '$2y$10$hBN1qRkn7iKSbAiQ3CKbPe1fYo01E..bn8Ra8NnG4iZ3qP5K5WDiy', // adminadmin
                 'two_factor_secret' => null,
                 'two_factor_recovery_codes' => null,
                 'remember_token' => null,
@@ -30,7 +30,7 @@ class AdminSeeder extends Seeder
                 'status' => 1,
                 'last_login_ip' => null,
                 'last_login_at' => null,
-                'created_at' => null,
+                'created_at' => now(),
                 'updated_at' => null,
                 'deactivated_at' => null
             ]

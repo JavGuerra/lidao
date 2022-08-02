@@ -15,10 +15,10 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 
-                <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 flex px-4 py-3 sm:px-6 bg-gradient-to-t from-gray-50">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 px-4 py-3 sm:px-6 bg-gradient-to-t from-gray-50">
                     <div class="flex col-span-1 lg:col-span-3 gap-4">
                         <div class="relative w-full">
-                            <x-jet-input wire:model.debounce.500ms="search" autofocus="autofocus" name="search" id="search" class="w-full px-10 rounded-md shadow-sm block w-full" type="text" placeholder="{{__('Search')}}" />
+                            <x-jet-input wire:model.debounce.500ms="search" autofocus="autofocus" name="search" id="search" class="w-full px-10 rounded-md shadow-sm block" type="text" placeholder="{{__('Search')}}" />
                             <div wire:click="clear" class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm leading-5 text-gray-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -39,7 +39,7 @@
                     <div class="flex col-span-1 lg:col-span-2 gap-4 w-full">
                         <x-select wire:model="role" name="role" id="role" class="w-full text-gray-500 text-sm" :options="$roles" byDefect="{{__('Role')}}" />
 
-                        <select wire:model="status" name="status" id="status" class="w-full text-gray-500 text-sm rounded-md shadow-sm block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <select wire:model="status" name="status" id="status" class="w-full text-gray-500 text-sm rounded-md shadow-sm block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option value="">{{__('Status')}}</option>
                             <option value="1">{{__('Active')}}</option>
                             <option value="0">{{__('Inactive')}}</option>
@@ -51,7 +51,7 @@
                             </svg>
                         </x-jet-secondary-button>
 
-                        <select wire:model="perPage" name="perPage" id="perpage" class="w-auto pl-1.5 text-gray-500 text-sm rounded-md shadow-sm block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <select wire:model="perPage" name="perPage" id="perpage" class="w-auto pl-1.5 text-gray-500 text-sm rounded-md shadow-sm block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>

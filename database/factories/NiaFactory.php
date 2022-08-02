@@ -15,7 +15,7 @@ class NiaFactory extends Factory
     protected $model = Nia::class;
 
     // Contador
-    private static $order = 1;
+    private static $order = 2;
 
     /**
      * Define the model's default state.
