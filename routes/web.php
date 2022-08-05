@@ -21,10 +21,14 @@ use App\Models\Book;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-// Pruebas durante el desarrollo. TODO BORRAR
-Route::view('/pruebas', 'pruebas');
+// TODO Pruebas durante el desarrollo.
+Route::get('/pruebas', function () {
+    return view('pruebas');
+})->name('pruebas');
 
 Route::middleware(['auth:sanctum', 'verified', 'status'])->get('/dashboard', function () {
     // TODO ajustar a curso activo.
@@ -41,10 +45,14 @@ Route::middleware(['auth:sanctum', 'verified', 'status', 'role:Admin'])->group(f
     Route::resource('/schoolyears', SchoolyearController::class);
     Route::resource('/sections', SectionController::class);
     Route::resource('/enrollments', EnrollmentController::class);
-    Route::prefix('/users')->name('users.')->group(function () {
-        Route::post('/import', [UserController::class, 'import'])->name('import');
-        Route::put('/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('passwd');
-    });
+    // Route::prefix('/users')->name('users.')->group(function () {
+    //     Route::post('/import', [UserController::class, 'import'])->name('import');
+    //     Route::put('/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('passwd');
+    // });
+
+    Route::post('/users/import', [UserController::class, 'import'])->name('users.import');
+    Route::put('/users/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('users.passwd');
+
     Route::resource('/users', UserController::class);
     Route::resource('/books', BookController::class);
 });

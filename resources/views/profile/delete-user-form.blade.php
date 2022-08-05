@@ -1,4 +1,4 @@
-<x-action-section>
+<x-jet-action-section>
     <x-slot name="title">
         {{ __('Delete Account') }}
     </x-slot>
@@ -43,10 +43,10 @@
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
 
-                <x-jet-danger-button class="ml-2" wire:click="deleteUser" wire:loading.attr="disabled">
+                <x-jet-danger-button class="ml-3" wire:click="deleteUser" wire:loading.attr="disabled">
                     {{ __('Delete Account') }}
                 </x-jet-danger-button>
             </x-slot>
         </x-jet-dialog-modal>
     </x-slot>
-</x-action-section>
+</x-jet-action-section>

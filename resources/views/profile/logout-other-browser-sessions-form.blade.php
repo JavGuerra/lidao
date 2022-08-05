@@ -1,4 +1,4 @@
-<x-action-section>
+<x-jet-action-section>
     <x-slot name="title">
         {{ __('Browser Sessions') }}
     </x-slot>
@@ -8,7 +8,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
+        <div class="max-w-xl text-sm text-gray-600">
             {{ __('If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.') }}
         </div>
 
@@ -30,8 +30,8 @@
                         </div>
 
                         <div class="ml-3">
-                            <div class="text-sm text-gray-600 dark:text-gray-400">
-                                {{ $session->agent->platform() }} - {{ $session->agent->browser() }}
+                            <div class="text-sm text-gray-600">
+                                {{ $session->agent->platform() ? $session->agent->platform() : 'Unknown' }} - {{ $session->agent->browser() ? $session->agent->browser() : 'Unknown' }}
                             </div>
 
                             <div>
@@ -86,7 +86,7 @@
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
 
-                <x-jet-button class="ml-2"
+                <x-jet-button class="ml-3"
                             wire:click="logoutOtherBrowserSessions"
                             wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
@@ -94,4 +94,4 @@
             </x-slot>
         </x-jet-dialog-modal>
     </x-slot>
-</x-action-section>
+</x-jet-action-section>

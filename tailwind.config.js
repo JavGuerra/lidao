@@ -1,9 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    mode: 'jit',
     darkMode: 'class',
-    purge: [
+    content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
@@ -15,12 +15,6 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
-        },
-    },
-
-    variants: {
-        extend: {
-            opacity: ['disabled'],
         },
     },
 
