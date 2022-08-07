@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}: {{__(userRole(Auth::user()->role))}}
         </h2>
     </x-slot>
@@ -17,7 +17,7 @@
                 @livewire('update-locale-form')
             </div>
 
-            <x-section-border />
+            <x-jet-section-border />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">

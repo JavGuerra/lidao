@@ -1,4 +1,4 @@
-<div class="flex max-w-full sm:mx-auto mb-10 p-6 bg-yellow-50 rounded-md border-t-4 sm:border-t-0 sm:border-l-4 border-yellow-400 shadow-lg">
+<div class="flex max-w-full sm:mx-auto mb-10 p-6 bg-yellow-100 dark:bg-indigo-900 rounded-md border-t-4 sm:border-t-0 sm:border-l-4 border-yellow-300 dark:border-indigo-500 shadow-lg">
     <div class="inline-flex w-24 px-6">
         @include('images.idea')
     </div>
@@ -7,7 +7,7 @@
             {{__('Suggestion')}}
         </span>
         <br />
-        <span class="text-gray-500">
+        <span class="text-gray-600 dark:text-gray-300">
             {{ $slot }}
         </span>
     </div>

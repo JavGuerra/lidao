@@ -1,4 +1,4 @@
-<x-action-section>
+<x-jet-action-section>
     <x-slot name="title">
         {{ $title }}
     </x-slot>
@@ -57,4 +57,4 @@
             </x-slot>
         </x-jet-dialog-modal>
     </x-slot>
-</x-action-section>
+</x-jet-action-section>
