@@ -10,6 +10,7 @@ Este proyecto desarrolla una plataforma Web educativa para fomentar y mejorar el
 
 Proyecto en desarrollo.
 
-## Licencia
+## Licencias
 
-Este proyecto es de código abierto, y está licenciado bajo Creative Commons [CC BY-SA](https://creativecommons.org/licenses/by-sa/3.0/es/).
+Sobre el código fuente: [GNU GENERAL PUBLIC LICENSE Version 3](LICENSE)  
+Sobre el contenido de la web: [(CC) BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/es/)
