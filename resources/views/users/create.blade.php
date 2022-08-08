@@ -35,7 +35,7 @@
                     <div class="col-span-6 sm:col-span-4" x-data="{ show: true }">
                         <x-jet-label for="password" value="{{ __('Password') }}" />
                         <div class="relative">
-                            <input id="password" name="password" :type="show ? 'password' : 'text'" value="{{ old('password') }}" class="mt-1 block w-full pr-10 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required="required" minlength="8" autocomplete="new-password" />
+                            <input id="password" name="password" :type="show ? 'password' : 'text'" value="{{ old('password') }}" class="mt-1 block w-full pr-10 text-gray-800 dark:text-gray-200 bg-white dark:bg-black border-gray-300 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required="required" minlength="8" autocomplete="new-password" />
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
                                 <svg class="h-4 text-gray-400" fill="none" @click="show = !show" :class="{'hidden': !show, 'block':show }" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512">
                                     <path fill="currentColor" d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
@@ -102,21 +102,21 @@
 
                     <!-- Dropzone -->
                     <x-jet-label for="file" value="{{ __('Choose File') }}" />
-                    <div x-data="{ fileName: '' }" class="bg-white mt-1 w-full relative p-4 text-gray-400 border border-gray-300 rounded-md shadow-sm">
-                        <div x-ref="dnd" class="relative text-gray-400 border-2 border-gray-200 border-dashed rounded cursor-pointer">
+                    <div x-data="{ fileName: '' }" class="bg-white dark:bg-black mt-1 w-full relative p-4 text-gray-400 dark.text-gray-600 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm">
+                        <div x-ref="dnd" class="relative text-gray-400 dark:text-gray-600 border-2 border-gray-200 dark:border-gray-800 border-dashed rounded cursor-pointer">
                             <input accept="*" type="file" name="file" title="" x-ref="file"
                             @change="fileName = $refs.file.files[0].name"
                             class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
-                            @dragover="$refs.dnd.classList.add('bg-gray-100')"
-                            @dragleave="$refs.dnd.classList.remove('bg-gray-100')"
-                            @drop="$refs.dnd.classList.remove('bg-gray-100')" />
+                            @dragover="$refs.dnd.classList.add('bg-gray-100', 'dark:bg-gray-900')"
+                            @dragleave="$refs.dnd.classList.remove('bg-gray-100', 'dark:bg-gray-900')"
+                            @drop="$refs.dnd.classList.remove('bg-gray-100', 'dark:bg-gray-900')" />
                             <div class="flex flex-col items-center justify-center py-10 text-center">
                                 <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 0h24v24H0z" fill="none" />
                                     <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
                                 </svg>
                                 <p class="mt-1">{{__('Drag your file here or click in this area.')}}</p>
-                                <p class="mt-2 text-gray-900" x-text="fileName"></p>
+                                <p class="mt-2 text-gray-900 dark:text-gray-100" x-text="fileName"></p>
                             </div>
                         </div>
                     </div>

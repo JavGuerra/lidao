@@ -9,12 +9,12 @@
                 </svg>
             </div>
 
-            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <div class="mt-3 text-gray-900 dark:text-gray-100 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3 class="text-lg">
                     {{ $title }}
                 </h3>
 
-                <div class="mt-2">
+                <div class="mt-2 text-gray-800 dark:text-gray-200">
                     {{ $content }}
                 </div>
             </div>

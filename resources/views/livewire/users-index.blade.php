@@ -10,12 +10,12 @@
 
     @else
 
-    <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
+    <div class="bg-white dark:bg-black overflow-hidden shadow-lg sm:rounded-lg">
 
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 
-                <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 px-4 py-3 sm:px-6 bg-gradient-to-t from-gray-50">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 px-4 py-3 sm:px-6 bg-gradient-to-t from-gray-50 dark:from-gray-900">
                     <div class="flex col-span-1 lg:col-span-3 gap-4">
                         <div class="relative w-full">
                             <x-jet-input wire:model.debounce.500ms="search" autofocus="autofocus" name="search" id="search" class="w-full px-10 rounded-md shadow-sm block" type="text" placeholder="{{__('Search')}}" />
@@ -39,7 +39,7 @@
                     <div class="flex col-span-1 lg:col-span-2 gap-4 w-full">
                         <x-select wire:model="role" name="role" id="role" class="w-full text-gray-500 text-sm" :options="$roles" byDefect="{{__('Role')}}" />
 
-                        <select wire:model="status" name="status" id="status" class="w-full text-gray-500 text-sm rounded-md shadow-sm block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <select wire:model="status" name="status" id="status" class="w-full text-gray-500 bg-white dark:bg-black text-sm rounded-md shadow-sm block border-gray-300 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option value="">{{__('Status')}}</option>
                             <option value="1">{{__('Active')}}</option>
                             <option value="0">{{__('Inactive')}}</option>
@@ -51,7 +51,7 @@
                             </svg>
                         </x-jet-secondary-button>
 
-                        <select wire:model="perPage" name="perPage" id="perpage" class="w-auto pl-1.5 text-gray-500 text-sm rounded-md shadow-sm block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <select wire:model="perPage" name="perPage" id="perpage" class="w-auto pl-1.5 text-gray-500 bg-white dark:bg-black text-sm rounded-md shadow-sm block border-gray-300 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
@@ -70,8 +70,8 @@
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 
                     @if($users->count())
-                    <table class="table-fixed min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
+                    <table class="table-fixed min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+                        <thead class="bg-gray-50 dark:bg-gray-900">
                             <tr>
                                 <th scope="col" wire:click="order('name')" class="w-4/12 cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     <x-sort-icon name="name" :sort="$sort" :direction="$direction" />
@@ -100,16 +100,16 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody class="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-800">
                             @foreach ($users as $user)
-                            <tr class="hover:bg-gradient-to-r hover:from-gray-50">
+                            <tr class="hover:bg-gradient-to-r hover:from-gray-50 dark:hover:from-gray-900">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <img class="h-10 w-10 rounded-full" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
                                         </div>
                                         <div class="ml-4">
-                                            <div class="font-medium text-gray-900">
+                                            <div class="font-medium text-gray-900 dark:text-gray-100">
                                                 {{ $user->name }}
                                             </div>
                                             <div class="text-sm text-gray-500">
@@ -158,7 +158,7 @@
 
                 @if ($users->hasPages())
 
-                <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+                <div class="bg-white dark:bg-black px-4 py-3 border-t border-gray-200 dark:border-gray-800 sm:px-6">
                     {{ $users->links() }}
                 </div>
 
@@ -166,7 +166,7 @@
 
                 @else
 
-                <div class="bg-white px-4 py-3 border-t text-gray-500 border-gray-200 sm:px-6">
+                <div class="bg-white dark:bg-black px-4 py-3 border-t text-gray-500 border-gray-200 dark:border-gray-800 sm:px-6">
                     {{__('No results for the search ')}} <span class="font-bold">{{$search}}</span>
                 </div>
 

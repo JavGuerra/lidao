@@ -11,7 +11,7 @@
         <!-- Language -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="locale" value="{{ __('Language') }}" />
-            <select wire:model.defer="lang" name="locale" class="mt-1 block w-1/2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            <select wire:model.defer="lang" name="locale" class="mt-1 block w-1/2 text-gray-800 dark:text-gray-200 bg-white dark:bg-black border-gray-300 dark:border-gray-700 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                 @foreach($languages as $key => $language)
                 <option value="{{$key}}">{{$language}}</option>
                 @endforeach()
