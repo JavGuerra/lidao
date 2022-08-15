@@ -7,7 +7,7 @@
                 @include('images.application-mark', ['attributes' => 'block h-16 w-auto'])
                 <nav class="hidden md:flex text-lg">
                     <a href="#faq" class="text-gray-800 hover:text-blue-400 py-3 px-6">Servicios</a>
-                    <a href="#about" class="text-gray-800 hover:text-blue-400 py-3 px-6">Acerca de</a>
+                    <a href="#about" class="text-gray-800 hover:text-blue-400 py-3 px-6">Acerca&nbsp;de</a>
                     <a href="#contact" class="text-gray-800 hover:text-blue-400 py-3 px-6">Contactar</a>
                 </nav>
 
@@ -17,7 +17,7 @@
                         @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm underline">Panel</a>
                         @else
-                        <a href="{{ route('login') }}" class="text-sm underline">Iniciar sesión</a>
+                        <a href="{{ route('login') }}" class="text-sm underline">Iniciar&nbsp;sesión</a>
                     </span>
 
                     @if (Route::has('register'))

@@ -45,14 +45,12 @@ Route::middleware(['auth:sanctum', 'verified', 'status', 'role:Admin'])->group(f
     Route::resource('/schoolyears', SchoolyearController::class);
     Route::resource('/sections', SectionController::class);
     Route::resource('/enrollments', EnrollmentController::class);
-    // Route::prefix('/users')->name('users.')->group(function () {
-    //     Route::post('/import', [UserController::class, 'import'])->name('import');
-    //     Route::put('/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('passwd');
-    // });
-
-    Route::post('/users/import', [UserController::class, 'import'])->name('users.import');
-    Route::put('/users/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('users.passwd');
-
+    Route::prefix('/users')->name('users.')->group(function () {
+        Route::post('/import', [UserController::class, 'import'])->name('import');
+        Route::put('/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('passwd');
+    });
+    // Route::post('/users/import', [UserController::class, 'import'])->name('users.import');
+    // Route::put('/users/{user}/passwd', [UserController::class, 'passwd'])->where('user', '^\d+$')->name('users.passwd');
     Route::resource('/users', UserController::class);
     Route::resource('/books', BookController::class);
 });

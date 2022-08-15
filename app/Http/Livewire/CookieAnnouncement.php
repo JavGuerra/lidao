@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class CookieAnnouncement extends Component
@@ -30,9 +31,9 @@ class CookieAnnouncement extends Component
     /**
      * Renderiza el componente.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View 
      */
-    public function render()
+    public function render() : View
     {
         return view('livewire.cookie-announcement');
     }
