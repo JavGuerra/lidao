@@ -7,6 +7,22 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <script>
+            /**
+             * TailwindCSS Dark Mode.
+             * Recupera/fija el modo desde localStorage cuando la pagina carga al inicio.
+             * Nota: Movido desde resources/js/app.js para evitar el 'flicker' del modo pocuro
+             */
+            if (localStorage.lidaoDark == 1 || (!('lidaoDark' in localStorage)
+            && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                localStorage.lidaoDark = 1;
+                document.documentElement.classList.add('dark');
+            } else {
+                localStorage.lidaoDark = 0;
+                document.documentElement.classList.remove('dark');
+            }
+        </script>
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
