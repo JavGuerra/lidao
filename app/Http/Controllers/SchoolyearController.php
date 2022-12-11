@@ -19,10 +19,7 @@ class SchoolyearController extends Controller
 
         $selected = activeSchoolyear();
 
-        return view('schoolyears.index', [
-            'schoolyears' => $schoolyears,
-            'selected' => $selected,
-        ]);
+        return view('schoolyears.index', compact('schoolyears', 'selected'));
     }
 
     /**
@@ -124,9 +121,7 @@ class SchoolyearController extends Controller
      */
     public function show(Schoolyear $schoolyear)
     {
-        return view('schoolyears.show', [
-            'schoolyear' => $schoolyear,
-        ]);
+        return view('schoolyears.show', compact('schoolyear'));
     }
 
     /**
@@ -137,9 +132,7 @@ class SchoolyearController extends Controller
      */
     public function edit(Schoolyear $schoolyear)
     {
-        return view('schoolyears.edit', [
-            'schoolyear' => $schoolyear,
-        ]);
+        return view('schoolyears.edit', compact('schoolyear'));
     }
 
     /**

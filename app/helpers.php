@@ -213,15 +213,10 @@ function startYear()
 {
     $startYear = thisYear();
     $startYear--;
-    if ($startYear < 1901) {
-        $startYear = 1901;
-    }
-    if ($startYear > 2154) {
-        $startYear = 2154;
-    }
-    while (Schoolyear::where('start_at', $startYear)->first() != null && $startYear < 2155) {
-        $startYear++;
-    }
+    if ($startYear < 1901) $startYear = 1901;
+    else if ($startYear > 2154) $startYear = 2154;
+    while (Schoolyear::where('start_at', $startYear)->first() != null
+        && $startYear < 2155) $startYear++;
     return $startYear;
 }
 

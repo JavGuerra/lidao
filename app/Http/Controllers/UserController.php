@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
-
     /**
      * Muestra el listado de alumnos.
      *
@@ -18,10 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index', [
-            'users' => User::all(),
-            //'nias' => Nia::all()
-        ]);
+        $users = User::all();
+        // TODO 'nias' => Nia::all()
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -110,10 +109,10 @@ class UserController extends Controller
         $request->session()->now('flash.banner', $text);
         $request->session()->now('flash.bannerStyle', $type);
 
+        $users = User::all();
+
         // if ($error == null) {
-        return view('users.index', [
-            'users' => User::all()
-        ]);
+        return view('users.index', compact('users'));
         // } else {
         // TODO volver a la misma página y mostrar aviso
         //return back()->withInput();
@@ -128,9 +127,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', [
-            'user' => $user,
-        ]);
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -141,9 +138,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', [
-            'user' => $user,
-        ]);
+        return view('users.edit', compact('user'));
     }
 
     /**

@@ -19,9 +19,7 @@ class SectionController extends Controller
         $sections = Section::where('schoolyear_id', activeSchoolyearId())
             ->orderBy('stagelevel_id', 'ASC')->orderBy('name', 'ASC')->paginate(numPaginate());
 
-        return view('sections.index', [
-            'sections' => $sections,
-        ]);
+        return view('sections.index', compact('sections'));
     }
 
     /**
