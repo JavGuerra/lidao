@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(numPaginate());
         // TODO 'nias' => Nia::all()
 
         return view('users.index', compact('users'));
@@ -109,7 +109,7 @@ class UserController extends Controller
         $request->session()->now('flash.banner', $text);
         $request->session()->now('flash.bannerStyle', $type);
 
-        $users = User::all();
+        $users = User::paginate(numPaginate());
 
         // if ($error == null) {
         return view('users.index', compact('users'));
